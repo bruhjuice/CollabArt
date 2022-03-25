@@ -1,1 +1,1 @@
-print("collab art deez nuts")
+print("collab art DDEEZ nuts")
