@@ -30,6 +30,37 @@ body {
 	overflow: hidden;
 }
 
+/* Tape */
+.tape {
+  background-color: hsla(0,0%,100%,.2);
+  box-shadow: inset 0 0 1em .5em hsla(0,0%,100%,.1);
+  height: 3em;
+  position: absolute;
+  width: 9em;
+  -webkit-filter: drop-shadow(0 1px 1px hsla(0,0%,0%,.3));
+}
+.tape:after,
+.tape:before {
+  background-size: .4em .4em;
+  bottom: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  width: .2em;
+}
+.tape:after {
+  background-image: linear-gradient(45deg, transparent 50%, hsla(0,0%,100%,.3) 50%),
+                    linear-gradient(-45deg, transparent 50%, hsla(0,0%,100%,.3) 50%);
+  background-position: 0 100%;
+  left: -.2em;
+}
+.tape:before {
+  background-image: linear-gradient(135deg, transparent 50%, hsla(0,0%,100%,.3) 50%),
+                    linear-gradient(-135deg, transparent 50%, hsla(0,0%,100%,.3) 50%);
+  background-position: 100% 100%;
+  right: -.2em;
+}
+
 /* Colors */
 .white {
 	background-color: #fff;

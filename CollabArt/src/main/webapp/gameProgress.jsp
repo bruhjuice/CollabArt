@@ -63,6 +63,38 @@
 		margin-left: 100px;
 	}
 	
+	#timer {
+		background-color: black;
+		color: white;
+		width: 100px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+		border-radius: 50%;
+		font-size: 40px;
+	}
+	
+	.tape.top-left {
+		left: 0;
+		transform: rotate(-40deg) scale(0.4, 0.5) translate(-70%, -200%);
+	}
+	
+	.tape.top-right {
+		right: 0;
+		transform: rotate(40deg) scale(0.4, 0.5) translate(70%, -200%);
+	}
+	
+	.tape.bottom-left {
+		left: 0;
+		bottom: 0;
+		transform: rotate(220deg) scale(0.4, 0.5) translate(70%, -200%);
+	}
+	
+	.tape.bottom-right {
+		right: 0;
+		bottom: 0;
+		transform: rotate(-220deg) scale(0.4, 0.5) translate(-70%, -200%);
+	}
 </style>
 </head>
 <body>
@@ -80,11 +112,19 @@
 					</div>
 				</div>
 				
-				<canvas id="drawing-canvas" width="400" height="250">
-				</canvas>
+				<div style="position: relative;">
+					<div class="tape top-left"></div>
+					<div class="tape top-right"></div>
+					<div class="tape bottom-left"></div>
+					<div class="tape bottom-right"></div>
+					<canvas id="drawing-canvas" width="400" height="250">
+					</canvas>
+				</div>
 			</div>
 			<div id="right-container">
-				Other stuff over here
+				<div id="timer">
+					0:53
+				</div>
 			</div>
 		</div>
 	</div>
