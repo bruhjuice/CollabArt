@@ -1,0 +1,88 @@
+@charset "ISO-8859-1";
+
+html {
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-size: 24px;
+	font-family: 'Irish Grover', cursive;
+}
+
+/* Rounded corners */
+.rounded {
+	border-radius: 30px;
+	overflow: hidden;
+}
+
+.left-rounded {
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	overflow: hidden;
+}
+
+.right-rounded {
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	overflow: hidden;
+}
+
+/* Colors */
+.white {
+	background-color: #fff;
+}
+
+.black {
+	background-color: #000;
+}
+
+.light-blue {
+	background-color: #E7FBFF;
+}
+
+.blue {
+	background-color: #ACEBFF;
+}
+
+.light-pink {
+	background-color: #F6DDDD;
+}
+
+.pink {
+	background-color: #EBAEAE;
+}
+
+.light-orange {
+	background-color: #F3CDAB;
+}
+
+.orange {
+	background-color: #FFA353;
+}
+
+.light-yellow {
+	background-color: #FCEFC1;
+}
+
+.yellow {
+	background-color: #F4DF93;
+}
+
+.light-green {
+	background-color: #C1F0C6;
+}
+
+.green {
+	background-color: #76BF7D;
+}
+
+.light-purple {
+	background-color: #DED3EB;
+}
+
+.purple {
+	background-color: #A98FCB;
+}
