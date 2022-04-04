@@ -22,12 +22,14 @@
 	<div id = "loginBox">
 	
 	<div id = "loginBoxLogin">
-	<p> Log In</p>
+	<h1> Log In</h1>
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
 	
 	</div>
+	<p>Not a member? </p>
+	<a href = "register.jsp"> Sign up now!</a>
 	
 	</div>
 
