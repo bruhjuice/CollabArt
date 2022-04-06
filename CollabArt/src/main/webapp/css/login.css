@@ -4,15 +4,45 @@
 #loginBox
 {
 	background-color: #ACEBFF;
-	font-size: 42px;
-	height: 50%;
-	width: 50%;
-	padding: 70px;
+	font-size: 30px;
+	height: 70%;
+	width: 30%;
+	padding: 0px;
 	text-align: center;
 	margin: auto;
+	margin-top: 8%;
+	border-radius: 70px;
 }
 body
 {
 	background-color: #E7FBFF;
+	font-family: 'Irish Grover', cursive;
+	
+}
+#loginBoxLogin
+{
+	font-size: 35px;
+	background-color: #F6DDDD;
+	border-radius: 70px;
+	
+}
+#signInButton
+{
+	background-color: #F4DF93;
+	border-radius: 70px;
+	width: 40%;
+	font-size: 28px;	
+}
+.regForm
+{
+	width:180px;
+	height:20px;
+	border: 1px;
+	padding: 5px;
+	text-align: center;
+	background-color: #E7FBFF;
+	border-radius: 5px;
+	
+	
 	
 }

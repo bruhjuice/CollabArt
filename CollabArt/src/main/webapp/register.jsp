@@ -20,12 +20,18 @@
 
 <body>
 	<div id = "loginBox">
-	
 	<div id = "loginBoxLogin">
-	<h1> Log In</h1>
+	<h1> Register</h1>
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
+	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = "" placeholder = "Username">
+	<br>
+	<input class = "regForm" type = "text" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password">
+	<br>
+	<br>
+	<button type="submit" id = "signInButton">Create Account</button>
+	
 	
 	</div>
 	<p>Already a member? </p>
@@ -34,3 +40,14 @@
 	</div>
 
 	</div>
+<!-- TODO -->
+
+     
+
+                
+
+        
+        
+        
+</body>
+</html>

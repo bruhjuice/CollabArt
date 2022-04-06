@@ -20,12 +20,18 @@
 
 <body>
 	<div id = "loginBox">
-	
 	<div id = "loginBoxLogin">
 	<h1> Log In</h1>
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
+	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = "" placeholder = "Username">
+	<br>
+	<input class = "regForm" type = "text" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password">
+	<br>
+	<br>
+	<button type="submit" id = "signInButton">Sign In</button>
+	
 	
 	</div>
 	<p>Not a member? </p>
