@@ -29,13 +29,12 @@
 	<br>
 	<input class = "regForm" type = "text" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password">
 	<br>
-	<br>
 	<button type="submit" id = "signInButton">Create Account</button>
 	
 	
 	</div>
-	<p>Already a member? </p>
-	<a href = "login.jsp"> Log in Here!</a>
+	<p id = "bottomText">Already a member? </p>
+	<a href = "login.jsp" id = "bottomText2"> Log in Here!</a>
 	
 	</div>
 
