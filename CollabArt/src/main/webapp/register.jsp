@@ -29,6 +29,8 @@
 	<br>
 	<input class = "regForm" type = "text" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password">
 	<br>
+	<input class = "regForm" type = "text" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Confirm Password">
+	<br>
 	<button type="submit" id = "signInButton">Create Account</button>
 	
 	
