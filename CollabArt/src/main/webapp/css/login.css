@@ -5,8 +5,8 @@
 {
 	background-color: #ACEBFF;
 	font-size: 30px;
-	height: 70%;
-	width: 30%;
+	height: 600px;
+	width: 40%;
 	padding: 0px;
 	text-align: center;
 	margin: auto;
@@ -30,19 +30,35 @@ body
 {
 	background-color: #F4DF93;
 	border-radius: 70px;
-	width: 40%;
+	width: 50%;
 	font-size: 28px;	
 }
 .regForm
 {
-	width:180px;
-	height:20px;
+	margin-bottom: 30px;
+	width:420px;
+	height:40px;
 	border: 1px;
 	padding: 5px;
 	text-align: center;
 	background-color: #E7FBFF;
 	border-radius: 5px;
+	font-family: 'Irish Grover', cursive;
+	font-size: 30px;
 	
 	
+}
+#bottomText
+{
+	margin-bottom: 0px;
+	margin-top: 120px;
 	
+}
+a:visited{
+	color:blue;
+	
+ }
+a:link
+{
+	color:blue;
 }
