@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+.galart{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.galart-top, .galart-bottom{
+	text-align: center;
+}
+
+.galart-img{
+	width: 100%;
+}
+

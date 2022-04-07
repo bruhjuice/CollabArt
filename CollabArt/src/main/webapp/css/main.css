@@ -30,6 +30,19 @@ body {
 	overflow: hidden;
 }
 
+.top-rounded{
+	border-top-left-radius: 30px;
+   border-top-right-radius: 30px;
+   overflow: hidden;
+}
+
+.bottom-rounded{
+   border-bottom-left-radius: 30px;
+   border-bottom-right-radius: 30px;
+   overflow: hidden;
+}
+
+
 /* Tape */
 .tape {
   background-color: hsla(0,0%,100%,.2);
