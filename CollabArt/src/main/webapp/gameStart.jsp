@@ -11,6 +11,7 @@
 <title>CollabArt</title>
 	<style>
 	
+	/* Remove background-image to make background blue */
 	.overall {
 		display: flex;
 		flex-direction: column;
@@ -19,6 +20,8 @@
 		align-items: center;
 		justify-content: flex-start;
 		margin-vertical: 100px;
+		
+		background-image: url("images/doodles2blueBlurred2.jpg");
 	}
 	
 	.rowDiv {
@@ -72,6 +75,8 @@
 		border-style: solid;
 		border-width: 15px;
 		border-color: #FFA353;
+		
+		box-shadow: 5px 10px 5px gray;
 	}
 	
 	.startSize {
@@ -105,7 +110,9 @@
 		border-color: #ACEBFF;
 		
 		justify-content: center;
-		align-items: center
+		align-items: center;
+		
+		box-shadow: 5px 10px 5px gray;
 	}
 	
 	.playerName {
@@ -119,6 +126,8 @@
 		
 		overflow: hidden;
 		border-radius: 12px;
+		
+		box-shadow: 5px 10px 5px gray;
 	}
 	
 	.waitPlayerText {
@@ -142,11 +151,11 @@
 	
 	</style>
 </head>
+
+
+<!-- Remove overall background image to make light-blue show up -->
 <body class="light-blue overall">
-	<!-- room code: 50, code: 64 -->
-	<!-- game start: 64, else 48 -->
-	<!-- name: 24, ?: 96 -->
-	
+
 	<!-- vertical -->
 	<div>
 		<!-- put nav bar here???? -->
@@ -156,7 +165,7 @@
 		<p class="roomCodeTitle">Room Code (share with friends):</p>
 		<p class="roomCode">QBEG</p>
 		
-		<!-- button -->
+		<!-- Various buttons depending on state -->
 		<div class="rowDiv">
 			<p class="bigButton startSize yellow">Game Start?</p>
 		</div>
