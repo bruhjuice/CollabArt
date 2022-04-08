@@ -170,7 +170,7 @@
 		</div>
 		<div class = "navRight">
 			<%
-				if (logIn) {
+				if (!logIn) {
 					out.println(
 							"<a href=\"login.jsp\" id = \"navText\">Log In</a>" +
 							"<a href=\"register.jsp\" id = \"navText\">Register</a>"
