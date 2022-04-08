@@ -35,7 +35,7 @@
 	
 	
 	</div>
-	<p id = "bottomText">Already a member? </p>
+	<p id = "bottomText3">Already a member? </p>
 	<a href = "login.jsp" id = "bottomText2"> Log in Here!</a>
 	
 	</div>
