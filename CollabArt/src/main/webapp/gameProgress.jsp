@@ -57,6 +57,15 @@
 		border-style: solid;
 		width: 50px;
 		height: 50px;
+		cursor: pointer;
+	}
+	
+	.color-circle.selected {
+		background: radial-gradient(black 0, black 25%, transparent 25.1%);
+	}
+	
+	.color-circle.selected.dark {
+		background: radial-gradient(white 0, white 25%, transparent 25.1%);
 	}
 	
 	.color-circle:nth-child(even) {
@@ -100,7 +109,13 @@
 <body>
 	<div class="outer-container light-blue">
 		<div class="container">
-			<div id="colors-container">
+			<div>
+				<div id="colors-container">
+				</div>
+				<div style="margin-top: 36px;">
+					Brush Size:
+					<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
+				</div>
 			</div>
 			<div id="drawing-container">
 				<div class="prompt-container">
@@ -117,7 +132,7 @@
 					<div class="tape top-right"></div>
 					<div class="tape bottom-left"></div>
 					<div class="tape bottom-right"></div>
-					<canvas id="drawing-canvas" width="400" height="250">
+					<canvas id="drawing-canvas" width="800" height="600">
 					</canvas>
 				</div>
 			</div>
