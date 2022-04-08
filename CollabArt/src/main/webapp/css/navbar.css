@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+
+.navBar {
+	font-size: 24px;
+	display: flex;
+	background-color: #ACEBFF;
+	width: 100%;
+	padding: 0px;
+}
+
+.navBar a:link {
+	text-decoration: none;
+}
+
+.navLeft {
+	display: flex;
+	height: 80px;
+	width: 66%;
+	padding: 0px;
+	padding-left: 30px;
+	justify-content: start;
+	align-items: center;
+}
+
+.navRight {
+	display: flex;
+	height: 80px;
+	padding: 0px;
+	padding-right: 30px;
+	align-items: center;
+	justify-content: end;
+	width: 34%;
+}
+
+#navLogo {
+	height: 90%;
+	width: auto;
+	padding-left: 5px;
+	padding-right: 35px;
+	padding-top: 0.5%;
+	padding-bottom: 1%;
+}
+
+#navText {
+	padding-left: 15px;
+	padding-right: 15px;
+	color: black;
+}
+
+#navJoin {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#navJoin input[type="text"] {
+	margin-left: 15px;
+	border: solid;
+	border-color: black;
+	border-radius: 12px;
+	height: 45%;
+	margin-right: 15px;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Irish Grover', cursive;
+}
+
+#navDivider {
+	height: 2px;
+	width: 100%;
+	background-color: black;
+	border: none;
+}

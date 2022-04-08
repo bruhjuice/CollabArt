@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/navbar.css">
+<% Boolean logIn = true; %>
 <title>CollabArt</title>
 	<style>
 	
@@ -157,10 +159,33 @@
 <body class="light-blue overall">
 
 	<!-- vertical -->
-	<div>
-		<!-- put nav bar here???? -->
-		<p>navbar here</p>
+	<nav class = "navBar">
+		<div class = "navLeft">
+			<img src = "images/spongebob.jpg" id = navLogo>
+			<a href = "gameStart.jsp" id = "navText">Create Room</a>
+			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
+				<a href="#" onclick="$(this).closest('form').submit()" id = "navText">Join Room</a>
+				<input type = "text" id = "roomCode" placeholder = "[type code]">
+			</form>
+		</div>
+		<div class = "navRight">
+			<%
+				if (logIn) {
+					out.println(
+							"<a href=\"login.jsp\" id = \"navText\">Log In</a>" +
+							"<a href=\"register.jsp\" id = \"navText\">Register</a>"
+							);
+				} else {
+					out.println(
+							"<a href=\"login.jsp\" id = \"navText\">Log Out</a>"
+							);
+				}
+			%>
+		</div>
+	</nav>
+	<div id = "navDivider"></div>
 	
+	<div>
 		<!-- Room code -->
 		<p class="roomCodeTitle">Room Code (share with friends):</p>
 		<p class="roomCode">QBEG</p>
