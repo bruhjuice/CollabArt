@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test socket</title>
+</head>
+<body>
+	<h1 id="title">Test socket</h1>
+
+
+	<script>
+		var socket = new WebSocket('ws://localhost:8080/CollabArt/room/asdf')
+		socket.onopen = (e) => { socket.send('client connected') }
+		
+		socket.onmessage = (e) => {
+			console.log('RECEIVED FROM SERVER: ', e.data)
+		}
+	</script>
+</body>
+</html>

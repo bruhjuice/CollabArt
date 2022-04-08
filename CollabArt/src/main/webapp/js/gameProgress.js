@@ -90,7 +90,7 @@ canvas.addEventListener('mousedown', (e) => {
 }, { capture: true })
 
 canvas.addEventListener('mouseup', (e) => {
-	mouseDown = false	
+	mouseDown = false
 })
 
 canvas.addEventListener('mousemove', (e) => {
