@@ -4,7 +4,7 @@
 
 /* Global variables */
 var mouseDown = false
-var brushSize = 5
+var brushSize = 10
 var selectedColor = ''
 var lastX = 0
 var lastY = 0

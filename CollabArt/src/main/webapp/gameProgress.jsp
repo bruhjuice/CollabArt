@@ -114,7 +114,7 @@
 				</div>
 				<div style="margin-top: 36px;">
 					Brush Size:
-					<input id="brush-size-slider" type="range" min="5" max="50" value="5">
+					<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
 				</div>
 			</div>
 			<div id="drawing-container">
