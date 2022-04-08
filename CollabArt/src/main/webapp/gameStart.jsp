@@ -171,18 +171,18 @@
 		<div class="rowDiv">	
 		
 			<div class="colDiv">
-				<img class="playerCircle" src="Avatar1.png"/> 
+				<img class="playerCircle" src="images/Avatar1.png"/> 
 				<p class="playerName blue">jspjspjsp</p>
 				<p class="playerName yellow">Owner</p>
 			</div>
 			
 			<div class="colDiv">
-				<img class="playerCircle" src="Avatar2.png"/> 
+				<img class="playerCircle" src="images/Avatar2.png"/> 
 				<p class="playerName blue">SAL</p>
 			</div>
 			
 			<div class="colDiv">
-				<img class="playerCircle" src="Avatar3.png"/> 
+				<img class="playerCircle" src="images/Avatar3.png"/> 
 				<p class="playerName blue">help</p>
 			</div>
 			
