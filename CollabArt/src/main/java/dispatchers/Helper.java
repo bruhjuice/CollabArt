@@ -121,15 +121,13 @@ public class Helper {
      * @param email
      * @param password
      */
-    public static boolean checkPassword(String email, String password) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
+    public static boolean checkPassword(String username, String password) throws SQLException {
+    	String db = "jdbc:mysql://localhost:3306/collabArt";
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
-		String sql = "SELECT * FROM Users WHERE email=?";
+		String sql = "SELECT password FROM Users WHERE username=?";
 		
-		String username = "";
 		String selectedPassword = "";
-		String selectedEmail = "";
 		// add the jar to tomcat lib if it is not working!
         try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -146,15 +144,11 @@ public class Helper {
 		
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
-				ps.setString(1, email);
+				ps.setString(1, username);
 				ResultSet rs = ps.executeQuery();
 				while (rs.next())
 				{
-					selectedEmail = rs.getString("email");
-					username = rs.getString("username");
 					selectedPassword = rs.getString("password");
-				
-
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
@@ -175,13 +169,13 @@ public class Helper {
      * @throws ServletException
      * @throws IOException
      */
-    public static boolean nameAlreadyRegistered(String email, HttpServletRequest request, HttpServletResponse response)
+    public static boolean nameAlreadyRegistered(String username, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
+    	String db = "jdbc:mysql://localhost:3306/collabArt";
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
-		String sql = "SELECT email FROM Users WHERE email=?";
-		String selectedEmail = "";
+		String sql = "SELECT username FROM Users WHERE username = (?)";
+		String selectedName = "";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -198,18 +192,21 @@ public class Helper {
 		
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
-				ps.setString(1, email);
+				ps.setString(1, username);
 				ResultSet rs = ps.executeQuery();
 				while (rs.next())
 				{
-					selectedEmail = rs.getString("email");
+					selectedName = rs.getString("username");
 
 				
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
 			}
-		if (selectedEmail.contentEquals(email))
+		System.out.println("selected" + selectedName);
+		System.out.println(username);
+
+		if (selectedName.contentEquals(username))
 		{
 	    	System.out.println("email already registered");
 
