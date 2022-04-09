@@ -15,10 +15,13 @@
 
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/navbar.css">
+
 
 <title> Collabart | Home</title>
 </head>
 <body>
+	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<!-- Navbar HERE 
    NOTE: make it so it stays at top even when scrolling down the artworks
    -->
