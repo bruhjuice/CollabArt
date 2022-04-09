@@ -26,9 +26,18 @@
 	<!-- Thoughts: doing likes/dislikes will be hard: whenever they click on it, need to send update to database
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 
    Have to do AJAX to see likes go up/down? increment/display locally then update to true value on reload? Or get update when like?-->
+   
+   
+   
+      
+   <br>
+   <h1>Collabart Gallery</h1>
 
 
-	<br>
+
+
+
+
 	<br>
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
 	<!-- Would we have to store all images? Even if we have local path, how would we store it? -->
