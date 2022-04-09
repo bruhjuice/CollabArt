@@ -26,14 +26,10 @@
 	<!-- Thoughts: doing likes/dislikes will be hard: whenever they click on it, need to send update to database
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 
    Have to do AJAX to see likes go up/down? increment/display locally then update to true value on reload? Or get update when like?-->
-   
-   
-   
+      
       
    <br>
    <h1>Collabart Gallery</h1>
-
-
 
 
 

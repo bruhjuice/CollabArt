@@ -6,16 +6,17 @@ public class Artwork
    private String prompt;
    private Coordinates[] playerCoord;
    private String background_image_url;
-   private ArrayList<String> fragment_urls;
+   private String[] fragment_urls;
    
    public Artwork(String prompt, Coordinates[] playerCoord, String background_image_url) {
       this.prompt=prompt;
       this.playerCoord=playerCoord;
       this.background_image_url=background_image_url;
+      fragment_urls = new String[4];
    }
    
-   public void addFragment(String frag_url) {
-      fragment_urls.add(frag_url);
+   public void addFragment(String frag_url, int player_no) {
+      fragment_urls[player_no-1]=frag_url;
    }
    
    public BufferedImage getCompleted() {
