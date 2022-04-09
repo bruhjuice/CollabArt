@@ -134,6 +134,8 @@
 					<div class="tape bottom-right"></div>
 					<canvas id="drawing-canvas" width="800" height="600">
 					</canvas>
+					
+					<button id="submit-data">Submit data!</button>
 				</div>
 			</div>
 			<div id="right-container">
@@ -145,5 +147,12 @@
 	</div>
 
 	<script src="js/gameProgress.js"></script>
+	<script>
+		document.getElementById('submit-data').addEventListener('click', () => {
+			const formData = new FormData()
+			formData.append('image-string', canvas.toDataURL())
+			fetch('/CollabArt/Fragment', { method: 'POST', body: formData })
+		})
+	</script>
 </body>
 </html>
