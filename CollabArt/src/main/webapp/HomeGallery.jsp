@@ -15,13 +15,13 @@
 
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/navbar.css">
+
 
 <title> Collabart | Home</title>
 </head>
 <body>
-	<!-- Navbar HERE 
-   NOTE: make it so it stays at top even when scrolling down the artworks
-   -->
+	<script id="replace_with_navbar" src="js/nav.js"></script>
 
 	<!-- Thoughts: doing likes/dislikes will be hard: whenever they click on it, need to send update to database
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 

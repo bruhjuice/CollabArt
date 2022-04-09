@@ -17,8 +17,36 @@
 			</form>
 		</div>
 		<div class = "navRight">
+		
+		
+		
+		 <%
+         Cookie cookie = null;
+         Cookie[] cookies = null;
+         boolean logIn = false;
+         // Get an array of Cookies associated with the this domain
+         cookies = request.getCookies();
+      
+  			 if (cookies != null){
+  				for (int i = 0; i < cookies.length; i++){
+  					cookie = cookies[i];
+  					if((cookie.getName( )).equals("loggedIn")  )
+  						
+  					{
+  						
+ 						String cookieName = cookie.getValue();
+						if (cookieName.contentEquals("true"))
+						{
+	  						logIn = true;
+						}
+  					}
+  					
+  				}
+  				
+  			}%>
+		
+		
 			<%
-			boolean logIn = true;
 				if (!logIn) {
 					out.println(
 							"<a href=\"login.jsp\" class = \"navText\">Log In</a>" +
@@ -26,7 +54,7 @@
 							);
 				} else {
 					out.println(
-							"<a href=\"login.jsp\" class = \"navText\">Log Out</a>"
+							"<a href=\"logout\" class = \"navText\">Log Out</a>"
 							);
 				}
 			%>

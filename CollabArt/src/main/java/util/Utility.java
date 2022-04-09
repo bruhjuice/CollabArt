@@ -1,4 +1,4 @@
-package dispatchers;
+package util;
 
 import java.util.regex.Pattern;
 
