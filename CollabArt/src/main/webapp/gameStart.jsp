@@ -158,6 +158,8 @@
 <!-- Remove overall background image to make light-blue show up -->
 <body class="light-blue overall">
 
+	<script id="replace_with_navbar" src="js/nav.js"></script>
+
 	<!-- vertical -->
 	<nav class = "navBar">
 		<div class = "navLeft">
