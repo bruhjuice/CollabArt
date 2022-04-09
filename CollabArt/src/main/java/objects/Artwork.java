@@ -1,17 +1,22 @@
+package objects;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import util.*;
 
 public class Artwork
 {
-   private String prompt;
-   private Coordinates[] playerCoord;
-   private String background_image_url;
+   Prompt prompt;
    private String[] fragment_urls;
+   private String completed_Image;
    
-   public Artwork(String prompt, Coordinates[] playerCoord, String background_image_url) {
+   //default constructor, randomly pulls from pool;
+   
+   
+   public Artwork() {
+      prompt = PromptPool.prompts[(int)(Math.random()*PromptPool.prompts.length)];
+      fragment_urls = new String[4];
+   }
+   public Artwork(Prompt prompt, String background_image_url) {
       this.prompt=prompt;
-      this.playerCoord=playerCoord;
-      this.background_image_url=background_image_url;
       fragment_urls = new String[4];
    }
    
@@ -29,29 +34,3 @@ public class Artwork
    
 }
 
-class Coordinates{
-   private int x_start;
-   private int y_start;
-   private int x_end;
-   private int y_end;
-   
-   public Coordinates(int x_start, int y_start, int x_end, int y_end) {
-      this.x_start = x_start;
-      this.y_start = y_start;
-      this.x_end = x_end;
-      this.y_end = y_end;
-   }
-   
-   public int getX_start() {
-      return x_start;
-   }
-   public int getY_start() {
-      return y_start;
-   }
-   public int getX_end() {
-      return x_end;
-   }
-   public int getY_end() {
-      return y_end;
-   }
-}

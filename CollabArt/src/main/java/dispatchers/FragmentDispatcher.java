@@ -46,7 +46,7 @@ public class FragmentDispatcher extends HttpServlet {
        //Afrer all has been inserted
        //Class getCompleted()
        
-       String dataURL=request.getParameter("");
+       String dataURL=request.getParameter("image-string");
        //800x600 fragment
        
        String base64Image = dataURL.split(",")[1];
