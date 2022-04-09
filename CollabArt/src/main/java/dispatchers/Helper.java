@@ -22,18 +22,7 @@ public class Helper {
         return Utility.namePattern.matcher(name).matches();
     }
 
-    /**
-     * check if email is valid
-     *
-     * @param email the email user provides
-     * @return valid or not valid
-     */
-    public static boolean isValidEmail(String email) {
-        if (email == null) {
-            return false;
-        }
-        return Utility.emailPattern.matcher(email).matches();
-    }
+
 
     /**
      * Get username with the email
@@ -186,7 +175,7 @@ public class Helper {
      * @throws ServletException
      * @throws IOException
      */
-    public static boolean emailAlreadyRegistered(String email, HttpServletRequest request, HttpServletResponse response)
+    public static boolean nameAlreadyRegistered(String email, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	String db = "jdbc:mysql://localhost:3306/SalEats";
 		String user = Utility.DBUserName;

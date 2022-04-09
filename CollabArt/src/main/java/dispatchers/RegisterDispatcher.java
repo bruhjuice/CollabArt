@@ -15,8 +15,6 @@ import java.io.*;
  */
 @WebServlet("/register")
 public class RegisterDispatcher extends HttpServlet {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor.
@@ -36,9 +34,12 @@ public class RegisterDispatcher extends HttpServlet {
     	boolean missingData = false;
 
     	String name = request.getParameter("registerName");
-    	String email = request.getParameter("registerEmail");
     	String password = request.getParameter("registerPassword");
     	String confirmPassword = request.getParameter("confirmPassword");
+    	System.out.println(name);
+    	System.out.println(password);
+    	System.out.println(confirmPassword);
+
     	if (!password.contentEquals(confirmPassword))
     	{
     		missingData = true;
@@ -52,23 +53,15 @@ public class RegisterDispatcher extends HttpServlet {
     		missingData = true;
     		
     	}
-    	if (email == null || email.contentEquals(""))
-    	{
-    		missingData = true;
-    	}
+
     	if (password == null || password.contentEquals(""))
     	{
     		missingData = true;
     		//emailError += "<p> email is missing </p>";
     	}
-    	if (Helper.emailAlreadyRegistered(email, request, response))
+    	if (Helper.nameAlreadyRegistered(name, request, response))
     	{
     		missingData = true;
-    	}
-    	if (!Helper.isValidEmail(email))
-    	{
-    		missingData = true;
-    		
     	}
 
 
@@ -80,10 +73,10 @@ public class RegisterDispatcher extends HttpServlet {
 
     	if (!missingData)
     	{
-    		String db = "jdbc:mysql://localhost:3306/SalEats";
+    		String db = "jdbc:mysql://localhost:3306/CollabArt";
     		String user = Utility.DBUserName;
     		String pwd = Utility.DBPassword;
-    		String sql = "INSERT INTO Users (email, username, password) VALUES (?, ?, ?)";
+    		String sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
     		// add the jar to tomcat lib if it is not working!
 
             try {
@@ -95,23 +88,11 @@ public class RegisterDispatcher extends HttpServlet {
 
         	try (Connection conn = DriverManager.getConnection(db, user, pwd);
         			PreparedStatement ps = conn.prepareStatement(sql);) {
-        			ps.setString(1, email);
-        			ps.setString(2, name);
-        			ps.setString(3, password);
+        			ps.setString(1, name);
+        			ps.setString(2, password);
         			int row = ps.executeUpdate(); //the number of rows affected
-        			String realName = "";
-        			for (int i = 0; i < name.length(); i++)
-        			{
-        				if (name.charAt(i) == ' ')
-        				{
-        					realName += '=';
-        				}
-        				else
-        				{
-        					realName += name.charAt(i);
-        				}
-        			}
-                	Cookie cookie = new Cookie("name", realName);
+
+                	Cookie cookie = new Cookie("loggedIn", "true");
                 	cookie.setMaxAge(60 * 60);
                 	response.addCookie(cookie);
         			System.out.println(String.format("Row affected %d", row));
@@ -121,17 +102,16 @@ public class RegisterDispatcher extends HttpServlet {
         		}
 
     		//request.getRequestDispatcher("index.jsp").forward(request, response);
-        	response.sendRedirect("index.jsp");
+        	response.sendRedirect("HomeGallery.jsp");
     		
     		
     	}
     	else
     	{
     		request.setAttribute("regUsername", name);
-    		request.setAttribute("regEmail", email);
     		request.setAttribute("regPassword", password);
     		request.setAttribute("error", "yes");
-    		request.getRequestDispatcher("auth.jsp").forward(request, response);
+    		request.getRequestDispatcher("register.jsp").forward(request, response);
 
     	}
     }

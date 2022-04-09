@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
 	<nav class = "navBar">
 		<div class = "navLeft">
 			<img src = "images/spongebob.jpg" id = navLogo>
@@ -31,7 +32,7 @@
 		</div>
 		<div class = "navRight">
 			<%
-			boolean logIn = true;
+			boolean logIn = false;
 				if (!logIn) {
 					out.println(
 							"<a href=\"login.jsp\" id = \"navText\">Log In</a>" +
