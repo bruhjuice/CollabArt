@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import java.io.*;
-
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.Base64;
@@ -53,6 +54,11 @@ public class FragmentDispatcher extends HttpServlet {
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
        
        BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageBytes));
+       
+       Graphics2D g2d = image.createGraphics();
+       g2d.setColor(new Color(85, 107, 47));
+       g2d.fillRect(10, 10, 100, 100);
+       g2d.dispose();
        
        request.setAttribute("image", image);
        
