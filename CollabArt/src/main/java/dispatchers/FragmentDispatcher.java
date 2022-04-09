@@ -51,12 +51,18 @@ public class FragmentDispatcher extends HttpServlet {
        
        String base64Image = dataURL.split(",")[1];
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-       
+       //Use bufferedImage to do image transformation: add drawings to background.
        BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageBytes));
        
-       request.setAttribute("image", image);
        
-       request.getRequestDispatcher("gameEnd.jsp").forward(request, response); 
+       
+       //Convert back to 64
+       ByteArrayOutputStream output = new ByteArrayOutputStream();
+       ImageIO.write(image, "png", output);
+       String completeString = Base64.getEncoder().encodeToString(output.toByteArray());
+       request.setAttribute("completedstring", completeString);
+       
+       request.getRequestDispatcher("test.jsp").forward(request, response); 
     }
 
     /**
