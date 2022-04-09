@@ -1,4 +1,7 @@
+package sockets;
 import java.io.IOException;
+
+import objects.Rooms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +16,12 @@ public class RoomEndpoint {
 	public void onOpen(Session session, EndpointConfig conf, @PathParam("roomCode") String roomCode) throws IOException {
 		JSONObject json = new JSONObject();
 		// Check if room code exists
-		if (false /* room code doesn't exist */) {
+		if (!Rooms.roomExists(roomCode)) {
+			// Display an error message that room doesn't exist
 			json.put("error", "room-not-found");	
 		} else {
+			// Room exists, send over all the data associated with the given room
+			
 			List<String> players = new ArrayList<String>();
 			players.add("max");
 			players.add("jony");
@@ -42,5 +48,6 @@ public class RoomEndpoint {
     @OnError
     public void onError(Session session, Throwable error) {
         // Do error handling here
+    	error.printStackTrace();
     }
 }
