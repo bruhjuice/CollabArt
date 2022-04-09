@@ -6,6 +6,9 @@
 	background-color: #ACEBFF;
 	width: 100%;
 	padding: 0px;
+	
+	position: fixed;
+	top: 0%;
 }
 
 .navBar a:link {

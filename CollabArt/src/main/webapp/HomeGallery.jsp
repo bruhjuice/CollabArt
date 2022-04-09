@@ -22,9 +22,6 @@
 </head>
 <body>
 	<script id="replace_with_navbar" src="js/nav.js"></script>
-	<!-- Navbar HERE 
-   NOTE: make it so it stays at top even when scrolling down the artworks
-   -->
 
 	<!-- Thoughts: doing likes/dislikes will be hard: whenever they click on it, need to send update to database
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 
