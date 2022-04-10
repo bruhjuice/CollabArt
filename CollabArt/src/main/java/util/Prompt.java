@@ -6,6 +6,20 @@ public class Prompt{
    
    Coordinate[] coordinates;
    String background_image_path;
+   
+   public String getStatement(){
+      return statement;
+   }
+   public String[] prompts(){
+      return prompts;
+   }
+   
+   public Coordinate[] getCoordinates() {
+      return coordinates;
+   }
+   public String getBackgroundImage(){
+      return background_image_path;
+   }
 }
 
 class Coordinate{
@@ -14,7 +28,6 @@ class Coordinate{
    private int bottom;
    private int right;
 
-   
    public Coordinate(int top, int left, int bottom, int right) {
       this.top = top;
       this.left = left;
@@ -22,16 +35,16 @@ class Coordinate{
       this.right = right;
    }
    
-   public int getX_start() {
+   public int getTop() {
       return top;
    }
-   public int getY_start() {
+   public int getLeft() {
       return left;
    }
-   public int getX_end() {
+   public int getBottom() {
       return bottom;
    }
-   public int getY_end() {
+   public int getRight() {
       return right;
    }
 }

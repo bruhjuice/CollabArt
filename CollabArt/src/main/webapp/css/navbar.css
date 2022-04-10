@@ -6,11 +6,13 @@
 	background-color: #ACEBFF;
 	width: 100%;
 	padding: 0px;
-	
-	position: sticky;
-	top: 0%;
 }
 
+.sticky{
+	position: sticky;
+   top: 0px;
+   z-index: 10;
+}
 .navBar a:link {
 	text-decoration: none;
 }

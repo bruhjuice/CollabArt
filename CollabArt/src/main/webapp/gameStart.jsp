@@ -22,7 +22,7 @@
 	
 	/** NOTE:
 	* The next 3 lines (related to flex) is ruining the navbar for some reason. 
-	* Best option is to create a div with this thing
+	* Best option is to create a div with this thing, put background into body
 	*/
 		display: flex;
 		flex-direction: column;
@@ -171,37 +171,6 @@
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 
 	<!-- vertical -->
-	
-	<!-- 
-	<nav class = "navBar">
-		<div class = "navLeft">
-			<img src = "images/spongebob.jpg" id = navLogo>
-			<a href = "gameStart.jsp" id = "navText">Create Room</a>
-			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
-				<a href="#" onclick="$(this).closest('form').submit()" id = "navText">Join Room</a>
-				<input type = "text" id = "roomCode" placeholder = "[type code]">
-			</form>
-		</div>
-		
-		<div class = "navRight">
-			<%
-				if (!logIn) {
-					out.println(
-							"<a href=\"login.jsp\" id = \"navText\">Log In</a>" +
-							"<a href=\"register.jsp\" id = \"navText\">Register</a>"
-							);
-				} else {
-					out.println(
-							"<a href=\"login.jsp\" id = \"navText\">Log Out</a>"
-							);
-				}
-			%>
-		</div>
-	</nav>
-	<div id = "navDivider"></div>
-	
-	<div>
-	 -->
 	 
 	 <div class="overall"> <!-- Overall div, after the navbar -->
 		<!-- Room code -->
