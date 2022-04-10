@@ -14,16 +14,26 @@
 	<style>
 	
 	/* Remove background-image to make background blue */
+	
+	body{
+	background-image: url("images/doodles2blueBlurred2.jpg");
+	}
 	.overall {
+	
+	/** NOTE:
+	* The next 3 lines (related to flex) is ruining the navbar for some reason. 
+	* Best option is to create a div with this thing
+	*/
 		display: flex;
 		flex-direction: column;
 		flex: 1;
+	
 		width: 100%;
 		align-items: center;
 		justify-content: flex-start;
 		margin-vertical: 100px;
 		
-		background-image: url("images/doodles2blueBlurred2.jpg");
+		
 	}
 	
 	.rowDiv {
@@ -156,11 +166,13 @@
 
 
 <!-- Remove overall background image to make light-blue show up -->
-<body class="light-blue overall">
+<body class="light-blue">
 
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 
 	<!-- vertical -->
+	
+	<!-- 
 	<nav class = "navBar">
 		<div class = "navLeft">
 			<img src = "images/spongebob.jpg" id = navLogo>
@@ -170,6 +182,7 @@
 				<input type = "text" id = "roomCode" placeholder = "[type code]">
 			</form>
 		</div>
+		
 		<div class = "navRight">
 			<%
 				if (!logIn) {
@@ -188,6 +201,9 @@
 	<div id = "navDivider"></div>
 	
 	<div>
+	 -->
+	 
+	 <div class="overall"> <!-- Overall div, after the navbar -->
 		<!-- Room code -->
 		<p class="roomCodeTitle">Room Code (share with friends):</p>
 		<p class="roomCode">QBEG</p>
@@ -233,6 +249,8 @@
 	
 	</div>
 	<!-- end of vertical div -->
+	
+	</div> <!-- end of overall div -->
 	
 </body>
 </html>
