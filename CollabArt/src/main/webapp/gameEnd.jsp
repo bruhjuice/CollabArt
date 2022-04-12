@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/navbar.css">
+
 <title>GameEnd</title>
 <style>
 	.outer-container {
@@ -87,6 +89,8 @@
 </style>
 </head>
 <body>
+	<script id="replace_with_navbar" src="js/nav.js"></script>
+
 	<div class="outer-container light-blue">
 		<div id="title">
 			Your Masterpiece...

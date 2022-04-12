@@ -34,5 +34,42 @@
             }
         ],
         "background_image_path": "images/cat_basketball" 
+    },
+    /* Template for second Prompt object, delete this later*/
+    {
+        "statement": "Draw a cat playing basketball",
+        "prompts": [
+            "Draw a cat head",
+            "Draw a cat body",
+            "Draw a basketball",
+            "Draw a basketball hoop"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
     }
 ]
