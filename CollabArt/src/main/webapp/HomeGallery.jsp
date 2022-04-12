@@ -60,28 +60,43 @@
    console.log(thumbsup);
    console.log(thumbsdown);
    
+   function handletup(event) {
+       console.log(event.target.parentElement.parentElement.id);
+       liketext=event.target.nextElementSibling.innerHTML;
+       console.log(liketext);
+       likes=parseInt(liketext);
+       likes++;
+       event.target.nextElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
+       //Update database based on parent div id.
+     
+       //Update 
+       event.target.style.color = "blue";
+       event.target.nextElementSibling.nextElementSibling.style.opacity = 0.5;
+       event.target.removeEventListener('click', handletup);
+       event.target.nextElementSibling.nextElementSibling.removeEventListener('click', handletdown);
+    };
+   
+   function handletdown(event) {
+       console.log(event.target.parentElement.parentElement.id);
+       liketext=event.target.previousElementSibling.innerHTML;
+       console.log(liketext);
+       likes=parseInt(liketext);
+       likes--;
+       event.target.previousElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
+       //Update database based on parent div id.
+       
+       event.target.style.color = "blue";
+       event.target.previousElementSibling.previousElementSibling.style.opacity = 0.5;
+       event.target.removeEventListener('click', handletdown);
+       event.target.previousElementSibling.previousElementSibling.removeEventListener();
+    };
+    
    thumbsup.map( tup => {
-	   tup.addEventListener('click', function handletup(event) {
-		   console.log(event.target.parentElement.parentElement.id);
-		   liketext=event.target.nextElementSibling.innerHTML;
-		   console.log(liketext);
-		   likes=parseInt(liketext);
-		   likes++;
-		   event.target.nextElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
-		 //Update database based on parent div id.
-		});
+	   tup.addEventListener('click', handletup);
    });
    
    thumbsdown.map( tdown => {
-	   tdown.addEventListener('click', function handletdown(event) {
-	      console.log(event.target.parentElement.parentElement.id);
-	      liketext=event.target.previousElementSibling.innerHTML;
-	      console.log(liketext);
-	      likes=parseInt(liketext);
-	      likes--;
-	      event.target.previousElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
-	      //Update database based on parent div id.
-	   });
+	   tdown.addEventListener('click', handletdown);
 	});
       
    </script>

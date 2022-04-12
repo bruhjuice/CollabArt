@@ -8,6 +8,6 @@
 <%String completedString=null; //grab the attribute %>
 </head>
 <body>
-<img src="data:image/png;base64,"+<%=completedString%> />
+<img src="data:image/png;base64,<%=completedString%>" />
 </body>
 </html>

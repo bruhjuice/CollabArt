@@ -44,7 +44,7 @@ public class FragmentDispatcher extends HttpServlet {
       //Thread?
        //needs dataurl, player_no, artowrk object
        //artworkobject.addFragment(dataurl, playerno)
-       //Afrer all has been inserted
+       //After all has been inserted
        //Class getCompleted()
        
        String dataURL=request.getParameter("image-string");
@@ -55,7 +55,7 @@ public class FragmentDispatcher extends HttpServlet {
        System.out.println(request.getPart("image-string"));
        System.out.println("done");*/
        
-       //800x600 fragment
+       //800x600 is the size of the entire thing
        
        String base64Image = dataURL.split(",")[1];
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
