@@ -149,9 +149,12 @@
 	<script src="js/gameProgress.js"></script>
 	<script>
 		document.getElementById('submit-data').addEventListener('click', () => {
-			const formData = new FormData()
-			formData.append('image-string', canvas.toDataURL())
-			fetch('/CollabArt/Fragment', { method: 'POST', body: formData })
+			const params = new URLSearchParams({
+				'image-string': canvas.toDataURL()
+			})
+			console.log(canvas.toDataURL())
+			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
+				.then(res => res.text()).then(console.log)
 		})
 	</script>
 </body>

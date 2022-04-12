@@ -6,8 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import javax.servlet.http.Part;
 
 import java.io.*;
 import java.awt.Color;
@@ -15,6 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.util.Base64;
+import java.util.Enumeration;
 
 
 /**
@@ -37,7 +37,7 @@ public class FragmentDispatcher extends HttpServlet {
      * response)
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //TODO
       
@@ -48,6 +48,13 @@ public class FragmentDispatcher extends HttpServlet {
        //Class getCompleted()
        
        String dataURL=request.getParameter("image-string");
+       System.out.println(dataURL);
+       /*for (Part part: request.getParts()) {
+    	   System.out.println(part);
+       }
+       System.out.println(request.getPart("image-string"));
+       System.out.println("done");*/
+       
        //800x600 fragment
        
        String base64Image = dataURL.split(",")[1];
@@ -76,11 +83,11 @@ public class FragmentDispatcher extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      * response)
      */
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // TODO Auto-generated method stub
         doGet(request, response);
-    }
+    }*/
 
 }
