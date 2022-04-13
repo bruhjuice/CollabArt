@@ -35,14 +35,230 @@
         ],
         "background_image_path": "images/cat_basketball" 
     },
-    /* Template for second Prompt object, delete this later*/
     {
-        "statement": "Draw a cat playing basketball",
+        "statement": "Breakfast in the Air",
         "prompts": [
-            "Draw a cat head",
-            "Draw a cat body",
-            "Draw a basketball",
-            "Draw a basketball hoop"
+            "Draw a chef holding a pan",
+            "Draw a messy stove",
+            "Draw some pancakes, eggs and LOTS of bacon",
+            "Draw a petrified flying pig"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+        {
+        "statement": "A mouse’s CATastrophic birthday party",
+        "prompts": [
+            "Draw a mouse with a birthday hat",
+            "Draw a deliciously oozing chocolate cake",
+            "Draw a scary cat ready to pounce",
+            "Draw a friendly mouse holding a balloon"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+    
+            {
+        "statement": "To melt or not to melt, that is the question",
+        "prompts": [
+            "Draw Frosty the snowman holding a sunscreen bottle",
+            "Draw a sad, half-melted snowman",
+            "Draw a cute family of coconuts sitting on a towel",
+            "Draw a colorful beach umbrella"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+            {
+        "statement": "Lost in Egypt",
+        "prompts": [
+            "Draw a confused penguin",
+            "Draw a camel",
+            "Draw an angry sun looking downwards",
+            "Draw people building pyramids"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+            {
+        "statement": "Vincent Van Goat",
+        "prompts": [
+            "Draw a goat holding a paintbrush",
+            "Draw Starry Night (to the best of your ability)",
+            "Draw a flabbergasted farmer looking left",
+            "Draw a flying pig"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+            {
+        "statement": "A mouse’s CATastrophic birthday party",
+        "prompts": [
+            "Draw a mouse with a birthday hat",
+            "Draw a deliciously oozing chocolate cake",
+            "Draw a scary cat ready to pounce",
+            "Draw a friendly mouse holding a balloon"
+        ],
+        "coordinates": [
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            },
+            {
+                "top": 100,
+                "left": 100,
+                "bottom": 200,
+                "right": 200
+            }
+        ],
+        "background_image_path": "images/cat_basketball" 
+    },
+            {
+        "statement": "A mouse’s CATastrophic birthday party",
+        "prompts": [
+            "Draw a mouse with a birthday hat",
+            "Draw a deliciously oozing chocolate cake",
+            "Draw a scary cat ready to pounce",
+            "Draw a friendly mouse holding a balloon"
         ],
         "coordinates": [
             {
@@ -72,4 +288,5 @@
         ],
         "background_image_path": "images/cat_basketball" 
     }
+    
 ]
