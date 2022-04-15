@@ -154,31 +154,31 @@
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 400,
+                "left": 340,
+                "bottom": 150,
+                "right": 230
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 40,
+                "left": 315,
+                "bottom": 325,
+                "right": 225
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 340,
+                "left": 25,
+                "bottom": 125,
+                "right": 105
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 505,
+                "left": 60,
+                "bottom": 280,
+                "right": 170
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/desert.jpg" 
     },
             {
         "statement": "A mouse’s CATastrophic birthday party",
@@ -219,38 +219,38 @@
             {
         "statement": "Vincent Van Goat",
         "prompts": [
-            "Draw a goat holding a paintbrush",
+            "Draw a goat holding a paintbrush, facing left",
             "Draw Starry Night (to the best of your ability)",
-            "Draw a flabbergasted farmer looking left",
+            "Draw a flabbergasted farmer looking right",
             "Draw a flying pig"
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 250,
+                "left": 155,
+                "bottom": 445,
+                "right": 545
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 470,
+                "left": 205,
+                "bottom": 310,
+                "right": 215
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 55,
+                "left": 110,
+                "bottom": 235,
+                "right": 570
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 500,
+                "left": 30,
+                "bottom": 745,
+                "right": 170
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/farm.jpg" 
     },
             {
         "statement": "Crazy Coco Rockin’ the Look!",
@@ -289,40 +289,148 @@
         "background_image_path": "images/beach_concert.jpg" 
     },
             {
-        "statement": "A Not-So-Normal Pet Shop",
+        "statement": "Once Upon a Time",
         "prompts": [
-            "Draw a terrified shopper with Pikachu on their shoulder",
-            "Draw a drooling carnivorous plant in a tiny pot",
-            "Draw a rabid hamster-snake in a cage",
-            "Draw a snoring lizard-dog with a party hat"
+            "Draw a noble knight in shining armor",
+            "Draw the Dragon on top of a mountain of gold",
+            "Draw the Princess, the damsel in distress",
+            "Draw an obedient horse"
+        ],
+        "coordinates": [    
+            {
+                "top": 145,
+                "left": 150,
+                "bottom": 290,
+                "right": 365
+            },
+            {
+                "top": 385,
+                "left": 165,
+                "bottom": 600,
+                "right": 495
+            },
+            {
+                "top": 645,
+                "left": 175,
+                "bottom": 750,
+                "right": 475
+            },
+            {
+                "top": 50,
+                "left": 395,
+                "bottom": 320,
+                "right": 530
+            }
+        ],
+        "background_image_path": "images/fantasy.png" 
+    },
+            {
+        "statement": "Lucky Charms",
+        "prompts": [
+            "Draw a pot of gold at the end of a rainbow",
+            "Draw a wide-eyed unicorn",
+            "Draw a leprechaun waving a pitchfork",
+            "Draw a dragon breathing fire"
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 20,
+                "left": 350,
+                "bottom": 240,
+                "right": 570
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 365,
+                "left": 410,
+                "bottom": 585,
+                "right": 570
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 260,
+                "left": 500,
+                "bottom": 335,
+                "right": 575
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 450,
+                "left": 50,
+                "bottom": 620,
+                "right": 240
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/farm.jpg" 
+    },
+                {
+        "statement": "Carnival Kerfuffle",
+        "prompts": [
+            "Draw an elephant escaping from a cage",
+            "Draw a performer juggling on a unicycle",
+            "Draw Pennywise with his mouth wide open",
+            "Draw a monkey stealing a balloon from a bystander"
+        ],
+        "coordinates": [
+            {
+                "top": 475,
+                "left": 300,
+                "bottom": 495,
+                "right": 600
+            },
+            {
+                "top": 0,
+                "left": 240,
+                "bottom": 120,
+                "right": 465
+            },
+            {
+                "top": 135,
+                "left": 260,
+                "bottom": 260,
+                "right": 470
+            },
+            {
+                "top": 260,
+                "left": 400,
+                "bottom": 460,
+                "right": 600
+            }
+        ],
+        "background_image_path": "images/carnival.png" 
+    },
+            {
+        "statement": "Just a Normal Dinner",
+        "prompts": [
+            "Draw a scrumptious plate of roast beef",
+            "Draw a fancy bottle of champagne",
+            "Draw a terrified person running",
+            "Draw a pig on a chair holding a fork"
+        ],
+        "coordinates": [
+            {
+                "top": 190,
+                "left": 350,
+                "bottom": 310,
+                "right": 460
+            },
+            {
+                "top": 520,
+                "left": 350,
+                "bottom": 595,
+                "right": 470
+            },
+            {
+                "top": 340,
+                "left": 435,
+                "bottom": 450,
+                "right": 495
+            },
+            {
+                "top": 325,
+                "left": 220,
+                "bottom": 475,
+                "right": 430
+            }
+        ],
+        "background_image_path": "images/dining_table.png" 
     }
     
 ]
