@@ -9,7 +9,7 @@
 
 	<nav class = "navBar">
 		<div class = "navLeft">
-			<img src = "images/spongebob.jpg" id = navLogo>
+			<img src = "images/CollabArtLogo_Ver1.png" id = navLogo>
 			<a href="#" class="navText" id="create-room">Create Room</a>
 			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
 				<a href="#" onclick="$(this).closest('form').submit()" class="navText">Join Room</a>
