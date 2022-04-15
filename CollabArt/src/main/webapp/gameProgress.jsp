@@ -136,7 +136,7 @@
 		</div>
 		<div id="right-container">
 			<div id="timer">
-				0:53
+				60
 			</div>
 		</div>
 	</div>
@@ -170,6 +170,45 @@
 				//Option b: Add attribute then send window to new page
 				//.then(window.location.href="test.jsp");
 		})
+	</script>
+	<script>
+		function startTimer(seconds, timeRemaining) {
+		    var timer = seconds;
+		    
+		    // every 1 second = 1000 milliseconds
+		    setInterval(function () {
+		    	// change text
+		        timeRemaining.textContent = timer;
+		        timer--;
+			    // when timer reaches end, redirect
+			    if (timer == 0) {
+			    	// "click" to submit image data
+			    	document.getElementById('submit-data').click();
+			    	
+			    	// TODO:
+			    		// add things to check that all players have submitted the data before redirecting
+			    		// otherwise, freeze image here
+			    		// and let other players know through minimap?
+			    				// or are we scrapping minimap?
+			    	
+			    	
+					// then redirect
+			    	window.location.replace('gameEnd.jsp');
+			    }
+		    }, 1000);
+		    
+		}
+		
+		// start timer when page loads
+		window.onload = function () {
+			// 1 min to draw
+		    var seconds = 60;
+			
+			// change display of "timer" tag
+		    var timeRemaining = document.querySelector('#timer');
+			
+		    startTimer(seconds, timeRemaining);
+		};
 	</script>
 </body>
 </html>
