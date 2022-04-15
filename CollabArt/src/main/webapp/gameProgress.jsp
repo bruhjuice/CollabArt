@@ -110,7 +110,7 @@
 			</div>
 			<div style="margin-top: 36px;">
 				Brush Size:<br/>
-				<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
+				<input id="brush-size-slider" type="range" min="5" max="50" value="5" step="5">
 			</div>
 		</div>
 		<div id="drawing-container">
@@ -140,6 +140,7 @@
 			</div>
 		</div>
 	</div>
+	<img id="completedImage"/>
 
 	<script src="js/gameProgress.js"></script>
 	<script>
@@ -149,7 +150,25 @@
 			})
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
-				.then(res => res.text()).then(console.log)
+				.then(res => res.text())//.then(data => console.log(data))
+				//Show image below
+				.then(data => document.querySelector("#completedImage").src="data:image/png;base64,"+data)
+				//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
+				
+				//Later on, need to send do stuff to get to test.jsp.
+				//Option a:
+				//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
+				/*
+				.then(var xhr = new XMLHttpRequest();
+					xhr.open("POST", "test.jsp", true);
+					xhr.setRequestHeader('Content-Type', 'application/json');
+					xhr.send(JSON.stringify({
+						  completedString: res.text()
+					}));)
+			   */
+					
+				//Option b: Add attribute then send window to new page
+				//.then(window.location.href="test.jsp");
 		})
 	</script>
 </body>

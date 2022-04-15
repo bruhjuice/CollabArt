@@ -48,6 +48,7 @@
 		</div>
 		<div class="galart-bottom pink bottom-rounded">
 			<!-- Also put id on each art's thumbs up and thumbs down? -->
+			<!-- If logged in, show like and dislike button. If not, don't add. -->
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;413 Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
 	</div>
