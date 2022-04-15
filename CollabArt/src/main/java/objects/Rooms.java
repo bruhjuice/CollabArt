@@ -6,12 +6,12 @@ public class Rooms {
 	private static Map<String, Room> rooms = new HashMap<String, Room>();
 	
 	public static void createRoom(String roomCode) {
-		System.out.println("Creating room " + roomCode);
+		//System.out.println("Creating room " + roomCode);
 		rooms.put(roomCode, new Room());
 	}
 	
 	public static boolean roomExists(String roomCode) {
-		System.out.println("ROOMS: " + rooms.keySet() + ", roomCode: " + roomCode);
+		//System.out.println("ROOMS: " + rooms.keySet() + ", roomCode: " + roomCode);
 		return rooms.containsKey(roomCode);
 	}
 	

@@ -45,7 +45,7 @@ public class RoomEndpoint {
 	@OnMessage
     public void onMessage(Session session, String message, @PathParam("room-code") String roomCode) throws IOException {
         // Handle new messages
-		System.out.println(message);
+		//System.out.println(message);
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonResult = new JSONObject();
@@ -64,9 +64,21 @@ public class RoomEndpoint {
 				
 				switch ((String)jsonObject.get("type")) {
 				case "player-join":
-					// Add new player
-					String id = (String)jsonObject.get("id");
-					if (!room.addUser(new User(id, id))) return;
+					/* Current player joins the room */
+					
+					// Get username
+					String username = (String)jsonObject.get("username");
+					
+					// Add new user, if already in rooms array, return error
+					if (!room.addUser(new User(username))) {
+						jsonResult.put("error", "username-taken");
+						session.getBasicRemote().sendText(jsonResult.toString());
+						return;
+					};
+					
+					// Set username prop
+					Map<String, Object> properties = session.getUserProperties();
+					properties.put("username", username);
 					
 					// Send updated players array
 					jsonResult.put("type", "update-players");
@@ -85,8 +97,22 @@ public class RoomEndpoint {
     }
 
     @OnClose
-    public void onClose(Session session, CloseReason reason) throws IOException {
+    public void onClose(Session session, CloseReason reason, @PathParam("room-code") String roomCode) throws IOException {
         // WebSocket connection closes
+    	
+    	// Remove user from room
+    	String username = (String)session.getUserProperties().get("username");
+    	if (username != null && Rooms.roomExists(roomCode)) {
+    		Room room = Rooms.getRoom(roomCode);
+    		room.removeUser(username);
+    		System.out.println(username + " left!");
+    		
+    		// Send updated players array
+    		JSONObject jsonResult = new JSONObject();
+    		jsonResult.put("type", "update-players");
+    		jsonResult.put("players", room.getPlayers());
+    		sendToRoom(session, roomCode, jsonResult.toString());
+    	}
     }
 
     @OnError

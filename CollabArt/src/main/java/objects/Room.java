@@ -31,13 +31,13 @@ public class Room {
 	
 	public void removeUser(User user) {
 		// Removes the given user from the players list
-		removeUser(user.getId());
+		removeUser(user.getUsername());
 	}
 	
-	public void removeUser(String userId) {
+	public void removeUser(String username) {
 		// Removes the given user based on their userId
 		for (int i = 0; i < players.size(); ++i) {
-			if (players.get(i).getId() == userId) {
+			if (players.get(i).getUsername().equals(username)) {
 				players.remove(i);
 				return;
 			}
@@ -51,13 +51,13 @@ public class Room {
 	
 	public int getPlayerNumber(User user) {
 		// Gets the player number of the given user
-		return getPlayerNumber(user.getId());
+		return getPlayerNumber(user.getUsername());
 	}
 	
-	public int getPlayerNumber(String userId) {
+	public int getPlayerNumber(String username) {
 		// Gets the player number of the given user based on their userId
 		for (int i = 0; i < players.size(); ++i) {
-			if (players.get(i).getId() == userId) {
+			if (players.get(i).getUsername().equals(username)) {
 				return i+1;
 			}
 		}
