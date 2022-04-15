@@ -33,7 +33,7 @@
 
 	<nav class = "navBar">
 		<div class = "navLeft">
-			<img src = "images/CollabArtLogo_Ver1.png" id = "navLogo">
+			<img src = "images/CollabArtLogo_Ver2.png" id = "navLogo">
 			<a href = "HomeGallery.jsp" id = "galleryNav" > Gallery </a>
 			<a href="#" class="navText" id="create-room">Create Room</a>
 			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
