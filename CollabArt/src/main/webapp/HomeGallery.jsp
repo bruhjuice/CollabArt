@@ -27,7 +27,45 @@
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 
    Have to do AJAX to see likes go up/down? increment/display locally then update to true value on reload? Or get update when like?-->
       
+   
+   		 <%
+         Cookie cookie = null;
+         Cookie[] cookies = null;
+         boolean logIn = false;
+         // Get an array of Cookies associated with the this domain
+         cookies = request.getCookies();
       
+  			 if (cookies != null){
+  				for (int i = 0; i < cookies.length; i++){
+  					cookie = cookies[i];
+  					if((cookie.getName( )).equals("loggedIn")  )
+  						
+  					{
+  						
+ 						String cookieName = cookie.getValue();
+						if (cookieName.contentEquals("true"))
+						{
+	  						logIn = true;
+						}
+  					}
+  					
+  				}
+  				
+  			}%>
+  	<%if (!logIn)
+  	{
+
+  		out.println("<br> <br> <h1> Please login or create an account to view the gallery</h1> <div id = 'blur'> ");
+  	}
+  	else
+  	{
+  		out.println("<h1> you are  logged in </h1>");
+  	}
+  	
+  	%>
+   
+   
+   
    <br>
    <h1>Collabart Gallery</h1>
 
@@ -52,6 +90,14 @@
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;413 Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
 	</div>
+	<%if (!logIn)
+  	{
+  		out.println("</div");
+  	}
+
+  	
+  	%>
+	
 
 	<!-- Script to read thumbs up and thumbs down: -->
 	<script>
