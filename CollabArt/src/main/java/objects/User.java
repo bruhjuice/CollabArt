@@ -11,4 +11,15 @@ public class User {
 	
 	public String getId() { return id; }
 	public String getUsername() { return username; }
+	
+	@Override
+	public boolean equals(Object o) {
+		User u = (User)o;
+		return u.getId().equals(id);
+	}
+	
+	@Override
+	public String toString() {
+		return "\"" + username + "\"";
+	}
 }

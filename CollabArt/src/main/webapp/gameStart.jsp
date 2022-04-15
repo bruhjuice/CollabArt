@@ -16,7 +16,7 @@
 	/* Remove background-image to make background blue */
 	
 	body{
-	background-image: url("images/doodles2blueBlurred2.jpg");
+		background-image: url("images/doodles2blueBlurred2.jpg");
 	}
 	.overall {
 	
@@ -220,6 +220,8 @@
 	<!-- end of vertical div -->
 	
 	</div> <!-- end of overall div -->
+	
+	<script type="module" src="js/gameStart.js"></script>
 	
 </body>
 </html>

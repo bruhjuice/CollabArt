@@ -3,7 +3,7 @@ package objects;
 import java.util.ArrayList;
 import java.util.List;
 
-class Room {
+public class Room {
 	/* The Room class contains all the data associated with a given room */
 	
 	// Contains a list of all the players, inserted in the order they joined the game
@@ -19,9 +19,14 @@ class Room {
 	public List<User> getPlayers() { return players; }
 	public Artwork getArtwork() { return artwork; }
 	
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		// Adds the given user to the players list
+		// Returns true if added, returns false if already existed
+		if (players.contains(user)) return false;
+		
 		players.add(user);
+		return true;
+		
 	}
 	
 	public void removeUser(User user) {
