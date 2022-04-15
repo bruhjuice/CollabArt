@@ -156,8 +156,12 @@
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
 				.then(res => res.text())//.then(data => console.log(data))
+				//Show image below
 				.then(data => document.querySelector("#completedImage").src="data:image/png;base64,"+data)
+				//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
 				
+				//Later on, need to send do stuff to get to test.jsp.
+				//Option a:
 				//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
 				/*
 				.then(var xhr = new XMLHttpRequest();
@@ -166,10 +170,9 @@
 					xhr.send(JSON.stringify({
 						  completedString: res.text()
 					}));)
-					*/
+			   */
 					
-					
-					//Add attribute then send window to new page
+				//Option b: Add attribute then send window to new page
 				//.then(window.location.href="test.jsp");
 		})
 	</script>

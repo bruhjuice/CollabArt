@@ -56,33 +56,48 @@ public class FragmentDispatcher extends HttpServlet {
        System.out.println(request.getPart("image-string"));
        System.out.println("done");*/
        
-       //800x600 is the size of the entire thing
-       //NOTE: Consider changing it to 1000x750?
-       //Also: note that the fragment size each user gets is different. Are we goin 
        
        String base64Image = dataURL.split(",")[1];
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
        //Use bufferedImage to do image transformation: add drawings to background.
        BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageBytes));
-
-       Graphics2D g2d = image.createGraphics();
+       
+       String usingSystemProperty = System.getProperty("user.dir");
+       System.out.println("Current directory path using system property:- " + usingSystemProperty);
+       
+       //InputStream inputStream = FragmentDispatcher.class.getResourceAsStream("src/main/webapp/images/farm.jpg");
+       
+       BufferedImage bgImage = null;
+       try {
+          //Unable to read input file from images folder for some reason, unless I use absolute path: won't work on other computers
+          //In your run configurations => arguments, check your working directory.
+           bgImage = ImageIO.read(new File("/Users/Elliott/Desktop/USC/usc_spring_2022/cs201/CollabArt/CollabArt/src/main/webapp/images/farm.jpg"));
+          //bgImage = ImageIO.read(inputStream);
+       } catch (IOException e) {
+          e.printStackTrace();
+       }
+       
+       Graphics2D g2d = bgImage.createGraphics();
+       /*
        g2d.setColor(new Color(85, 107, 47));
        g2d.fillRect(10, 10, 100, 100);
        g2d.dispose();
+       */
        
+       //Parameters: image, xstart, ystart, width, height
+       g2d.drawImage(image, 30, 30, 320, 240, null);
+       g2d.dispose();
        
-       //Convert back to 64
+       //Convert back to base64
        ByteArrayOutputStream output = new ByteArrayOutputStream();
-       ImageIO.write(image, "png", output);
+       ImageIO.write(bgImage, "png", output);
        String completeString = Base64.getEncoder().encodeToString(output.toByteArray());
-       
        
        response.setContentType("text/plain");
        PrintWriter writer = response.getWriter();
        writer.append(completeString);
-       
     }
-
+    
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      * response)
