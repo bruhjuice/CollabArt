@@ -6,21 +6,24 @@ var players = []
 var roomCode
 var username
 
+/* HTML references */
+const startBtn = document.getElementById('start-btn')
+const waitPlayers = document.getElementById('wait-players')
+const waitOwner = document.getElementById('wait-owner')
+
 /* Get URL search params */
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-(function() {
-	/* Check if parameters are valid and init socket */
-	if (!params['room-code']) {
-		invalidRoomCode()
-	} else if (!params['username']) {
-		noUsername()
-	} else {
-		init()
-	}
-})()
+/* Check if parameters are valid and init socket */
+if (!params['room-code']) {
+	invalidRoomCode()
+} else if (!params['username']) {
+	noUsername()
+} else {
+	init()
+}
 
 /* Error functions */
 function invalidRoomCode() {
@@ -108,6 +111,24 @@ function updatePlayers(p) {
 			col.innerHTML += noPlayerHTML
 		}
 		playersDiv.appendChild(col)
+	}
+	
+	//Change start button
+	if (players.length < 4) {
+		startBtn.style.display = 'none'
+		waitPlayers.style.display = 'block'
+		waitOwner.style.display = 'none'
+	} else {
+		if (players[0].username === username) {
+			// is owner
+			startBtn.style.display = 'block'
+			waitPlayers.style.display = 'none'
+			waitOwner.style.display = 'none'
+		} else {
+			startBtn.style.display = 'none'
+			waitPlayers.style.display = 'none'
+			waitOwner.style.display = 'block'
+		}
 	}
 }
 

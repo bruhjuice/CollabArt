@@ -8,7 +8,6 @@ public class PromptPool
 	// how is this gonna work? Will need to correspond with Elliot / where we will init json data
    public static ArrayList<Prompt> prompts = new ArrayList<Prompt>(){
          //use json parser
-		   new Prompt()
    };
    
    
