@@ -14,26 +14,6 @@ const colorsContainer = document.getElementById('colors-container')
 const brushSizeSlider = document.getElementById('brush-size-slider')
 const colors = [
 	{
-		// yellow
-		hex: '#F2CD4A',
-		dark: false,
-	},
-	{
-		// light blue
-		hex: '#61C0DE',
-		dark: false,
-	},
-	{
-		// green
-		hex: '#57CB44',
-		dark: false,
-	},
-	{
-		// red
-		hex: '#C74646',
-		dark: false,
-	},
-	{
 		// black
 		hex: '#000',
 		dark: true,
@@ -43,11 +23,39 @@ const colors = [
 		hex: '#fff',
 		dark: false,
 	},
-		{
-			// orange
+	{
+		// red
+		hex: '#C74646',
+		dark: false,
+	},
+	{
+		// orange
 		hex: '#FFA500',
 		dark: false,
 	},
+	{
+		// yellow
+		hex: '#F2CD4A',
+		dark: false,
+	},
+	{
+		// green
+		hex: '#57CB44',
+		dark: false,
+	},
+	
+	{
+		// light blue
+		hex: '#61C0DE',
+		dark: false,
+	},
+	{
+		// purple 
+		hex: '#8a2be2',
+		dark: false,
+	},
+
+
 	{
 			// brown
 		hex: '#964B00',
