@@ -12,7 +12,7 @@ public class Artwork
    
    
    public Artwork() {
-      prompt = PromptPool.prompts[(int)(Math.random()*PromptPool.prompts.length)];
+	  prompt = PromptPool.prompts.get((int)(Math.random()*PromptPool.prompts.size()));
       fragment_urls = new String[4];
    }
    public Artwork(Prompt prompt, String background_image_url) {
