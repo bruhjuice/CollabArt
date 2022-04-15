@@ -38,74 +38,74 @@
     {
         "statement": "Breakfast in the Air",
         "prompts": [
-            "Draw a chef holding a pan",
-            "Draw a messy stove",
+            "Draw Gordon Ramsay holding a pan",
+            "Draw a table with lots of bacon on it",
             "Draw some pancakes, eggs and LOTS of bacon",
             "Draw a petrified flying pig"
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 30,
+                "left": 205,
+                "bottom": 250,
+                "right": 585
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 310,
+                "left": 270,
+                "bottom": 755,
+                "right": 545
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 280,
+                "left": 30,
+                "bottom": 785,
+                "right": 170
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 20,
+                "left": 25,
+                "bottom": 260,
+                "right": 180
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/kitchen.jpg" 
     },
         {
-        "statement": "A mouseâ€™s CATastrophic birthday party",
+        "statement": "LeONarDo dA ViNKi",
         "prompts": [
-            "Draw a mouse with a birthday hat",
-            "Draw a deliciously oozing chocolate cake",
-            "Draw a scary cat ready to pounce",
-            "Draw a friendly mouse holding a balloon"
+            "Draw the Mona Lisa...Or at least try",
+            "Draw Shrek holding a paintbrush intently",
+            "Draw a confused Renaissance man looking to his left",
+            "Draw your confused self looking to the right"
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 190,
+                "left": 130,
+                "bottom": 310,
+                "right": 275
             },
             {
-                "top": 100,
+                "top": 350,
                 "left": 100,
-                "bottom": 200,
-                "right": 200
+                "bottom": 220,
+                "right": 385
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 20,
+                "left": 80,
+                "bottom": 145,
+                "right": 425
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 590,
+                "left": 60,
+                "bottom": 785,
+                "right": 560
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/art_studio.jpg" 
     },
     
             {
@@ -118,31 +118,31 @@
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 230,
+                "left": 90,
+                "bottom": 475,
+                "right": 480
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 5,
+                "left": 340,
+                "bottom": 225,
+                "right": 575
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 500,
+                "left": 385,
+                "bottom": 760,
+                "right": 575
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 490,
+                "left": 30,
+                "bottom": 790,
+                "right": 370
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/beach.jpg" 
     },
             {
         "statement": "Lost in Egypt",
@@ -181,6 +181,42 @@
         "background_image_path": "images/cat_basketball" 
     },
             {
+        "statement": "A mouse’s CATastrophic birthday party",
+        "prompts": [
+            "Draw a mouse with a birthday hat",
+            "Draw a deliciously oozing chocolate cake",
+            "Draw a scary cat ready to pounce",
+            "Draw a friendly mouse holding a balloon"
+        ],
+        "coordinates": [
+            {
+                "top": 285,
+                "left": 335,
+                "bottom": 425,
+                "right": 535
+            },
+            {
+                "top": 155,
+                "left": 260,
+                "bottom": 285,
+                "right": 395
+            },
+            {
+                "top": 285,
+                "left": 85,
+                "bottom": 630,
+                "right": 615
+            },
+            {
+                "top": 425,
+                "left": 305,
+                "bottom": 572,
+                "right": 587
+            }
+        ],
+        "background_image_path": "images/birthday.png" 
+    },
+            {
         "statement": "Vincent Van Goat",
         "prompts": [
             "Draw a goat holding a paintbrush",
@@ -217,48 +253,48 @@
         "background_image_path": "images/cat_basketball" 
     },
             {
-        "statement": "A mouseâ€™s CATastrophic birthday party",
+        "statement": "Crazy Coco Rockin’ the Look!",
         "prompts": [
-            "Draw a mouse with a birthday hat",
-            "Draw a deliciously oozing chocolate cake",
-            "Draw a scary cat ready to pounce",
-            "Draw a friendly mouse holding a balloon"
+            "Draw a coconut with a poppin’ swagger fit",
+            "Draw a rockstar playing a guitar",
+            "Draw a group of grooving palm trees",
+            "Draw a brawl between a peanut and a cashew"
         ],
         "coordinates": [
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 300,
+                "left": 200,
+                "bottom": 410,
+                "right": 300
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 60,
+                "left": 120,
+                "bottom": 240,
+                "right": 370
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 540,
+                "left": 105,
+                "bottom": 775,
+                "right": 570
             },
             {
-                "top": 100,
-                "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 60,
+                "left": 420,
+                "bottom": 480,
+                "right": 570
             }
         ],
-        "background_image_path": "images/cat_basketball" 
+        "background_image_path": "images/beach_concert.jpg" 
     },
             {
-        "statement": "A mouseâ€™s CATastrophic birthday party",
+        "statement": "A Not-So-Normal Pet Shop",
         "prompts": [
-            "Draw a mouse with a birthday hat",
-            "Draw a deliciously oozing chocolate cake",
-            "Draw a scary cat ready to pounce",
-            "Draw a friendly mouse holding a balloon"
+            "Draw a terrified shopper with Pikachu on their shoulder",
+            "Draw a drooling carnivorous plant in a tiny pot",
+            "Draw a rabid hamster-snake in a cage",
+            "Draw a snoring lizard-dog with a party hat"
         ],
         "coordinates": [
             {
