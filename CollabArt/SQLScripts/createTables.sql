@@ -46,12 +46,15 @@ CREATE TABLE drawing (
   FOREIGN KEY (createdUser) REFERENCES users(username)
 );
 
+
 CREATE TABLE likes (
 	picId int NOT NULL,
     username varchar(150),
-    likeType Boolean
+    likeType Boolean,
+	PRIMARY KEY (`picId`),
+    FOREIGN KEY (picId) REFERENCES drawing(id),
+    FOREIGN KEY (username) REFERENCES users(username)
 );
-
 -- FOR EASY TESTING PURPOSES (GALLERY FRONTEND)
 
 INSERT into Users (username, password) VALUES ("testUser", "testPassword");
