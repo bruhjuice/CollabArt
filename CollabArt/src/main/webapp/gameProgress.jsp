@@ -145,6 +145,7 @@
 			</div>
 		</div>
 	</div>
+	<img id="completedImage"/>
 
 	<script src="js/gameProgress.js"></script>
 	<script>
@@ -154,7 +155,22 @@
 			})
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
-				.then(res => res.text()).then(console.log)
+				.then(res => res.text())//.then(data => console.log(data))
+				.then(data => document.querySelector("#completedImage").src="data:image/png;base64,"+data)
+				
+				//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
+				/*
+				.then(var xhr = new XMLHttpRequest();
+					xhr.open("POST", "test.jsp", true);
+					xhr.setRequestHeader('Content-Type', 'application/json');
+					xhr.send(JSON.stringify({
+						  completedString: res.text()
+					}));)
+					*/
+					
+					
+					//Add attribute then send window to new page
+				//.then(window.location.href="test.jsp");
 		})
 	</script>
 </body>

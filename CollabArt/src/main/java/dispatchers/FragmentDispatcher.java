@@ -41,11 +41,12 @@ public class FragmentDispatcher extends HttpServlet {
             throws ServletException, IOException {
         //TODO
       
-      //Thread?
-       //needs dataurl, player_no, artowrk object
+       //Will we need Threads?
+       //needs dataurl, player_no, artwork object
        //artworkobject.addFragment(dataurl, playerno)
-       //After all has been inserted
-       //Class getCompleted()
+       //After all has been inserted (need to wait for that)
+       //Call getCompleted() (only the first call needs to do the work of assembling the image together & adding to database)
+       // Rest just get the returned dataString.
        
        String dataURL=request.getParameter("image-string");
        System.out.println(dataURL);
@@ -56,6 +57,8 @@ public class FragmentDispatcher extends HttpServlet {
        System.out.println("done");*/
        
        //800x600 is the size of the entire thing
+       //NOTE: Consider changing it to 1000x750?
+       //Also: note that the fragment size each user gets is different. Are we goin 
        
        String base64Image = dataURL.split(",")[1];
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
@@ -77,6 +80,7 @@ public class FragmentDispatcher extends HttpServlet {
        response.setContentType("text/plain");
        PrintWriter writer = response.getWriter();
        writer.append(completeString);
+       
     }
 
     /**
