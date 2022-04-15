@@ -2,24 +2,7 @@
          pageEncoding="ISO-8859-1" %>
 
     
-    
-    
 
-
-
-	<nav class = "navBar">
-		<div class = "navLeft">
-			<img src = "images/CollabArtLogo_Ver1.png" id = navLogo>
-			<a href="#" class="navText" id="create-room">Create Room</a>
-			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
-				<a href="#" onclick="$(this).closest('form').submit()" class="navText">Join Room</a>
-				<input type = "text" id = "roomCode" placeholder = "[type code]">
-			</form>
-		</div>
-		<div class = "navRight">
-		
-		
-		
 		 <%
          Cookie cookie = null;
          Cookie[] cookies = null;
@@ -43,7 +26,24 @@
   					
   				}
   				
-  			}%>
+  			}%>    
+    
+
+
+
+	<nav class = "navBar">
+		<div class = "navLeft">
+			<img src = "images/CollabArtLogo_Ver1.png" id = "navLogo">
+			<a href = "HomeGallery.jsp" id = "galleryNav" > Gallery </a>
+			<a href="#" class="navText" id="create-room">Create Room</a>
+			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
+				<a href="#" onclick="$(this).closest('form').submit()" class="navText">Join Room</a>
+				<input type = "text" id = "roomCode" placeholder = "[type code]">
+			</form>
+		</div>
+		<div class = "navRight">
+		
+
 		
 		
 			<%
