@@ -3,7 +3,7 @@ package objects;
 import java.util.ArrayList;
 import java.util.List;
 
-class Room {
+public class Room {
 	/* The Room class contains all the data associated with a given room */
 	
 	// Contains a list of all the players, inserted in the order they joined the game
@@ -19,20 +19,25 @@ class Room {
 	public List<User> getPlayers() { return players; }
 	public Artwork getArtwork() { return artwork; }
 	
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		// Adds the given user to the players list
+		// Returns true if added, returns false if already existed
+		if (players.contains(user)) return false;
+		
 		players.add(user);
+		return true;
+		
 	}
 	
 	public void removeUser(User user) {
 		// Removes the given user from the players list
-		removeUser(user.getId());
+		removeUser(user.getUsername());
 	}
 	
-	public void removeUser(String userId) {
+	public void removeUser(String username) {
 		// Removes the given user based on their userId
 		for (int i = 0; i < players.size(); ++i) {
-			if (players.get(i).getId() == userId) {
+			if (players.get(i).getUsername().equals(username)) {
 				players.remove(i);
 				return;
 			}
@@ -46,13 +51,13 @@ class Room {
 	
 	public int getPlayerNumber(User user) {
 		// Gets the player number of the given user
-		return getPlayerNumber(user.getId());
+		return getPlayerNumber(user.getUsername());
 	}
 	
-	public int getPlayerNumber(String userId) {
+	public int getPlayerNumber(String username) {
 		// Gets the player number of the given user based on their userId
 		for (int i = 0; i < players.size(); ++i) {
-			if (players.get(i).getId() == userId) {
+			if (players.get(i).getUsername().equals(username)) {
 				return i+1;
 			}
 		}

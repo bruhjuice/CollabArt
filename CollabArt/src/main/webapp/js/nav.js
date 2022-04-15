@@ -1,3 +1,5 @@
+const serverURL = '/CollabArt'
+
 fetch('navBar.jsp')
 .then(res => res.text())
 .then(text => {
@@ -15,5 +17,7 @@ function init() {
 }
 
 function createRoom() {
-	fetch('/CollabArt/create-room', { method: 'POST' }).then(res => res.json()).then(console.log)
+	fetch(`${serverURL}/create-room`, { method: 'POST' }).then(res => res.json()).then(({ roomCode }) => {
+		window.location.replace(`gameStart.jsp?room-code=${roomCode}`)
+	})
 }

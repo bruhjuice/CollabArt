@@ -16,7 +16,7 @@
 	/* Remove background-image to make background blue */
 	
 	body{
-	background-image: url("images/doodles2blueBlurred2.jpg");
+		background-image: url("images/doodles2blueBlurred2.jpg");
 	}
 	.overall {
 	
@@ -72,6 +72,7 @@
 	}
 	
 	.bigButton {
+	
 		text-align: center;
 		width: fit-content;
 		
@@ -161,6 +162,15 @@
 		
 	}
 	
+	#start-btn {
+		
+	}
+	
+	#start-btn:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
+	
 	</style>
 </head>
 
@@ -175,21 +185,21 @@
 	 <div class="overall"> <!-- Overall div, after the navbar -->
 		<!-- Room code -->
 		<p class="roomCodeTitle">Room Code (share with friends):</p>
-		<p class="roomCode">QBEG</p>
+		<p id="roomCodeDisplay" class="roomCode"></p>
 		
 		<!-- Various buttons depending on state -->
-		<div class="rowDiv">
-			<p class="bigButton startSize yellow">Game Start?</p>
+		<div id="start-btn" class="unselectable" style="display: none;">
+			<p class="bigButton startSize yellow">Start!</p>
 		</div>
-		<!-- <div style="display: flex; flex-direction: row; flex: 1; justify-content: center">
-			<p class="bigButton waitPlayerSize yellow">Waiting for <br> players...</p>
+		<div id="wait-players" class="unselectable" style="display: none;">
+			<p class="bigButton waitPlayerSize yellow">Waiting for players...</p>
 		</div>
-		<div style="display: flex; flex-direction: row; flex: 1; justify-content: center">
-			<p class="bigButton waitOwnerSize yellow">Waiting for <br> owner...</p>
-		</div> -->
+		<div id="wait-owner" class="unselectable" style="display: none;">
+			<p class="bigButton waitOwnerSize yellow">Waiting for owner...</p>
+		</div>
 		
 		<!-- players -->
-		<div class="rowDiv">	
+		<div id="players" class="rowDiv">	
 		
 			<div class="colDiv">
 				<img class="playerCircle" src="images/Avatar1.png"/> 
@@ -220,6 +230,8 @@
 	<!-- end of vertical div -->
 	
 	</div> <!-- end of overall div -->
+	
+	<script type="module" src="js/gameStart.js"></script>
 	
 </body>
 </html>

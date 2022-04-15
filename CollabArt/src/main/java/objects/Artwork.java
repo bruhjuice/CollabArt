@@ -16,7 +16,7 @@ public class Artwork
    
    
    public Artwork() {
-      prompt = PromptPool.prompts[(int)(Math.random()*PromptPool.prompts.length)];
+	  prompt = PromptPool.getPrompt();
       fragment_urls = new String[4];
       completed_image="";
    }
