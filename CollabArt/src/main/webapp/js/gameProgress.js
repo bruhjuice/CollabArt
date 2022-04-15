@@ -93,6 +93,10 @@ canvas.addEventListener('mouseup', (e) => {
 	mouseDown = false
 })
 
+canvas.addEventListener('mouseleave', e => {
+	mouseDown = false
+})
+
 canvas.addEventListener('mousemove', (e) => {
 	if (mouseDown) {
 		const { offsetX: x, offsetY: y } = e

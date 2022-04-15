@@ -90,6 +90,12 @@ function initSocket() {
 	})
 }
 
+/* Event Listeners */
+startBtn.addEventListener('click', e => {
+	console.log('START BTN CLICKED')
+})
+
+/* Utility Functions */
 function updatePlayers(p) {
 	players = p
 	const playersDiv = document.getElementById('players')

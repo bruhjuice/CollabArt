@@ -8,27 +8,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/navbar.css">
 <title>CollabArt</title>
 <style>
-	.outer-container {
-		width: 100%;
-		height: 100%;
-	}
-	
 	.container {
 		display: flex;
 		align-items: center;
-		height: 100%;
-		box-sizing:border-box;
-		padding: 50px;
-	}
-	
-	.container > div {
-		padding: 50px;
+		justify-content: center;
+		column-gap: 50px;
+		flex: 1;
 	}
 	
 	#drawing-container {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -44,6 +35,10 @@
 	
 	.prompt-container > div {
 		padding: 10px 20px;
+	}
+	
+	#drawing-canvas {
+		
 	}
 	
 	#colors-container {
@@ -106,42 +101,42 @@
 	}
 </style>
 </head>
-<body>
-	<div class="outer-container light-blue">
-		<div class="container">
-			<div>
-				<div id="colors-container">
+<body class="light-blue" style="display: flex; flex-direction: column;">
+	<script id="replace_with_navbar" src="js/nav.js"></script>
+
+	<div class="container">
+		<div>
+			<div id="colors-container">
+			</div>
+			<div style="margin-top: 36px;">
+				Brush Size:<br/>
+				<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
+			</div>
+		</div>
+		<div id="drawing-container">
+			<div class="prompt-container">
+				<div class="left-rounded white">
+					Draw...
 				</div>
-				<div style="margin-top: 36px;">
-					Brush Size:
-					<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
+				<div class="right-rounded blue" style="flex: 1;">
+					your mental health
 				</div>
 			</div>
-			<div id="drawing-container">
-				<div class="prompt-container">
-					<div class="left-rounded white">
-						Draw...
-					</div>
-					<div class="right-rounded blue" style="flex: 1;">
-						your mental health
-					</div>
-				</div>
-				
-				<div style="position: relative;">
-					<div class="tape top-left"></div>
-					<div class="tape top-right"></div>
-					<div class="tape bottom-left"></div>
-					<div class="tape bottom-right"></div>
-					<canvas id="drawing-canvas" width="800" height="600">
-					</canvas>
-					
-					<button id="submit-data">Submit data!</button>
-				</div>
+			
+			<div style="position: relative;">
+				<div class="tape top-left"></div>
+				<div class="tape top-right"></div>
+				<div class="tape bottom-left"></div>
+				<div class="tape bottom-right"></div>
+				<canvas id="drawing-canvas" width="800" height="600">
+				</canvas>
 			</div>
-			<div id="right-container">
-				<div id="timer">
-					0:53
-				</div>
+			
+			<button id="submit-data">Submit data!</button>
+		</div>
+		<div id="right-container">
+			<div id="timer">
+				0:53
 			</div>
 		</div>
 	</div>
