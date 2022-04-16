@@ -32,7 +32,7 @@
 	#artist-container{
 		position: absolute;
 		width: 200px;
-		height: 360px;
+		height: 380px;
 		left: 80px;
 		top: 100px;
 		background-color: #DED3EB;
@@ -86,6 +86,23 @@
 		font-size: 22px;
 		font-family: 'Irish Grover', cursive;
 	}
+	.playerCircle {
+		width: 50px;
+		height: 50px;
+		margin: 0px 20px 10px 0px;
+		
+		overflow: hidden;
+		border-radius: 100px;
+		border-style: solid;
+		border-width: 4px;
+		border-color: #ACEBFF;
+		
+		justify-content: center;
+		align-items: center;
+		
+		box-shadow: 5px 10px 5px gray;
+	}
+	
 </style>
 </head>
 <body>
@@ -97,10 +114,22 @@
 		</div>
 		<div id="artist-container">
 			<p style="font-size: 25px;">Artists:</p>
-			<p>Max</p>
-			<p>Karina</p>
-			<p>Ed</p>
-			<p>MiruBiru</p>
+			<span style="display: inline-flex; align-items: center">
+				<img class="playerCircle" src="images/Avatar1.png"/> 
+				Max
+			</span>
+			<span style="display: inline-flex; align-items: center">
+				<img class="playerCircle" src="images/Avatar2.png"/> 
+				Karina
+			</span>
+			<span style="display: inline-flex; align-items: center">
+				<img class="playerCircle" src="images/Avatar3.png"/> 
+				Ed
+			</span>
+			<span style="display: inline-flex; align-items: center">
+				<img class="playerCircle" src="images/Avatar3.png"/> 
+				MiruBiru
+			</span>
 		</div>
 		<div id="drawing-container">
 			<div style="position: relative;">

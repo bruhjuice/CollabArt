@@ -8,27 +8,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/navbar.css">
 <title>CollabArt</title>
 <style>
-	.outer-container {
-		width: 100%;
-		height: 100%;
-	}
-	
 	.container {
 		display: flex;
 		align-items: center;
-		height: 100%;
-		box-sizing:border-box;
-		padding: 50px;
-	}
-	
-	.container > div {
-		padding: 50px;
+		justify-content: center;
+		column-gap: 50px;
+		flex: 1;
 	}
 	
 	#drawing-container {
-		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -44,6 +35,10 @@
 	
 	.prompt-container > div {
 		padding: 10px 20px;
+	}
+	
+	#drawing-canvas {
+		
 	}
 	
 	#colors-container {
@@ -106,45 +101,46 @@
 	}
 </style>
 </head>
-<body>
-	<div class="outer-container light-blue">
-		<div class="container">
-			<div>
-				<div id="colors-container">
+<body class="light-blue" style="display: flex; flex-direction: column;">
+	<script id="replace_with_navbar" src="js/nav.js"></script>
+
+	<div class="container">
+		<div>
+			<div id="colors-container">
+			</div>
+			<div style="margin-top: 36px;">
+				Brush Size:<br/>
+				<input id="brush-size-slider" type="range" min="5" max="50" value="5" step="5">
+			</div>
+		</div>
+		<div id="drawing-container">
+			<div class="prompt-container">
+				<div class="left-rounded white">
+					Draw...
 				</div>
-				<div style="margin-top: 36px;">
-					Brush Size:
-					<input id="brush-size-slider" type="range" min="10" max="50" value="10" step="10">
+				<div class="right-rounded blue" style="flex: 1;">
+					your mental health
 				</div>
 			</div>
-			<div id="drawing-container">
-				<div class="prompt-container">
-					<div class="left-rounded white">
-						Draw...
-					</div>
-					<div class="right-rounded blue" style="flex: 1;">
-						your mental health
-					</div>
-				</div>
-				
-				<div style="position: relative;">
-					<div class="tape top-left"></div>
-					<div class="tape top-right"></div>
-					<div class="tape bottom-left"></div>
-					<div class="tape bottom-right"></div>
-					<canvas id="drawing-canvas" width="800" height="600">
-					</canvas>
-					
-					<button id="submit-data">Submit data!</button>
-				</div>
+			
+			<div style="position: relative;">
+				<div class="tape top-left"></div>
+				<div class="tape top-right"></div>
+				<div class="tape bottom-left"></div>
+				<div class="tape bottom-right"></div>
+				<canvas id="drawing-canvas" width="800" height="600">
+				</canvas>
 			</div>
-			<div id="right-container">
-				<div id="timer">
-					0:53
-				</div>
+			
+			<button id="submit-data">Submit data!</button>
+		</div>
+		<div id="right-container">
+			<div id="timer">
+				60
 			</div>
 		</div>
 	</div>
+	<img id="completedImage"/>
 
 	<script src="js/gameProgress.js"></script>
 	<script>
@@ -154,8 +150,65 @@
 			})
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
-				.then(res => res.text()).then(console.log)
+				.then(res => res.text())//.then(data => console.log(data))
+				//Show image below
+				.then(data => document.querySelector("#completedImage").src="data:image/png;base64,"+data)
+				//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
+				
+				//Later on, need to send do stuff to get to test.jsp.
+				//Option a:
+				//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
+				/*
+				.then(var xhr = new XMLHttpRequest();
+					xhr.open("POST", "test.jsp", true);
+					xhr.setRequestHeader('Content-Type', 'application/json');
+					xhr.send(JSON.stringify({
+						  completedString: res.text()
+					}));)
+			   */
+					
+				//Option b: Add attribute then send window to new page
+				//.then(window.location.href="test.jsp");
 		})
+	</script>
+	<script>
+		function startTimer(seconds, timeRemaining) {
+		    var timer = seconds;
+		    
+		    // every 1 second = 1000 milliseconds
+		    setInterval(function () {
+		    	// change text
+		        timeRemaining.textContent = timer;
+		        timer--;
+			    // when timer reaches end, redirect
+			    if (timer == 0) {
+			    	// "click" to submit image data
+			    	document.getElementById('submit-data').click();
+			    	
+			    	// TODO:
+			    		// add things to check that all players have submitted the data before redirecting
+			    		// otherwise, freeze image here
+			    		// and let other players know through minimap?
+			    				// or are we scrapping minimap?
+			    	
+			    	
+					// then redirect
+			    	window.location.replace('gameEnd.jsp');
+			    }
+		    }, 1000);
+		    
+		}
+		
+		// start timer when page loads
+		window.onload = function () {
+			// 1 min to draw
+		    var seconds = 60;
+			
+			// change display of "timer" tag
+		    var timeRemaining = document.querySelector('#timer');
+			
+		    startTimer(seconds, timeRemaining);
+		};
 	</script>
 </body>
 </html>
