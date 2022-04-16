@@ -65,14 +65,11 @@ public class FragmentDispatcher extends HttpServlet {
        String usingSystemProperty = System.getProperty("user.dir");
        System.out.println("Current directory path using system property:- " + usingSystemProperty);
        
-       //InputStream inputStream = FragmentDispatcher.class.getResourceAsStream("src/main/webapp/images/farm.jpg");
+       InputStream inputStream = FragmentDispatcher.class.getResourceAsStream("../images/farm.jpg");
        
        BufferedImage bgImage = null;
        try {
-          //Unable to read input file from images folder for some reason, unless I use absolute path: won't work on other computers
-          //In your run configurations => arguments, check your working directory.
-           bgImage = ImageIO.read(new File("/Users/Elliott/Desktop/USC/usc_spring_2022/cs201/CollabArt/CollabArt/src/main/webapp/images/farm.jpg"));
-          //bgImage = ImageIO.read(inputStream);
+          bgImage = ImageIO.read(inputStream);
        } catch (IOException e) {
           e.printStackTrace();
        }

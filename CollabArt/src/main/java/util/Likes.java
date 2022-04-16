@@ -16,13 +16,15 @@ public class Likes {
 	static String pwd = Utility.DBPassword;
 	
 	static String insert = "INSERT INTO likes (picId, username, likeType) VALUES (?, ?, ?)";
-	static String check = "SELECT 1 FROM likes WHERE picId = ? AND username = ?";
+	static String check = "SELECT * FROM likes WHERE picId = ? AND username = ?";
 	static String remove = "DELETE FROM likes WHERE picID = ? AND username = ?";
 	static String update = "UPDATE likes SET likeType = ? WHERE picId = ? AND username = ?";
-	static String sum = "SELECT SUM(likeType) FROM likes where picId = ?";
 	static String unsafe = "SET SQL_SAFE_UPDATES = 0";
 	static String safe = "SET SQL_SAFE_UPDATES = 1";
+	static String picUpdate = "UPDATE drawing SET likes = likes + ? WHERE id = ?";
+	static String getLikes = "SELECT * FROM drawing WHERE id = ?";
 	
+	Likes() {}
 	
 	public static void Like(int picId, String username) {
         try {
@@ -30,11 +32,11 @@ public class Likes {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		if (!Check(picId, username)) {
-			Insert(picId, username, 1);
-		} else {
-			Update(picId, username, 1);
+			Insert(picId, username, true);
+		} else if (!GetLikeType(picId, username)) {
+			Update(picId, username, true);
 		}
 	}
 	
@@ -46,9 +48,11 @@ public class Likes {
 		}
 		
 		if (!Check(picId, username)) {
-			Insert(picId, username, 1);
-		} else {
-			Update(picId, username, 1);
+			System.out.println("disliking when like doesn't exist");
+			Insert(picId, username, false);
+		} else if (GetLikeType(picId, username)) {
+			System.out.println("disliking when like already exists");
+			Update(picId, username, false);
 		}
 	}
 	
@@ -60,95 +64,137 @@ public class Likes {
 		}
 		
 		if (Check(picId, username)) {
-			Insert(picId, username, -1);
-		} else {
-			Update (picId, username, -1);
+			Remove(picId, username);
 		}
 	}
 	
-	public static int GetLikes(int picId) {
+	public static int GetLike(int picId) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return 0;
 		}
-		return Sum(picId);
+		
+		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+    			PreparedStatement ps = conn.prepareStatement(getLikes);){
+			ps.setInt(1, picId);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			return rs.getInt("likes");
+		} catch (SQLException sqle) {
+			System.out.println ("SQLException - Getting Like Count: " + sqle.getMessage());
+			return 0;
+		}
 	}
 	
-	public static boolean DoesExist(int picId, String username) {
+	public static int DoesExist(int picId, String username) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return false;
+			return 0;
 		}
 		
-		return Check(picId, username);
+		return !Check(picId, username) ? 0 : GetLikeType(picId, username) ? 1 : -1;
 	}
 	
-	static void Insert(int picId, String username, int likeType) {
+	static void Insert(int picId, String username, boolean likeType) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);
     			PreparedStatement ps = conn.prepareStatement(insert);) {
-    			ps.setInt(1, picId);
-    			ps.setString(2, username);
-    			ps.setInt(3, likeType);
-    			ps.executeUpdate();
+    		ps.setInt(1, picId);
+    		ps.setString(2, username);
+    		ps.setBoolean(3, likeType);
+    		ps.executeUpdate();
+    			
+    		PicUpdateLike(picId, likeType ? 1 : -1);
+    			
     	} catch (SQLException sqle) {
-    			System.out.println ("SQLException: " + sqle.getMessage());
+    		System.out.println ("SQLException - Inserting Likes: " + sqle.getMessage());
     	}
 	}
 	
 	//returns true if there
 	static boolean Check(int picId, String username) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);
-    			Statement st = conn.createStatement();) {
-			ResultSet rs = st.executeQuery(check);
-			return rs.getString("username") != "" && rs.getString("username") != null;
+    			PreparedStatement ps = conn.prepareStatement(check);) {
+			ps.setInt(1, picId);
+			ps.setString(2, username);
+			ResultSet rs = ps.executeQuery();
+			
+			return rs.next();
     	} catch (SQLException sqle) {
-    		System.out.println ("SQLException: " + sqle.getMessage());
+    		System.out.println ("SQLException - Checking Like Presence: " + sqle.getMessage());
     		return false;
     	}
 	}
 	
-	static void Update(int picId, String username, int likeType) {
+	static void Update(int picId, String username, boolean likeType) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
+			//boolean lastType = GetLikeType(picId, username);
+			
 			PreparedStatement ps = conn.prepareStatement(update);
-			ps.setInt(1, picId);
-			ps.setString(2, username);
-			ps.setInt(3, likeType);
+			ps.setBoolean(1, likeType);
+			ps.setInt(2, picId);
+			ps.setString(3, username);
 			ps.executeUpdate();
+			
+			PicUpdateLike(picId, likeType ? 2 : -2);
 			
 			PreparedStatement post = conn.prepareStatement(safe);
 			post.executeUpdate();
+			
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
+			System.out.println ("SQLException - Updating Like: " + sqle.getMessage());
 		}
 	}
 	
 	static void Remove(int picId, String username) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+			PreparedStatement pre = conn.prepareStatement(unsafe);
+			pre.executeUpdate();
+			
+			PicUpdateLike(picId, GetLikeType(picId, username) ? -1 : 1);
+			
 			PreparedStatement ps = conn.prepareStatement(remove);
 			ps.setInt(1, picId);
 			ps.setString(2, username);
 			ps.executeUpdate();
+			
+			PreparedStatement post = conn.prepareStatement(safe);
+			post.executeUpdate();
+			
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
+			System.out.println ("SQLException - Removing Like: " + sqle.getMessage());
+		}
+	}
+
+	static void PicUpdateLike(int picId, int increment) {
+		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+			PreparedStatement ps = conn.prepareStatement(picUpdate);
+			ps.setInt(1, increment);
+			ps.setInt(2, picId);
+			ps.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println ("SQLException - Updating Picture Like Count: " + sqle.getMessage());
 		}
 	}
 	
-	static int Sum(int picId) {
+	static boolean GetLikeType(int picId, String username) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
-			PreparedStatement ps = conn.prepareStatement(sum);
+			PreparedStatement ps = conn.prepareStatement(check);
 			ps.setInt(1, picId);
+			ps.setString(2, username);
 			ResultSet rs = ps.executeQuery();
-			return rs.getInt(picId);
+			rs.next();
+			return rs.getBoolean("likeType");
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
-			return 0;
+			System.out.println ("SQLException - Getting LikeType of Like: " + sqle.getMessage());
+			return false;
 		}
+		
 	}
 }

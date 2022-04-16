@@ -76,3 +76,13 @@
 	background-color: black;
 	border: none;
 }
+#galleryNav
+{
+	margin-right: 15px;
+}
+
+#galleryNav:link, #galleryNav:visited
+{
+	text-decoration:none;
+	color: black;
+}

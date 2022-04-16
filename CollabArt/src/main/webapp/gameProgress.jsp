@@ -99,6 +99,15 @@
 		bottom: 0;
 		transform: rotate(-220deg) scale(0.4, 0.5) translate(-70%, -200%);
 	}
+	
+	#completeddiv{
+	  width:75%;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+	#completedimage{
+	  width:100%;
+	}
 </style>
 </head>
 <body class="light-blue" style="display: flex; flex-direction: column;">
@@ -140,7 +149,10 @@
 			</div>
 		</div>
 	</div>
-	<img id="completedImage"/>
+	<div id="completeddiv">
+	  <img id="completedimage"/>
+   </div>
+	
 
 	<script src="js/gameProgress.js"></script>
 	<script>
@@ -148,11 +160,12 @@
 			const params = new URLSearchParams({
 				'image-string': canvas.toDataURL()
 			})
+			console.log(params);
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
 				.then(res => res.text())//.then(data => console.log(data))
 				//Show image below
-				.then(data => document.querySelector("#completedImage").src="data:image/png;base64,"+data)
+				.then(data => document.querySelector("#completedimage").src="data:image/png;base64,"+data)
 				//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
 				
 				//Later on, need to send do stuff to get to test.jsp.
@@ -193,7 +206,7 @@
 			    	
 			    	
 					// then redirect
-			    	window.location.replace('gameEnd.jsp');
+			    	//window.location.replace('gameEnd.jsp');
 			    }
 		    }, 1000);
 		    
