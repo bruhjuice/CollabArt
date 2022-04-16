@@ -9,28 +9,28 @@
         ],
         "coordinates": [
             {
-                "top": 100,
                 "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 100,
+                "right": 200,
+                "bottom": 200
             },
             {
-                "top": 100,
                 "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 100,
+                "right": 200,
+                "bottom": 200
             },
             {
-                "top": 100,
                 "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 100,
+                "right": 200,
+                "bottom": 200
             },
             {
-                "top": 100,
                 "left": 100,
-                "bottom": 200,
-                "right": 200
+                "top": 100,
+                "right": 200,
+                "bottom": 200
             }
         ],
         "background_image_path": "images/cat_basketball" 
@@ -45,28 +45,28 @@
         ],
         "coordinates": [
             {
-                "top": 30,
-                "left": 205,
-                "bottom": 250,
-                "right": 585
-            },
-            {
-                "top": 310,
-                "left": 270,
-                "bottom": 755,
-                "right": 545
-            },
-            {
-                "top": 280,
                 "left": 30,
-                "bottom": 785,
-                "right": 170
+                "top": 205,
+                "right": 250,
+                "bottom": 585
             },
             {
-                "top": 20,
-                "left": 25,
-                "bottom": 260,
-                "right": 180
+                "left": 310,
+                "top": 270,
+                "right": 755,
+                "bottom": 545
+            },
+            {
+                "left": 280,
+                "top": 30,
+                "right": 785,
+                "bottom": 170
+            },
+            {
+                "left": 20,
+                "top": 25,
+                "right": 260,
+                "bottom": 180
             }
         ],
         "background_image_path": "images/kitchen.jpg" 
@@ -81,28 +81,28 @@
         ],
         "coordinates": [
             {
-                "top": 190,
-                "left": 130,
-                "bottom": 310,
-                "right": 275
+                "left": 190,
+                "top": 130,
+                "right": 310,
+                "bottom": 275
             },
             {
-                "top": 350,
-                "left": 100,
-                "bottom": 220,
-                "right": 385
+                "left": 350,
+                "top": 100,
+                "right": 220,
+                "bottom": 385
             },
             {
-                "top": 20,
-                "left": 80,
-                "bottom": 145,
-                "right": 425
+                "left": 20,
+                "top": 80,
+                "right": 145,
+                "bottom": 425
             },
             {
-                "top": 590,
-                "left": 60,
-                "bottom": 785,
-                "right": 560
+                "left": 590,
+                "top": 60,
+                "right": 785,
+                "bottom": 560
             }
         ],
         "background_image_path": "images/art_studio.jpg" 
@@ -118,28 +118,28 @@
         ],
         "coordinates": [
             {
-                "top": 230,
-                "left": 90,
-                "bottom": 475,
-                "right": 480
+                "left": 230,
+                "top": 90,
+                "right": 475,
+                "bottom": 480
             },
             {
-                "top": 5,
-                "left": 340,
-                "bottom": 225,
-                "right": 575
+                "left": 5,
+                "top": 340,
+                "right": 225,
+                "bottom": 575
             },
             {
-                "top": 500,
-                "left": 385,
-                "bottom": 760,
-                "right": 575
+                "left": 500,
+                "top": 385,
+                "right": 760,
+                "bottom": 575
             },
             {
-                "top": 490,
-                "left": 30,
-                "bottom": 790,
-                "right": 370
+                "left": 490,
+                "top": 30,
+                "right": 790,
+                "bottom": 370
             }
         ],
         "background_image_path": "images/beach.jpg" 
@@ -154,28 +154,28 @@
         ],
         "coordinates": [
             {
-                "top": 400,
-                "left": 340,
-                "bottom": 150,
-                "right": 230
-            },
-            {
-                "top": 40,
-                "left": 315,
-                "bottom": 325,
-                "right": 225
-            },
-            {
+                "left": 400,
                 "top": 340,
-                "left": 25,
-                "bottom": 125,
-                "right": 105
+                "right": 150,
+                "bottom": 230
             },
             {
-                "top": 505,
-                "left": 60,
-                "bottom": 280,
-                "right": 170
+                "left": 40,
+                "top": 315,
+                "right": 325,
+                "bottom": 225
+            },
+            {
+                "left": 340,
+                "top": 25,
+                "right": 125,
+                "bottom": 105
+            },
+            {
+                "left": 505,
+                "top": 60,
+                "right": 280,
+                "bottom": 170
             }
         ],
         "background_image_path": "images/desert.jpg" 
@@ -190,28 +190,28 @@
         ],
         "coordinates": [
             {
-                "top": 285,
-                "left": 335,
-                "bottom": 425,
-                "right": 535
+                "left": 285,
+                "top": 335,
+                "right": 425,
+                "bottom": 535
             },
             {
-                "top": 155,
-                "left": 260,
-                "bottom": 285,
-                "right": 395
+                "left": 155,
+                "top": 260,
+                "right": 285,
+                "bottom": 395
             },
             {
-                "top": 285,
-                "left": 85,
-                "bottom": 630,
-                "right": 615
+                "left": 285,
+                "top": 85,
+                "right": 630,
+                "bottom": 615
             },
             {
-                "top": 425,
-                "left": 305,
-                "bottom": 572,
-                "right": 587
+                "left": 425,
+                "top": 305,
+                "right": 572,
+                "bottom": 587
             }
         ],
         "background_image_path": "images/birthday.png" 
@@ -226,28 +226,28 @@
         ],
         "coordinates": [
             {
-                "top": 250,
-                "left": 155,
-                "bottom": 445,
-                "right": 545
+                "left": 250,
+                "top": 155,
+                "right": 445,
+                "bottom": 545
             },
             {
-                "top": 470,
-                "left": 205,
-                "bottom": 310,
-                "right": 215
+                "left": 470,
+                "top": 205,
+                "right": 310,
+                "bottom": 215
             },
             {
-                "top": 55,
-                "left": 110,
-                "bottom": 235,
-                "right": 570
+                "left": 55,
+                "top": 110,
+                "right": 235,
+                "bottom": 570
             },
             {
-                "top": 500,
-                "left": 30,
-                "bottom": 745,
-                "right": 170
+                "left": 500,
+                "top": 30,
+                "right": 745,
+                "bottom": 170
             }
         ],
         "background_image_path": "images/farm.jpg" 
@@ -262,28 +262,28 @@
         ],
         "coordinates": [
             {
-                "top": 300,
-                "left": 200,
-                "bottom": 410,
-                "right": 300
+                "left": 300,
+                "top": 200,
+                "right": 410,
+                "bottom": 300
             },
             {
-                "top": 60,
-                "left": 120,
-                "bottom": 240,
-                "right": 370
+                "left": 60,
+                "top": 120,
+                "right": 240,
+                "bottom": 370
             },
             {
-                "top": 540,
-                "left": 105,
-                "bottom": 775,
-                "right": 570
+                "left": 540,
+                "top": 105,
+                "right": 775,
+                "bottom": 570
             },
             {
-                "top": 60,
-                "left": 420,
-                "bottom": 480,
-                "right": 570
+                "left": 60,
+                "top": 420,
+                "right": 480,
+                "bottom": 570
             }
         ],
         "background_image_path": "images/beach_concert.jpg" 
@@ -292,34 +292,34 @@
         "statement": "Once Upon a Time",
         "prompts": [
             "Draw a noble knight in shining armor",
-            "Draw the Dragon on top of a mountain of gold",
+            "Draw the Dragon on left of a mountain of gold",
             "Draw the Princess, the damsel in distress",
             "Draw an obedient horse"
         ],
         "coordinates": [    
             {
-                "top": 145,
-                "left": 150,
-                "bottom": 290,
-                "right": 365
+                "left": 145,
+                "top": 150,
+                "right": 290,
+                "bottom": 365
             },
             {
-                "top": 385,
-                "left": 165,
-                "bottom": 600,
-                "right": 495
+                "left": 385,
+                "top": 165,
+                "right": 600,
+                "bottom": 495
             },
             {
-                "top": 645,
-                "left": 175,
-                "bottom": 750,
-                "right": 475
+                "left": 645,
+                "top": 175,
+                "right": 750,
+                "bottom": 475
             },
             {
-                "top": 50,
-                "left": 395,
-                "bottom": 320,
-                "right": 530
+                "left": 50,
+                "top": 395,
+                "right": 320,
+                "bottom": 530
             }
         ],
         "background_image_path": "images/fantasy.png" 
@@ -334,28 +334,28 @@
         ],
         "coordinates": [
             {
-                "top": 20,
-                "left": 350,
-                "bottom": 240,
-                "right": 570
+                "left": 20,
+                "top": 350,
+                "right": 240,
+                "bottom": 570
             },
             {
-                "top": 365,
-                "left": 410,
-                "bottom": 585,
-                "right": 570
+                "left": 365,
+                "top": 410,
+                "right": 585,
+                "bottom": 570
             },
             {
-                "top": 260,
-                "left": 500,
-                "bottom": 335,
-                "right": 575
+                "left": 260,
+                "top": 500,
+                "right": 335,
+                "bottom": 575
             },
             {
-                "top": 450,
-                "left": 50,
-                "bottom": 620,
-                "right": 240
+                "left": 450,
+                "top": 50,
+                "right": 620,
+                "bottom": 240
             }
         ],
         "background_image_path": "images/farm.jpg" 
@@ -370,28 +370,28 @@
         ],
         "coordinates": [
             {
-                "top": 475,
-                "left": 300,
-                "bottom": 495,
-                "right": 600
+                "left": 475,
+                "top": 300,
+                "right": 495,
+                "bottom": 600
             },
             {
-                "top": 0,
-                "left": 240,
-                "bottom": 120,
-                "right": 465
+                "left": 0,
+                "top": 240,
+                "right": 120,
+                "bottom": 465
             },
             {
-                "top": 135,
-                "left": 260,
-                "bottom": 260,
-                "right": 470
-            },
-            {
+                "left": 135,
                 "top": 260,
-                "left": 400,
-                "bottom": 460,
-                "right": 600
+                "right": 260,
+                "bottom": 470
+            },
+            {
+                "left": 260,
+                "top": 400,
+                "right": 460,
+                "bottom": 600
             }
         ],
         "background_image_path": "images/carnival.png" 
@@ -406,28 +406,28 @@
         ],
         "coordinates": [
             {
-                "top": 190,
-                "left": 350,
-                "bottom": 310,
-                "right": 460
+                "left": 190,
+                "top": 350,
+                "right": 310,
+                "bottom": 460
             },
             {
-                "top": 520,
-                "left": 350,
-                "bottom": 595,
-                "right": 470
+                "left": 520,
+                "top": 350,
+                "right": 595,
+                "bottom": 470
             },
             {
-                "top": 340,
-                "left": 435,
-                "bottom": 450,
-                "right": 495
+                "left": 340,
+                "top": 435,
+                "right": 450,
+                "bottom": 495
             },
             {
-                "top": 325,
-                "left": 220,
-                "bottom": 475,
-                "right": 430
+                "left": 325,
+                "top": 220,
+                "right": 475,
+                "bottom": 430
             }
         ],
         "background_image_path": "images/dining_table.png" 
