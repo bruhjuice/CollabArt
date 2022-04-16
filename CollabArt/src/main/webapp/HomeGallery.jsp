@@ -23,7 +23,7 @@
 const LIKED = 1;
 const DISLIKED = -1;
 const UNLIKED = 0;
-var likeState = {UNLIKED}; //this is to make it 1-indexed
+var likeState = [UNLIKED]; //this is to make it 1-indexed
 </script>
 
 <title> Collabart | Home</title>
@@ -85,10 +85,6 @@ var likeState = {UNLIKED}; //this is to make it 1-indexed
 	<!-- Would we have to store all images? Even if we have local path, how would we store it? -->
 	
 	<div class="galart" id="galart1">
-		<script> //figure out how to intialize this for each image we display
-			likeState.add((GetId("galart1")));
-			fetch('/CollabArt/LikeDispatcher', method = 'POST')
-		</script>
 		<div class="galart-top blue top-rounded">
 			<p>Draw... <span>a cat playing basketball</span></p>
 		</div>
@@ -99,8 +95,30 @@ var likeState = {UNLIKED}; //this is to make it 1-indexed
 		<div class="galart-bottom pink bottom-rounded">
 			<!-- Also put id on each art's thumbs up and thumbs down? -->
 			<!-- If logged in, show like and dislike button. If not, don't add. -->
-			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;413 Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
+			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart1"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
+		<script> //figure out how to intialize this for each image we display, AKA change id = "1" 
+			id = "1";
+			params = new URLSearchParams({
+				"command": "exist",
+				"picId": id,
+				"username": "user" //change this to username of cookie
+			})
+			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+				.then(response => response.text())
+				.then(data => likeState.push(parseInt(data)))
+			console.log(likeState);
+			switch(likeState[parseInt(id)]) {
+			case LIKED:
+				
+				break;
+			case DISLIKED:
+				break;
+			case UNLIKED:
+				break;
+			default:
+			}
+		</script>
 	</div>
 	<%if (!logIn)
   	{
@@ -119,40 +137,72 @@ var likeState = {UNLIKED}; //this is to make it 1-indexed
    console.log(thumbsup);
    console.log(thumbsdown);
    
-   function handletup(event) {
-       console.log(event.target.parentElement.parentElement.id);
-       liketext=event.target.nextElementSibling.innerHTML;
-       console.log(liketext);
-       document.body.setAttribute('currPic', event.target.parentElement.parentElement.id);
-       //likes=parseInt(liketext);
-       //likes++;
-       <%System.out.println("We run this for some reason");
-       int picId = 1;
-       Likes.Like(picId, "user");%>
-       likes = <%= Likes.GetLike(picId)%>;
-       event.target.nextElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
-       //Update database based on parent div id.
-     
-       //Update 
-       event.target.style.color = "blue";
-       event.target.nextElementSibling.nextElementSibling.style.opacity = 0.5;
-       event.target.removeEventListener('click', handletup);
-       event.target.nextElementSibling.nextElementSibling.removeEventListener('click', handletdown);
+	function handletup(event) {
+		id = event.target.parentElement.parentElement.id.substring(6);
+		switch(likeState[parseInt(id)]) {
+		case LIKED:
+			params = new URLSearchParams({
+				"command": "remove",
+				"picId": id,
+				"username": "user" //change this to username of cookie
+			})
+			//Update database based on parent div id
+			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+				.then(response => response.text())
+				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
+			//Update
+			removeLike(event);
+			likeState[parseInt(id)] = UNLIKED;
+			break;
+		default:
+			params = new URLSearchParams({
+				"command": "like",
+				"picId": id,
+				"username": "user" //change this to username of cookie
+			})
+			//Update database based on parent div id.
+			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+				.then(response => response.text())
+				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
+	     	//Update
+	     	blueLike(event);
+	     	likeState[parseInt(id)] = LIKED;
+		}
     };
    
-   function handletdown(event) {
-       console.log(event.target.parentElement.parentElement.id);
-       liketext=event.target.previousElementSibling.innerHTML;
-       console.log(liketext);
-       likes=parseInt(liketext);
-       likes--;
-       event.target.previousElementSibling.innerHTML="\&emsp;"+likes+" Likes\&emsp;";
-       //Update database based on parent div id.
-       
-       event.target.style.color = "blue";
-       event.target.previousElementSibling.previousElementSibling.style.opacity = 0.5;
-       event.target.removeEventListener('click', handletdown);
-       event.target.previousElementSibling.previousElementSibling.removeEventListener();
+	function handletdown(event) {
+		id = event.target.parentElement.parentElement.id.substring(6);
+		switch(likeState[parseInt(id)]) {
+		case DISLIKED:
+			console.log("remove");
+			params = new URLSearchParams({
+				"command": "remove",
+				"picId": id,
+				"username": "user" //change this to username of cookie
+			})
+			//Update database based on parent div id
+			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+				.then(response => response.text())
+				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
+			//Update
+			removeDislike(event);
+			likeState[parseInt(id)] = UNLIKED;
+			break;
+		default:
+			console.log("dislike");
+			params = new URLSearchParams({
+				"command": "dislike",
+				"picId": id,
+				"username": "user" //change this to username of cookie
+			})
+			//Update database based on parent div id.
+			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+				.then(response => response.text())
+				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
+	     	//Update
+	     	blueDislike(event);
+	     	likeState[parseInt(id)] = DISLIKED;
+		}
     };
     
    thumbsup.map( tup => {
@@ -162,7 +212,35 @@ var likeState = {UNLIKED}; //this is to make it 1-indexed
    thumbsdown.map( tdown => {
 	   tdown.addEventListener('click', handletdown);
 	});
+   
+   function blueLike(event) {
+		event.target.style.color = "blue";
+		event.target.style.opacity = 1.0;
+		event.target.nextElementSibling.nextElementSibling.style.opacity = 0.5;
+		event.target.nextElementSibling.nextElementSibling.style.color = "black";
+		
+		//event.target.removeEventListener('click', handletup);
+		//event.target.nextElementSibling.nextElementSibling.removeEventListener('click', handletdown);
+   }
       
+   function blueDislike(event) {
+	   event.target.style.color = "blue";
+	   event.target.style.opacity = 1.0;
+       event.target.previousElementSibling.previousElementSibling.style.opacity = 0.5;
+       event.target.previousElementSibling.previousElementSibling.style.color = "black";
+       //event.target.removeEventListener('click', handletdown);
+       //event.target.previousElementSibling.previousElementSibling.removeEventListener();
+   }
+   
+   function removeLike(event) {
+	   event.target.style.color = "black";
+	   event.target.nextElementSibling.nextElementSibling.style.opacity = 1.0;
+   }
+   
+   function removeDislike(event) {
+	   event.target.style.color = "black";
+	   event.target.previousElementSibling.previousElementSibling.style.opacity = 1.0;
+   }
    </script>
    
    <%!

@@ -148,6 +148,7 @@
 			const params = new URLSearchParams({
 				'image-string': canvas.toDataURL()
 			})
+			console.log(params);
 			console.log(canvas.toDataURL())
 			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
 				.then(res => res.text())//.then(data => console.log(data))

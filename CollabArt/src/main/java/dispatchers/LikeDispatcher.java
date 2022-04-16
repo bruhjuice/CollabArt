@@ -25,11 +25,13 @@ public class LikeDispatcher extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		String command = request.getParameter("command");
+		System.out.println(command);
 		int picId = 0;
 		String username = request.getParameter("username");
-		
+		System.out.println(username);
 		try {
 			picId = Integer.parseInt(request.getParameter("picId"));
+			System.out.println(picId);
 		} catch (NumberFormatException e) {
 			System.out.println ("LikeDispatcher Exception: " + e.getMessage());
 		}
@@ -38,20 +40,20 @@ public class LikeDispatcher extends HttpServlet {
 	    PrintWriter writer = response.getWriter();
 		String output = "";
 	    
-		if (command == "like") {
+		if (command.equals("like")) {
 			Likes.Like(picId, username);
 			output += String.valueOf(Likes.GetLike(picId));
-		} else if (command == "dislike") {
+		} else if (command.equals("dislike")) {
 			Likes.Dislike(picId, username);
 			output += String.valueOf(Likes.GetLike(picId));
-		} else if (command == "remove") {
+		} else if (command.equals("remove")) {
 			Likes.Unlike(picId, username);
 			output += String.valueOf(Likes.GetLike(picId));
-		} else if (command == "exist") {
+		} else if (command.equals("exist")) {
 			output += String.valueOf(Likes.DoesExist(picId, username));
 		}
 		
-		
+		System.out.println(output);
 		writer.append(output);
 		
     }

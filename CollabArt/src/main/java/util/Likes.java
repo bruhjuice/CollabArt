@@ -32,15 +32,11 @@ public class Likes {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("like triggered");
+
 		if (!Check(picId, username)) {
-			System.out.println("valid check");
 			Insert(picId, username, true);
 		} else if (!GetLikeType(picId, username)) {
-			System.out.println("update check");
 			Update(picId, username, true);
-		} else {
-			System.out.println("discard");
 		}
 	}
 	
@@ -52,11 +48,11 @@ public class Likes {
 		}
 		
 		if (!Check(picId, username)) {
+			System.out.println("disliking when like doesn't exist");
 			Insert(picId, username, false);
 		} else if (GetLikeType(picId, username)) {
+			System.out.println("disliking when like already exists");
 			Update(picId, username, false);
-		} else {
-			System.out.println("discard");
 		}
 	}
 	
@@ -125,16 +121,12 @@ public class Likes {
     			PreparedStatement ps = conn.prepareStatement(check);) {
 			ps.setInt(1, picId);
 			ps.setString(2, username);
-			System.out.println("Check triggered");
 			ResultSet rs = ps.executeQuery();
-			System.out.println("result set check processed");
-			rs.next();
-			System.out.println("rs.next()");
-			System.out.println(rs.getString("username"));
-			return rs.getString("username") != "" && rs.getString("username") != null;
+			
+			return rs.next();
     	} catch (SQLException sqle) {
     		System.out.println ("SQLException: " + sqle.getMessage());
-    		System.out.println("error happened here");
+    		System.out.println("wrong check");
     		return false;
     	}
 	}
@@ -144,13 +136,15 @@ public class Likes {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
-			PicUpdateLike(picId, GetLikeType(picId, username) ? 2 : -2);
+			//boolean lastType = GetLikeType(picId, username);
 			
 			PreparedStatement ps = conn.prepareStatement(update);
 			ps.setBoolean(1, likeType);
 			ps.setInt(2, picId);
 			ps.setString(3, username);
 			ps.executeUpdate();
+			
+			PicUpdateLike(picId, likeType ? 2 : -2);
 			
 			PreparedStatement post = conn.prepareStatement(safe);
 			post.executeUpdate();
@@ -166,6 +160,8 @@ public class Likes {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
+			PicUpdateLike(picId, GetLikeType(picId, username) ? -1 : 1);
+			
 			PreparedStatement ps = conn.prepareStatement(remove);
 			ps.setInt(1, picId);
 			ps.setString(2, username);
@@ -174,7 +170,6 @@ public class Likes {
 			PreparedStatement post = conn.prepareStatement(safe);
 			post.executeUpdate();
 			
-			PicUpdateLike(picId, GetLikeType(picId, username) ? 1 : -1);
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException: " + sqle.getMessage());
 			System.out.println("Bad Remove");
@@ -195,15 +190,15 @@ public class Likes {
 	
 	static boolean GetLikeType(int picId, String username) {
 		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
-			PreparedStatement ch = conn.prepareStatement(check);
-			ch.setInt(1, picId);
-			ch.setString(2, username);
-			ResultSet rs = ch.executeQuery();
+			PreparedStatement ps = conn.prepareStatement(check);
+			ps.setInt(1, picId);
+			ps.setString(2, username);
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			return rs.getBoolean("likeType");
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException: " + sqle.getMessage());
-			System.out.println("Bad GEt Like Type");
+			System.out.println("Bad Gt Like Type");
 			return false;
 		}
 		
