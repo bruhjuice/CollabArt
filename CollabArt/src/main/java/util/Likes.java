@@ -83,7 +83,7 @@ public class Likes {
 			rs.next();
 			return rs.getInt("likes");
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
+			System.out.println ("SQLException - Getting Like Count: " + sqle.getMessage());
 			return 0;
 		}
 	}
@@ -110,8 +110,7 @@ public class Likes {
     		PicUpdateLike(picId, likeType ? 1 : -1);
     			
     	} catch (SQLException sqle) {
-    		System.out.println ("SQLException: " + sqle.getMessage());
-    		System.out.println("Bad Insertion");
+    		System.out.println ("SQLException - Inserting Likes: " + sqle.getMessage());
     	}
 	}
 	
@@ -125,8 +124,7 @@ public class Likes {
 			
 			return rs.next();
     	} catch (SQLException sqle) {
-    		System.out.println ("SQLException: " + sqle.getMessage());
-    		System.out.println("wrong check");
+    		System.out.println ("SQLException - Checking Like Presence: " + sqle.getMessage());
     		return false;
     	}
 	}
@@ -150,8 +148,7 @@ public class Likes {
 			post.executeUpdate();
 			
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
-			System.out.println("Wrong Update");
+			System.out.println ("SQLException - Updating Like: " + sqle.getMessage());
 		}
 	}
 	
@@ -171,8 +168,7 @@ public class Likes {
 			post.executeUpdate();
 			
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
-			System.out.println("Bad Remove");
+			System.out.println ("SQLException - Removing Like: " + sqle.getMessage());
 		}
 	}
 
@@ -183,8 +179,7 @@ public class Likes {
 			ps.setInt(2, picId);
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
-			System.out.println("can't update pic likes");
+			System.out.println ("SQLException - Updating Picture Like Count: " + sqle.getMessage());
 		}
 	}
 	
@@ -197,8 +192,7 @@ public class Likes {
 			rs.next();
 			return rs.getBoolean("likeType");
 		} catch (SQLException sqle) {
-			System.out.println ("SQLException: " + sqle.getMessage());
-			System.out.println("Bad Gt Like Type");
+			System.out.println ("SQLException - Getting LikeType of Like: " + sqle.getMessage());
 			return false;
 		}
 		

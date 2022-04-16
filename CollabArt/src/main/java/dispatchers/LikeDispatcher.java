@@ -25,13 +25,11 @@ public class LikeDispatcher extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		String command = request.getParameter("command");
-		System.out.println(command);
 		int picId = 0;
 		String username = request.getParameter("username");
-		System.out.println(username);
+		
 		try {
 			picId = Integer.parseInt(request.getParameter("picId"));
-			System.out.println(picId);
 		} catch (NumberFormatException e) {
 			System.out.println ("LikeDispatcher Exception: " + e.getMessage());
 		}
