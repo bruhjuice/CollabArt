@@ -50,10 +50,10 @@ CREATE TABLE drawing (
 CREATE TABLE likes (
 	picId int NOT NULL,
     username varchar(150),
-    likeType Boolean,
-	PRIMARY KEY (`picId`),
-    FOREIGN KEY (picId) REFERENCES drawing(id),
-    FOREIGN KEY (username) REFERENCES users(username)
+    likeType boolean
+
+    -- FOREIGN KEY (picId) REFERENCES drawing(id), --
+    -- FOREIGN KEY (username) REFERENCES users(username) --
 );
 -- FOR EASY TESTING PURPOSES (GALLERY FRONTEND)
 
