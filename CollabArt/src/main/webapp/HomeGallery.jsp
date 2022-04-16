@@ -23,7 +23,7 @@
 const LIKED = 1;
 const DISLIKED = -1;
 const UNLIKED = 0;
-var likeState = [UNLIKED]; //this is to make it 1-indexed
+likeState = [UNLIKED]; //this is to make it 1-indexed
 </script>
 
 <title> Collabart | Home</title>
@@ -98,26 +98,17 @@ var likeState = [UNLIKED]; //this is to make it 1-indexed
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart1"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
 		<script> //figure out how to intialize this for each image we display, AKA change id = "1" 
+		/*
 			id = "1";
 			params = new URLSearchParams({
 				"command": "exist",
 				"picId": id,
 				"username": "user" //change this to username of cookie
-			})
+			});
 			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
 				.then(response => response.text())
-				.then(data => likeState.push(parseInt(data)))
-			console.log(likeState);
-			switch(likeState[parseInt(id)]) {
-			case LIKED:
-				
-				break;
-			case DISLIKED:
-				break;
-			case UNLIKED:
-				break;
-			default:
-			}
+				.then(data => likeState.push(parseInt(data)));
+			console.log(likeState[1]); */
 		</script>
 	</div>
 	<%if (!logIn)
@@ -131,12 +122,34 @@ var likeState = [UNLIKED]; //this is to make it 1-indexed
 
 	<!-- Script to read thumbs up and thumbs down: -->
 	<script>
-   let thumbsup = Array.from(document.getElementsByClassName("fa-thumbs-up"));
-   let thumbsdown = Array.from(document.getElementsByClassName("fa-thumbs-down"));
-   
-   console.log(thumbsup);
-   console.log(thumbsdown);
-   
+	let thumbsup = Array.from(document.getElementsByClassName("fa-thumbs-up"));
+	let thumbsdown = Array.from(document.getElementsByClassName("fa-thumbs-down"));
+	console.log(thumbsup);
+	console.log(thumbsdown);
+	
+	for (let i = 0; i < thumbsup.length; i++) {
+		let para = new URLSearchParams({
+			"command": "exist",
+			"picId": i + 1, //let's assume that each id of galart1 should correspond to 1, and is the first instance of thumbsup
+			"username": "user" //change this to username of cookie
+		});
+		
+		fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: para})
+			.then(response => response.text())
+			.then(data => {likeState.push(parseInt(data));
+				switch (likeState[i + 1]) {
+				case LIKED:
+					thumbsup[i].style.color = "blue";
+					thumbsdown[i].style.opacity = 0.5;
+					break;
+				case DISLIKED:
+					thumbsdown[i].style.color = "blue";
+					thumbsup[i].style.opacity = 0.5;
+					break;
+				}
+			})
+	}
+	
 	function handletup(event) {
 		id = event.target.parentElement.parentElement.id.substring(6);
 		switch(likeState[parseInt(id)]) {
@@ -174,7 +187,6 @@ var likeState = [UNLIKED]; //this is to make it 1-indexed
 		id = event.target.parentElement.parentElement.id.substring(6);
 		switch(likeState[parseInt(id)]) {
 		case DISLIKED:
-			console.log("remove");
 			params = new URLSearchParams({
 				"command": "remove",
 				"picId": id,
@@ -189,7 +201,6 @@ var likeState = [UNLIKED]; //this is to make it 1-indexed
 			likeState[parseInt(id)] = UNLIKED;
 			break;
 		default:
-			console.log("dislike");
 			params = new URLSearchParams({
 				"command": "dislike",
 				"picId": id,
