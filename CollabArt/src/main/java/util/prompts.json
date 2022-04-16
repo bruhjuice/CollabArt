@@ -181,7 +181,7 @@
         "background_image_path": "images/desert.jpg" 
     },
             {
-        "statement": "A mouse’s CATastrophic birthday party",
+        "statement": "A mouse's CATastrophic birthday party",
         "prompts": [
             "Draw a mouse with a birthday hat",
             "Draw a deliciously oozing chocolate cake",
@@ -253,9 +253,9 @@
         "background_image_path": "images/farm.jpg" 
     },
             {
-        "statement": "Crazy Coco Rockin’ the Look!",
+        "statement": "Crazy Coco Rockin' the Look!",
         "prompts": [
-            "Draw a coconut with a poppin’ swagger fit",
+            "Draw a coconut with a poppin swagger fit",
             "Draw a rockstar playing a guitar",
             "Draw a group of grooving palm trees",
             "Draw a brawl between a peanut and a cashew"
