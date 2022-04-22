@@ -12,7 +12,7 @@ import java.io.*;
 /**
  * Servlet implementation class PlayGameDispatcher
  */
-@WebServlet("/playGame")
+@WebServlet("/playgame")
 public class PlayGameDispatcher extends HttpServlet {
 
     /**

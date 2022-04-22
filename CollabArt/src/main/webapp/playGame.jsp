@@ -70,7 +70,7 @@
 <body>
 	
 	<script id="replace_with_navbar" src="js/nav.js"></script>
-		<form action = "playGame" method = "GET">
+		<form action = "playgame" method = "GET">
 			<div class="outer-container light-blue">
 				<img src="images/CollabArtLogo_Ver2.png">
 				<div class="input-container">
