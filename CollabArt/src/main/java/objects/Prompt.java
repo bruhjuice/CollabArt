@@ -1,4 +1,4 @@
-package util;
+package objects;
 import java.util.ArrayList;
 
 public class Prompt{
@@ -31,36 +31,5 @@ public class Prompt{
    
    public String toString() {
       return "PromptObject: "+statement+", "+prompts+", "+coordinates+", "+background_image_path;
-   }
-}
-
-class Coordinate{
-   private int top;
-   private int left;
-   private int bottom;
-   private int right;
-
-   public Coordinate(int top, int left, int bottom, int right) {
-      this.top = top;
-      this.left = left;
-      this.bottom = bottom;
-      this.right = right;
-   }
-   
-   public int getTop() {
-      return top;
-   }
-   public int getLeft() {
-      return left;
-   }
-   public int getBottom() {
-      return bottom;
-   }
-   public int getRight() {
-      return right;
-   }
-   
-   public String toString() {
-      return "Coordinates: "+top+", "+left+", "+bottom+", "+right;
    }
 }

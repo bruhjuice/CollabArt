@@ -1,7 +1,8 @@
 import { wsURL } from './constants.js'
+import { invalidRoomCode, noUsername, initSocket } from './utils.js'
+
 
 /* Variables */
-var socket
 var players = []
 var roomCode
 var username
@@ -18,26 +19,11 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 /* Check if parameters are valid and init socket */
 if (!params['room-code']) {
-	invalidRoomCode()
+	invalidRoomCode(socket)
 } else if (!params['username']) {
-	noUsername()
+	noUsername(socket)
 } else {
 	init()
-}
-
-/* Error functions */
-function invalidRoomCode() {
-	console.log('room code is invalid!')
-	if (socket) socket.close()
-}
-
-function noUsername() {
-	console.log('no username!!')
-}
-
-function usernameTaken() {
-	console.log('username already taken!')
-	if (socket) socket.close()
 }
 
 function init() {
@@ -46,58 +32,23 @@ function init() {
 	
 	document.getElementById('roomCodeDisplay').innerHTML = roomCode
 	
-	initSocket()
-}
-
-// Init sockets
-function initSocket() {
-	socket = new WebSocket(`${wsURL}/room/${roomCode}`)
-	socket.addEventListener('open', e => {
-		console.log('CONNECTED!!')
-		socket.send(JSON.stringify(
-			{ type: 'player-join', username: username }
-		))
-	})
-	
-	socket.addEventListener('message', e => {
-		//console.log(e.data)
-		let data 
-		try {
-			data = JSON.parse(e.data)
-		} catch (e) {
-			console.error('ERROR PARSING JSON')
-			return 
-		}
-		
-		if (data.error) {
-			switch(data.error) {
-				case "room-not-found":
-					invalidRoomCode()
-					break
-				case "username-taken":
-					usernameTaken()
-					break
-			}
-			return
-		} else {
-			console.log(data)
-			switch (data.type) {
-				case "update-players":
-					updatePlayers(data.players)
-					break;
-			}
-		}
+	initSocket(wsURL, roomCode, username, {
+		'update-players': updatePlayers,
+		started: startGame,
 	})
 }
 
 /* Event Listeners */
 startBtn.addEventListener('click', e => {
 	console.log('START BTN CLICKED')
+	window.socket.send(JSON.stringify(
+		{ type: 'start' }
+	))
 })
 
 /* Utility Functions */
-function updatePlayers(p) {
-	players = p
+function updatePlayers(data) {
+	players = data.players
 	const playersDiv = document.getElementById('players')
 	playersDiv.innerHTML = ''
 	
@@ -136,6 +87,10 @@ function updatePlayers(p) {
 			waitOwner.style.display = 'block'
 		}
 	}
+}
+
+function startGame() {
+	window.location.replace(`gameProgress.jsp?room-code=${roomCode}&username=${username}`)
 }
 
 /* HTML strings */

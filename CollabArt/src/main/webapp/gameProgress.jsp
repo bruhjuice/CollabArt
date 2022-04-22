@@ -41,6 +41,10 @@
 		
 	}
 	
+	#canvas-background {
+		background: radial-gradient(#fff 50%, #eee);
+	}
+	
 	#colors-container {
 		
 	}
@@ -127,12 +131,12 @@
 				<div class="left-rounded white">
 					Draw...
 				</div>
-				<div class="right-rounded blue" style="flex: 1;">
+				<div id="prompt-text" class="right-rounded blue" style="flex: 1;">
 					your mental health
 				</div>
 			</div>
 			
-			<div style="position: relative;">
+			<div id="canvas-background" style="position: relative;">
 				<div class="tape top-left"></div>
 				<div class="tape top-right"></div>
 				<div class="tape bottom-left"></div>
@@ -154,36 +158,7 @@
    </div>
 	
 
-	<script src="js/gameProgress.js"></script>
-	<script>
-		document.getElementById('submit-data').addEventListener('click', () => {
-			const params = new URLSearchParams({
-				'image-string': canvas.toDataURL()
-			})
-			console.log(params);
-			console.log(canvas.toDataURL())
-			fetch('/CollabArt/Fragment', { method: 'POST', body: params })
-				.then(res => res.text())//.then(data => console.log(data))
-				//Show image below
-				.then(data => document.querySelector("#completedimage").src="data:image/png;base64,"+data)
-				//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
-				
-				//Later on, need to send do stuff to get to test.jsp.
-				//Option a:
-				//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
-				/*
-				.then(var xhr = new XMLHttpRequest();
-					xhr.open("POST", "test.jsp", true);
-					xhr.setRequestHeader('Content-Type', 'application/json');
-					xhr.send(JSON.stringify({
-						  completedString: res.text()
-					}));)
-			   */
-					
-				//Option b: Add attribute then send window to new page
-				//.then(window.location.href="test.jsp");
-		})
-	</script>
+	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;

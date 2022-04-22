@@ -1,13 +1,54 @@
-/**
- * 
- */
+import { wsURL } from './constants.js'
+import { invalidRoomCode, noUsername, initSocket } from './utils.js'
 
 /* Global variables */
+var canvas
+var ctx
 var mouseDown = false
 var brushSize = 10
 var selectedColor = ''
 var lastX = 0
 var lastY = 0
+var roomCode
+var username
+
+/* Get URL search params */
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
+/* Check if parameters are valid and init socket */
+if (!params['room-code']) {
+	invalidRoomCode()
+} else if (!params['username']) {
+	noUsername()
+} else {
+	init()
+}
+
+function init() {
+	roomCode = params['room-code']
+	username = params['username']
+	
+	initSocket(wsURL, roomCode, username, {
+		'prompt': setPrompt,
+	})
+}
+
+function setPrompt(data) {
+	const { prompt, bounds } = data
+	const width = bounds.right - bounds.left
+	const height = bounds.bottom - bounds.top
+	
+	document.getElementById('prompt-text').innerHTML = prompt
+	if (width/height > 4/3) {
+		canvas.width = width * 800/width
+		canvas.height = height * 800/width		
+	} else {
+		canvas.width = width * 600/height
+		canvas.height = height * 600/height		
+	}
+}
 
 /* Colors */
 const colorsContainer = document.getElementById('colors-container')
@@ -74,9 +115,15 @@ function initColors() {
 		let classString = 'color-circle'
 		if (dark) classString += ' dark' // adds the 'dark' class if color is a dark color
 		if (i === 0) classString += ' selected' // select first color
-		colorsContainer.innerHTML += `
-			<div class="${classString}" style="background-color: ${hex}" onclick="select(${i})"></div>
-		`
+		
+		const colorSwatch = document.createElement('div')
+		colorSwatch.className = classString
+		colorSwatch.style = `background-color: ${hex}`
+		colorSwatch.addEventListener('click', e => {
+			select(i)
+		})
+		
+		colorsContainer.appendChild(colorSwatch)
 	}
 	selectedColor = colors[0].hex
 }
@@ -100,10 +147,8 @@ initColors()
 
 
 /* Canvas */ 
-const canvas = document.getElementById('drawing-canvas')
-const ctx = canvas.getContext('2d')
-ctx.fillStyle = 'white'
-ctx.fillRect(0, 0, canvas.width, canvas.height)
+canvas = document.getElementById('drawing-canvas')
+ctx = canvas.getContext('2d')
 
 /* Canvas events */
 canvas.addEventListener('mousedown', (e) => {
@@ -154,3 +199,32 @@ function paint(x, y, color) {
 		ctx.closePath()
 	}
 }
+
+/* Event handlers */
+document.getElementById('submit-data').addEventListener('click', () => {
+		const params = new URLSearchParams({
+			'image-string': canvas.toDataURL()
+		})
+		console.log(params);
+		console.log(canvas.toDataURL())
+		fetch('/CollabArt/Fragment', { method: 'POST', body: params })
+			.then(res => res.text())//.then(data => console.log(data))
+			//Show image below
+			.then(data => document.querySelector("#completedimage").src="data:image/png;base64,"+data)
+			//Note: image works! even adding the image! However, even tho image is right dimension, space to the right is all white now...
+			
+			//Later on, need to send do stuff to get to test.jsp.
+			//Option a:
+			//Add to post variable, send to test.jsp (and go there? How to go there instead of just geting data from there?)
+			/*
+			.then(var xhr = new XMLHttpRequest();
+				xhr.open("POST", "test.jsp", true);
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.send(JSON.stringify({
+					  completedString: res.text()
+				}));)
+		   */
+				
+			//Option b: Add attribute then send window to new page
+			//.then(window.location.href="test.jsp");
+	})

@@ -26,6 +26,10 @@ public class Artwork
       completed_image="";
    }
    
+   public Prompt getPrompt() {
+	   return prompt;
+   }
+   
    public void addFragment(String frag_url, int player_no) {
       fragment_urls[player_no-1]=frag_url;
    }

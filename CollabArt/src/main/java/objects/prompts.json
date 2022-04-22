@@ -1,41 +1,5 @@
 [
     {
-        "statement": "Draw a cat playing basketball",
-        "prompts": [
-            "Draw a cat head",
-            "Draw a cat body",
-            "Draw a basketball",
-            "Draw a basketball hoop"
-        ],
-        "coordinates": [
-            {
-                "left": 100,
-                "top": 100,
-                "right": 200,
-                "bottom": 200
-            },
-            {
-                "left": 100,
-                "top": 100,
-                "right": 200,
-                "bottom": 200
-            },
-            {
-                "left": 100,
-                "top": 100,
-                "right": 200,
-                "bottom": 200
-            },
-            {
-                "left": 100,
-                "top": 100,
-                "right": 200,
-                "bottom": 200
-            }
-        ],
-        "background_image_path": "images/cat_basketball" 
-    },
-    {
         "statement": "Breakfast in the Air",
         "prompts": [
             "Draw Gordon Ramsay holding a pan",

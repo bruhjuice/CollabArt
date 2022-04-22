@@ -7,7 +7,7 @@ public class Rooms {
 	
 	public static void createRoom(String roomCode) {
 		//System.out.println("Creating room " + roomCode);
-		rooms.put(roomCode, new Room());
+		rooms.put(roomCode, new Room(roomCode));
 	}
 	
 	public static boolean roomExists(String roomCode) {
