@@ -36,10 +36,8 @@
 			<img src = "images/CollabArtLogo_Ver2.png" id = "navLogo">
 			<a href = "HomeGallery.jsp" id = "galleryNav" > Gallery </a>
 			<a href="#" class="navText" id="create-room">Create Room</a>
-			<form id = "navJoin" action = "JOINROOMDISPATCHER" method = "GET">
-				<a href="#" onclick="$(this).closest('form').submit()" class="navText">Join Room</a>
-				<input type = "text" id = "roomCode" placeholder = "[type code]">
-			</form>
+			<a href="#" class="navText" id="join-room">Join Room</a>
+				
 		</div>
 		<div class = "navRight">
 		
