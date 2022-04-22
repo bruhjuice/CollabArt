@@ -143,8 +143,8 @@
 		</div>
 		<br>
 		<div id="button-container">
-			<button type="submit" class="buttons margin-right">Play Again?</button>
-			<button type="submit" class="buttons">Home</button>
+			<button type="submit" onclick="window.location='gameStart.jsp';" class="buttons margin-right">Play Again?</button>
+			<button type="submit" onclick="window.location='playGame.jsp';" class="buttons">Home</button>
 		</div>
 	</div>
 	<script src="js/gameProgress.js"></script>
