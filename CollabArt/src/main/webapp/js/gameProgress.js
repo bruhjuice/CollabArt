@@ -203,7 +203,9 @@ function paint(x, y, color) {
 /* Event handlers */
 document.getElementById('submit-data').addEventListener('click', () => {
 		const params = new URLSearchParams({
-			'image-string': canvas.toDataURL()
+			'image-string': canvas.toDataURL(),
+			username,
+			'room-code': roomCode,
 		})
 		console.log(params);
 		console.log(canvas.toDataURL())
