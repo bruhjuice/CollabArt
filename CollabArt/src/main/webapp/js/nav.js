@@ -14,6 +14,7 @@ fetch('navBar.jsp')
 
 function init() {	
 	document.getElementById('create-room').addEventListener('click', createRoom)
+	document.getElementById('join-room').addEventListener('click', e => window.location.replace('playGame.jsp'))
 }
 
 function createRoom() {

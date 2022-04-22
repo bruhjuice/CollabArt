@@ -70,17 +70,30 @@
 <body>
 	
 	<script id="replace_with_navbar" src="js/nav.js"></script>
-		<form action = "playgame" method = "GET">
-			<div class="outer-container light-blue">
-				<img src="images/CollabArtLogo_Ver2.png">
-				<div class="input-container">
-					<input class = "inputs" type = "text" id = "name" name = "name" placeholder = "Name">
-					<br>
-					<input class = "inputs" type = "text" id = "roomCode" name = "roomCode" placeholder = "Game Code">
-					<br>
-					<button type="submit" class="buttons">Play</button>
-				</div>
+	<form onsubmit="return joinRoom(event)">
+		<div class="outer-container light-blue">
+			<img src="images/CollabArtLogo_Ver2.png">
+			<div class="input-container">
+				<input class = "inputs" type = "text" id = "name" name = "name" placeholder = "Name">
+				<br>
+				<input class = "inputs" type = "text" id = "roomCode" name = "roomCode" placeholder = "Game Code">
+				<br>
+				<button type="submit" class="buttons">Play</button>
 			</div>
-		</form>
+		</div>
+	</form>
+		
+		
+	<script>
+	function joinRoom(e) {
+		e.preventDefault()
+		const name = document.getElementById('name').value
+		const roomCode = document.getElementById('roomCode').value
+		console.log('WHAT')
+		console.log(name, roomCode)
+		window.location.href = `gameStart.jsp?room-code=${roomCode}&username=${name}`
+		return false
+	}
+	</script>
 </body>
 </html>
