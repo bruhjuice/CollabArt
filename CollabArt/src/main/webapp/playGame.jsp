@@ -25,13 +25,9 @@
 		width: 38%;
 		text-align: center;
 		margin: auto;
-		padding-top: 3%;
+		padding: 3%;
 		border-radius: 70px;
 		box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
-	}
-	#button-container{
-		display: flex;
-		justify-content: center;
 	}
 	.buttons{
 		width: 300px;
@@ -58,27 +54,33 @@
 		font-size: 30px;
 	}
 	img{
-		width: 25%;
+		width: 20%;
 		display: block;
   		margin-left: auto;
   		margin-right: auto;
 	}
-	
+	form{
+    	margin:0px;
+    	padding:0px;
+    	width: 100%;
+		height: 100%;
+	}
 </style>
 </head>
 <body>
+	
 	<script id="replace_with_navbar" src="js/nav.js"></script>
-	<div class="outer-container light-blue">
-		<img src="images/CollabArtLogo_Ver2.png">
-		<div class="input-container">
-			<input class = "inputs" type = "text" name = "name" placeholder = "Name">
-			<br>
-			<input class = "inputs" type = "text" name = "roomCode" placeholder = "Game Code">
-			<br>
-			<div id="button-container">
-				<button type="submit" class="buttons">Play</button>
+		<form action = "playGame" method = "GET">
+			<div class="outer-container light-blue">
+				<img src="images/CollabArtLogo_Ver2.png">
+				<div class="input-container">
+					<input class = "inputs" type = "text" id = "name" name = "name" placeholder = "Name">
+					<br>
+					<input class = "inputs" type = "text" id = "roomCode" name = "roomCode" placeholder = "Game Code">
+					<br>
+					<button type="submit" class="buttons">Play</button>
+				</div>
 			</div>
-		</div>
-	</div>
+		</form>
 </body>
 </html>
