@@ -8,11 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import objects.Artwork;
+import objects.Coordinate;
+import objects.Prompt;
+import objects.Room;
+import objects.Rooms;
+
 import java.io.*;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Enumeration;
 
@@ -49,13 +57,21 @@ public class FragmentDispatcher extends HttpServlet {
        // Rest just get the returned dataString.
        
        String dataURL=request.getParameter("image-string");
-       System.out.println(dataURL);
-       /*for (Part part: request.getParts()) {
-    	   System.out.println(part);
-       }
-       System.out.println(request.getPart("image-string"));
-       System.out.println("done");*/
+       String username=request.getParameter("username");
+       String roomcode = request.getParameter("room-code");
+       Room room = Rooms.getRoom(roomcode);
+       int playerNo = room.getPlayerNumber(username);
+       Artwork artwork = room.getArtwork();
+       Prompt prompt = artwork.getPrompt();
+       String backgroundImage = prompt.getBackgroundImage();
+       ArrayList<Coordinate> coordinates = prompt.getCoordinates();
+       int left = coordinates.get(playerNo).getLeft();
+       int top = coordinates.get(playerNo).getTop();
+       int right = coordinates.get(playerNo).getRight();
+       int bottom = coordinates.get(playerNo).getBottom();
        
+       
+       System.out.println(dataURL);
        
        String base64Image = dataURL.split(",")[1];
        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
@@ -65,29 +81,26 @@ public class FragmentDispatcher extends HttpServlet {
        String usingSystemProperty = System.getProperty("user.dir");
        System.out.println("Current directory path using system property:- " + usingSystemProperty);
        
-       InputStream inputStream = FragmentDispatcher.class.getResourceAsStream("../images/farm.jpg");
+       InputStream inputStream = FragmentDispatcher.class.getResourceAsStream("../"+backgroundImage);
        
        BufferedImage bgImage = null;
+       BufferedImage rescaleImage = null;
        try {
           bgImage = ImageIO.read(inputStream);
+          rescaleImage = new BufferedImage(800,600, BufferedImage.TYPE_INT_RGB);
        } catch (IOException e) {
           e.printStackTrace();
        }
+       Graphics2D g2d = rescaleImage.createGraphics();
        
-       Graphics2D g2d = bgImage.createGraphics();
-       /*
-       g2d.setColor(new Color(85, 107, 47));
-       g2d.fillRect(10, 10, 100, 100);
-       g2d.dispose();
-       */
-       
-       //Parameters: image, xstart, ystart, width, height
-       g2d.drawImage(image, 30, 30, 320, 240, null);
+       //Parameters for drawImage: image, xstart, ystart, width, height       
+       g2d.drawImage(bgImage, 0, 0, 800, 600, null);
+       g2d.drawImage(image, left, top, right-left, bottom-top, null);
        g2d.dispose();
        
        //Convert back to base64
        ByteArrayOutputStream output = new ByteArrayOutputStream();
-       ImageIO.write(bgImage, "png", output);
+       ImageIO.write(rescaleImage, "png", output);
        String completeString = Base64.getEncoder().encodeToString(output.toByteArray());
        
        response.setContentType("text/plain");

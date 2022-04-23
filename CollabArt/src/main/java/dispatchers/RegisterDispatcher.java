@@ -95,8 +95,11 @@ public class RegisterDispatcher extends HttpServlet {
         			int row = ps.executeUpdate(); //the number of rows affected
 
                 	Cookie cookie = new Cookie("loggedIn", "true");
+                	Cookie cookie2 = new Cookie("playerName", name);
                 	cookie.setMaxAge(60 * 60);
+                	cookie2.setMaxAge(60 * 60);
                 	response.addCookie(cookie);
+                	response.addCookie(cookie2);
         			System.out.println(String.format("Row affected %d", row));
 
         		} catch (SQLException sqle) {

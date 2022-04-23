@@ -62,12 +62,49 @@
 </head>
 <body class="light-blue">
 	
+	
+   		 <%
+         Cookie cookie = null;
+         Cookie[] cookies = null;
+         boolean logIn = false;
+         String displayedName = "";
+         // Get an array of Cookies associated with the this domain
+         cookies = request.getCookies();
+      
+  			 if (cookies != null){
+  				for (int i = 0; i < cookies.length; i++){
+  					cookie = cookies[i];
+  					if((cookie.getName( )).equals("loggedIn")  )
+  						
+  					{
+  						
+ 						String cookieName = cookie.getValue();
+						if (cookieName.contentEquals("true"))
+						{
+	  						logIn = true;
+						}
+  					}
+  					if((cookie.getName( )).equals("playerName")  )
+  						
+  					{
+  						
+ 						 displayedName = cookie.getValue();
+
+  					}
+  					
+  				}
+  				
+  			}%>
+
+   
+	
+	
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<form onsubmit="return joinRoom(event)">
 		<div class="outer-container light-blue">
 			<img id="main-img" src="images/CollabArtLogo_Ver2.png">
 			<div class="input-container">
-				<input class = "inputs" type = "text" id = "username" placeholder = "Name">
+				<input class = "inputs" type = "text" id = "username" placeholder = "Name" value = <%= displayedName %> >
 				<br>
 				<input class = "inputs" type = "text" id = "roomCode" placeholder = "Game Code">
 				<br>
