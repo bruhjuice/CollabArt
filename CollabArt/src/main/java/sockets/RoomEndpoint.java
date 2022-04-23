@@ -73,9 +73,6 @@ public class RoomEndpoint {
 					// Get username
 					String username = (String)jsonObject.get("username");
 					
-					// Set username prop
-					properties.put("username", username);
-					
 					if (!room.isStarted()) {
 						// Add new user, if already in rooms array, return error
 						if (!room.addUser(new User(username))) {
@@ -84,12 +81,18 @@ public class RoomEndpoint {
 							return;
 						};
 						
+						// Set username prop
+						properties.put("username", username);
+						
 						// Send updated players array
 						jsonResult.put("type", "update-players");
 						jsonResult.put("players", room.getPlayers());
 						sendToRoom(session, roomCode, jsonResult.toString());
 						
 					} else {
+						// Set username prop
+						properties.put("username", username);
+						
 						// If room is started, send the player their prompt
 						sendPromptToUser(session, room, username);
 					}

@@ -12,8 +12,6 @@
 <title>playGame</title>
 <style>
 	.outer-container {
-		width: 100%;
-		height: 100%;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
@@ -24,10 +22,11 @@
 		height: 40%;
 		width: 38%;
 		text-align: center;
-		margin: auto;
+		margin: 0 auto;
 		padding: 3%;
 		border-radius: 70px;
 		box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
+		max-width: fit-content;
 	}
 	.buttons{
 		width: 300px;
@@ -43,7 +42,7 @@
 	}
 	.inputs{
 		margin-bottom: 30px;
-		width:420px;
+		max-width:420px;
 		height:40px;
 		border: 2px;
 		padding: 5px;
@@ -53,30 +52,24 @@
 		font-family: 'Irish Grover', cursive;
 		font-size: 30px;
 	}
-	img{
+	#main-img{
 		width: 20%;
 		display: block;
   		margin-left: auto;
   		margin-right: auto;
 	}
-	form{
-    	margin:0px;
-    	padding:0px;
-    	width: 100%;
-		height: 100%;
-	}
 </style>
 </head>
-<body>
+<body class="light-blue">
 	
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<form onsubmit="return joinRoom(event)">
 		<div class="outer-container light-blue">
-			<img src="images/CollabArtLogo_Ver2.png">
+			<img id="main-img" src="images/CollabArtLogo_Ver2.png">
 			<div class="input-container">
-				<input class = "inputs" type = "text" id = "name" name = "name" placeholder = "Name">
+				<input class = "inputs" type = "text" id = "username" placeholder = "Name">
 				<br>
-				<input class = "inputs" type = "text" id = "roomCode" name = "roomCode" placeholder = "Game Code">
+				<input class = "inputs" type = "text" id = "roomCode" placeholder = "Game Code">
 				<br>
 				<button type="submit" class="buttons">Play</button>
 			</div>
@@ -87,11 +80,10 @@
 	<script>
 	function joinRoom(e) {
 		e.preventDefault()
-		const name = document.getElementById('name').value
+		const username = document.getElementById('username').value
 		const roomCode = document.getElementById('roomCode').value
-		console.log('WHAT')
-		console.log(name, roomCode)
-		window.location.href = `gameStart.jsp?room-code=${roomCode}&username=${name}`
+		const path = `gameStart.jsp?room-code=` + roomCode + `&username=` + username
+		window.location.href = path
 		return false
 	}
 	</script>
