@@ -32,12 +32,22 @@ public class LogoutDispatcher extends HttpServlet {
 
     		PrintWriter out = response.getWriter();
     		for (Cookie aCookie : cookies)
+    		{
+    			
+    		
     			if((aCookie.getName( )).equals("loggedIn"))
     			{
     				aCookie.setMaxAge(0);
     				response.addCookie(aCookie);
     				out.print("Name = " + aCookie.getName( ) + ", Value = " + aCookie.getValue( )  + "<br/>");
     			}
+				if((aCookie.getName( )).equals("playerName"))
+				{
+					aCookie.setMaxAge(0);
+					response.addCookie(aCookie);
+					out.print("Name = " + aCookie.getName( ) + ", Value = " + aCookie.getValue( )  + "<br/>");
+				}
+    		}
     		out.println("</body>");
     		out.println("</html>");
     	}

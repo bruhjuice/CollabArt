@@ -59,8 +59,13 @@ public class LoginDispatcher extends HttpServlet {
 			{
 
 				Cookie cookie = new Cookie("loggedIn", "true");
+				Cookie cookie2 = new Cookie("playerName", username);
             	cookie.setMaxAge(60 * 60);
+            	cookie2.setMaxAge(60 * 60);
+
             	response.addCookie(cookie);
+            	response.addCookie(cookie2);
+
 			}
 
 		} catch (SQLException e) {
