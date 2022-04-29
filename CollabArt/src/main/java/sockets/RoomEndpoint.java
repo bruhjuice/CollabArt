@@ -90,11 +90,18 @@ public class RoomEndpoint {
 						sendToRoom(session, roomCode, jsonResult.toString());
 						
 					} else {
-						// Set username prop
-						properties.put("username", username);
-						
-						// If room is started, send the player their prompt
-						sendPromptToUser(session, room, username);
+					   while(true) {
+					      try {
+	                     // Set username prop
+	                     properties.put("username", username);                 
+	                     // If room is started, send the player their prompt
+	                     sendPromptToUser(session, room, username);
+	                     //If sendPromptToUser works, continue to break;
+	                     break;
+	                  }catch(Exception e) {
+	                     continue;
+	                  }   
+					   }
 					}
 					break;
 				case "start":
