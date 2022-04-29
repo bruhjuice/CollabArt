@@ -27,10 +27,6 @@
   				}
   				
   			}%>    
-    
-
-
-
 	<nav class = "navBar">
 		<div class = "navLeft">
 			<img src = "images/CollabArtLogo_Ver2.png" id = "navLogo">
