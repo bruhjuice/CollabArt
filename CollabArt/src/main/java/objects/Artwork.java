@@ -45,7 +45,18 @@ public class Artwork
       fragment_urls[player_no]=frag_url;
    }
    
-   public BufferedImage getCompleted() {
+   public boolean isCompleted() {
+	   for (int i = 0; i < fragment_urls.length; ++i) {
+		   if (fragment_urls[i] == null) {
+			   return false;
+		   }
+	   }
+	   return true;
+   }
+   
+   public String getCompleted() {
+	   /* Returns the compiled base64 string */
+	   
       //get bufferedImage from background
       //get bufferedImage from fragments
       //piece together completed image
@@ -54,10 +65,6 @@ public class Artwork
       Prompt prompt = getPrompt();
       String backgroundImage = prompt.getBackgroundImage();
       ArrayList<Coordinate> coordinates = prompt.getCoordinates();
-      
-      
-      String usingSystemProperty = System.getProperty("user.dir");
-      System.out.println("Current directory path using system property:- " + usingSystemProperty);
       
       InputStream inputStream = Artwork.class.getResourceAsStream("../"+backgroundImage);
       
@@ -115,7 +122,7 @@ public class Artwork
       completed_image = Base64.getEncoder().encodeToString(output.toByteArray());
       
       //Can change so that it returns a bufferedimage instead of null. Alternatively, make getCompleted return a string
-      return null;
+      return completed_image;
    }
    
 }
