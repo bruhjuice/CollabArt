@@ -105,6 +105,14 @@ public class RoomEndpoint {
 					jsonResult.put("type", "started");
 					sendToRoom(session, roomCode, jsonResult.toString());
 					break;
+				case "submitted":
+					// Check if artwork has all fragments
+					if (room.getArtwork().isCompleted()) {
+						System.out.println("COMPLETED!!!");
+						
+						String completed = room.getArtwork().getCompleted();
+						System.out.println(completed);
+					}
 				}
 				
 			} catch (org.json.simple.parser.ParseException e) {
