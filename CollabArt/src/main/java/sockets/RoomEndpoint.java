@@ -90,11 +90,18 @@ public class RoomEndpoint {
 						sendToRoom(session, roomCode, jsonResult.toString());
 						
 					} else {
-						// Set username prop
-						properties.put("username", username);
-						
-						// If room is started, send the player their prompt
-						sendPromptToUser(session, room, username);
+					   while(true) {
+					      try {
+	                     // Set username prop
+	                     properties.put("username", username);                 
+	                     // If room is started, send the player their prompt
+	                     sendPromptToUser(session, room, username);
+	                     //If sendPromptToUser works, continue to break;
+	                     break;
+	                  }catch(Exception e) {
+	                     continue;
+	                  }   
+					   }
 					}
 					break;
 				case "start":
@@ -105,6 +112,14 @@ public class RoomEndpoint {
 					jsonResult.put("type", "started");
 					sendToRoom(session, roomCode, jsonResult.toString());
 					break;
+				case "submitted":
+					// Check if artwork has all fragments
+					if (room.getArtwork().isCompleted()) {
+						System.out.println("COMPLETED!!!");
+						
+						String completed = room.getArtwork().getCompleted();
+						System.out.println(completed);
+					}
 				}
 				
 			} catch (org.json.simple.parser.ParseException e) {
