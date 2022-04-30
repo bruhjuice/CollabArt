@@ -137,7 +137,7 @@
 				<div class="tape top-right"></div>
 				<div class="tape bottom-left"></div>
 				<div class="tape bottom-right"></div>
-				<img src="images/spongebob.jpg">
+				<img id="final-img" src="images/spongebob.jpg">
 				</img>
 			</div>			
 		</div>
@@ -147,6 +147,6 @@
 			<button type="submit" onclick="window.location='playGame.jsp';" class="buttons">Home</button>
 		</div>
 	</div>
-	<script src="js/gameProgress.js"></script>
+	<script type="module" src="js/gameEnd.js"></script>
 </body>
 </html>

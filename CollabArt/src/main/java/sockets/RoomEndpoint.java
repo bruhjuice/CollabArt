@@ -110,9 +110,12 @@ public class RoomEndpoint {
 					if (room.getArtwork().isCompleted()) {
 						System.out.println("COMPLETED!!!");
 						
-						String completed = room.getArtwork().getCompleted();
-						System.out.println(completed);
+						room.getArtwork().getCompleted();
+						
+						jsonResult.put("type", "completed");
+						sendToRoom(session, roomCode, jsonResult.toString());
 					}
+					break;
 				}
 				
 			} catch (org.json.simple.parser.ParseException e) {

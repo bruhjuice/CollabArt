@@ -32,6 +32,7 @@ function init() {
 	
 	initSocket(wsURL, roomCode, username, {
 		'prompt': setPrompt,
+		completed: gameEnd,
 	})
 }
 
@@ -48,6 +49,10 @@ function setPrompt(data) {
 		canvas.width = width * 600/height
 		canvas.height = height * 600/height		
 	}
+}
+
+function gameEnd() {
+	window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
 }
 
 /* Colors */

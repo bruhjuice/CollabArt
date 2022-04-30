@@ -29,12 +29,12 @@ public class Artwork
    public Artwork() {
 	  prompt = PromptPool.getPrompt();
       fragment_urls = new String[4];
-      completed_image="";
+      completed_image=null;
    }
    public Artwork(Prompt prompt, String background_image_url) {
       this.prompt=prompt;
       fragment_urls = new String[4];
-      completed_image="";
+      completed_image=null;
    }
    
    public Prompt getPrompt() {
@@ -55,6 +55,10 @@ public class Artwork
    }
    
    public String getCompleted() {
+	   if (completed_image != null) {
+		   System.out.println("already completed the image");
+		   return completed_image;
+	   }
 	   /* Returns the compiled base64 string */
 	   
       //get bufferedImage from background
@@ -121,6 +125,7 @@ public class Artwork
       }
       completed_image = Base64.getEncoder().encodeToString(output.toByteArray());
       
+      //System.out.println("COMPLETED IMAGE: " + completed_image);
       //Can change so that it returns a bufferedimage instead of null. Alternatively, make getCompleted return a string
       return completed_image;
    }
