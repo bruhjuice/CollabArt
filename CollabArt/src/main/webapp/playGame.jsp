@@ -115,6 +115,17 @@
 		
 		
 	<script>
+	/* Get URL search params */
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+	  get: (searchParams, prop) => searchParams.get(prop),
+	});
+	
+	var create = Boolean(params['create'])
+	if (create) {
+		document.getElementById('roomCode').value = params['room-code']
+		document.getElementById('roomCode').style.display = 'none'
+	}
+	
 	function joinRoom(e) {
 		e.preventDefault()
 		const username = document.getElementById('username').value

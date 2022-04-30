@@ -19,8 +19,7 @@ function init() {
 
 function createRoom() {
 	fetch(`${serverURL}/create-room`, { method: 'POST' }).then(res => res.json()).then(({ roomCode }) => {
-		const username = makeid(5)
-		window.location.replace(`gameStart.jsp?room-code=${roomCode}&username=${username}`)
+		window.location.replace(`playGame.jsp?room-code=${roomCode}&create=true`)
 	})
 }
 
