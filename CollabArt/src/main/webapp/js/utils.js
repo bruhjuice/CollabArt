@@ -52,4 +52,9 @@ export const initSocket = (wsURL, roomCode, username, functions) => {
 			functions[data.type](data)
 		}
 	})
+	
+	window.socket.addEventListener('close', e => {
+		console.log('CLOSED!!')
+		window.socket = new WebSocket(`${wsURL}/room/${roomCode}`)
+	})
 }

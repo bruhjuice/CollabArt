@@ -29,7 +29,7 @@ function init() {
 		username,
 		'room-code': roomCode,
 	})
- 	fetch('/CollabArt/FinalImage', { method: 'POST', body })
+ 	fetch('/FinalImage', { method: 'POST', body })
 	 	.then(res => res.json())
 	 	.then(data => {
 			//console.log('DATA: ', data)
