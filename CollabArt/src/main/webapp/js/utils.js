@@ -19,12 +19,21 @@ export const initSocket = (wsURL, roomCode, username, functions) => {
 	 * 
 	 * functions is of the form { 'message-type': function(data) } 
 	 **/
+	 
+	var pingInterval
+	
 	window.socket = new WebSocket(`${wsURL}/room/${roomCode}`)
 	window.socket.addEventListener('open', e => {
 		console.log('CONNECTED!!')
 		socket.send(JSON.stringify(
 			{ type: 'player-join', username: username }
 		))
+		
+		pingInterval = setInterval(() => {
+			socket.send(JSON.stringify(
+				{ type: 'PING' },
+			))
+		}, 30000)
 	})
 	
 	window.socket.addEventListener('message', e => {
@@ -55,6 +64,6 @@ export const initSocket = (wsURL, roomCode, username, functions) => {
 	
 	window.socket.addEventListener('close', e => {
 		console.log('CLOSED!!')
-		initSocket(wsURL, roomCode, username, functions)
+		clearInterval(pingInterval)
 	})
 }

@@ -20,7 +20,17 @@
 </head>
 
 <body>
+	<%
+	String error = (String) request.getAttribute("error");
+	if (error != null && error.equals("yes")) {
+		System.out.println("No");
+	}
+	%>
 
+	<div class = "alert">
+		<span class = "closebtn" onclick = "this.parentElement.style.display = 'none';">&times;</span>
+		Alert testing
+	</div>
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<form action = "login" method = "GET" class = "loginFormLeft">
 	<div id = "loginBox">
@@ -29,9 +39,15 @@
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
-	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = "" placeholder = "Username">
+	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = "" placeholder = "Username" required
+		oninvalid="this.setCustomValidity('Please fill out username')"
+  		oninput="this.setCustomValidity('')"/>
 	<br>
-	<input class = "regForm" type = "password" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password">
+
+	<input class = "regForm" type = "password" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password" required
+		oninvalid="this.setCustomValidity('Please fill out password')"
+  		oninput="this.setCustomValidity('')"/>
+		  
 	<br>
 	<button type="submit" id = "signInButton">Sign In</button>
 	
@@ -47,12 +63,6 @@
 	</form>
 <!-- TODO -->
 
-     
-
-                
-
-        
-        
         
 </body>
 </html>
