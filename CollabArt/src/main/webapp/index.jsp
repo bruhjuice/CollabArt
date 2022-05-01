@@ -28,18 +28,7 @@
 		box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
 		max-width: fit-content;
 	}
-	.buttons{
-		width: 300px;
-		height: 90px;
-		background-color: #FCEFC1;
-		border: 4px solid #FFA353;
-		box-sizing: border-box;
-		box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);
-		border-radius: 50px;
-		cursor: pointer;
-		font-size: 40px;
-		font-family: 'Irish Grover', cursive;
-	}
+	
 	.inputs{
 		margin-bottom: 30px;
 		max-width:420px;
@@ -104,9 +93,9 @@
 		<div class="outer-container light-blue">
 			<img id="main-img" src="images/CollabArtLogo_Ver2.png">
 			<div class="input-container">
-				<input class = "inputs" type = "text" id = "username" placeholder = "Name" value = <%= displayedName %> >
+				<input autocomplete="off" class = "inputs" type = "text" id = "username" placeholder = "Name" value = <%= displayedName %> >
 				<br>
-				<input class = "inputs" type = "text" id = "roomCode" placeholder = "Game Code">
+				<input autocomplete="off" class = "inputs" type = "text" id = "roomCode" placeholder = "Game Code">
 				<br>
 				<button type="submit" class="buttons">Play</button>
 			</div>

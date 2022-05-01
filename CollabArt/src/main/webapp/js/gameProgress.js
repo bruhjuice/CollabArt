@@ -5,7 +5,7 @@ import { invalidRoomCode, noUsername, initSocket } from './utils.js'
 var canvas
 var ctx
 var mouseDown = false
-var brushSize = 10
+var brushSize = 5
 var selectedColor = ''
 var lastX = 0
 var lastY = 0
@@ -224,6 +224,12 @@ document.getElementById('submit-data').addEventListener('click', () => {
 					window.socket.send(JSON.stringify({
 						type: 'submitted'
 					}))
+					
+					document.getElementById('submit-btn-container').innerHTML = 'Waiting for others...'
 				}
 			})
 	})
+	
+document.getElementById('clear-btn').addEventListener('click', () => {
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
+})

@@ -118,13 +118,16 @@
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 
 	<div class="container">
-		<div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
 			<div id="colors-container">
 			</div>
-			<div style="margin-top: 36px;">
+			<div style="margin-top: 36px; display: flex; justify-content: center;">
+				<div>
 				Brush Size:<br/>
 				<input id="brush-size-slider" type="range" min="5" max="50" value="5" step="5">
+				</div>	
 			</div>
+			<button id="clear-btn" class="buttons-red" style="margin-top: 24px">Clear</button>
 		</div>
 		<div id="drawing-container">
 			<div class="prompt-container">
@@ -145,7 +148,9 @@
 				</canvas>
 			</div>
 			
-			<button id="submit-data">Submit data!</button>
+			<div id="submit-btn-container" style="margin-top: 24px;">
+				<button id="submit-data" class="buttons">Submit!</button>
+			</div>
 		</div>
 		<div id="right-container">
 			<div id="timer">

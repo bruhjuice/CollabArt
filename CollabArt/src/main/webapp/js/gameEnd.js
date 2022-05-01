@@ -34,8 +34,26 @@ function init() {
 	 	.then(data => {
 			//console.log('DATA: ', data)
 			const dataURL = 'data:image/png;base64,' + data['image-string']
-			console.log(dataURL)
 			document.getElementById('final-img').src = dataURL
+			
+			const players = data.players
+			const statement = data.statement
+			
+			document.getElementById('statement').innerHTML = statement
+			
+			const playersContainer = document.getElementById('players')
+			playersContainer.innerHTML = ''
+			for (let i = 0; i < players.length; ++i) {
+				let c = ''
+				if (players[i].username === username) c = 'cur-player'
+				
+				playersContainer.innerHTML += `
+				<span style="display: inline-flex; align-items: center">
+					<img class="playerCircle" src="images/Avatar${i}.png"/> 
+					<span class="${c}">${players[i].username}</span>
+				</span>
+				`
+			}
 		})
 } 
 

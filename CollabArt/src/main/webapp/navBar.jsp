@@ -32,7 +32,7 @@
 			<img src = "images/CollabArtLogo_Ver2.png" id = "navLogo">
 			<a href = "HomeGallery.jsp" id = "galleryNav" > Gallery </a>
 			<a href="#" class="navText" id="create-room">Create Room</a>
-			<a href="playGame.jsp" class="navText" id="join-room">Join Room</a>
+			<a href="#" class="navText" id="join-room">Join Room</a>
 				
 		</div>
 		<div class = "navRight">

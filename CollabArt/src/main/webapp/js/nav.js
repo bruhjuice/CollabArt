@@ -14,12 +14,12 @@ fetch('navBar.jsp')
 
 function init() {	
 	document.getElementById('create-room').addEventListener('click', createRoom)
-	document.getElementById('join-room').addEventListener('click', e => window.location.replace('playGame.jsp'))
+	document.getElementById('join-room').addEventListener('click', e => window.location.replace('index.jsp'))
 }
 
 function createRoom() {
 	fetch(`${serverURL}/create-room`, { method: 'POST' }).then(res => res.json()).then(({ roomCode }) => {
-		window.location.replace(`playGame.jsp?room-code=${roomCode}&create=true`)
+		window.location.replace(`index.jsp?room-code=${roomCode}&create=true`)
 	})
 }
 

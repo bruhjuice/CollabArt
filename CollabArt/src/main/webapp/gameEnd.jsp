@@ -23,8 +23,8 @@
 		line-height: 120px;
 	}
 	img{
-		width: 480px;
-		height: 300px;
+		width: 800px;
+		height: 600px;
 	}
 	.container{
 		display: flex;
@@ -74,18 +74,7 @@
 	button.margin-right{
 		margin-right:20px;
 	}
-	.buttons{
-		width: 210px;
-		height: 70px;
-		background-color: #FFCDCD;
-		border: 3px solid #FFACAC;
-		box-sizing: border-box;
-		box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.5);
-		border-radius: 50px;
-		cursor: pointer;
-		font-size: 22px;
-		font-family: 'Irish Grover', cursive;
-	}
+	
 	.playerCircle {
 		width: 50px;
 		height: 50px;
@@ -102,7 +91,9 @@
 		
 		box-shadow: 5px 10px 5px gray;
 	}
-	
+	.cur-player {
+		color: #76BF7D;
+	}
 </style>
 </head>
 <body>
@@ -110,25 +101,27 @@
 
 	<div class="outer-container light-blue">
 		<div id="title">
-			Your Masterpiece...
+			"<span id="statement">Masterpiece</span>"
 		</div>
 		<div id="artist-container">
 			<p style="font-size: 25px;">Artists:</p>
-			<span style="display: inline-flex; align-items: center">
-				<img class="playerCircle" src="images/Avatar1.png"/> 
-				Max
-			</span>
-			<span style="display: inline-flex; align-items: center">
-				<img class="playerCircle" src="images/Avatar2.png"/> 
-				Karina
-			</span>
-			<span style="display: inline-flex; align-items: center">
-				<img class="playerCircle" src="images/Avatar3.png"/> 
-				Ed
-			</span>
-			<span style="display: inline-flex; align-items: center">
-				<img class="playerCircle" src="images/Avatar3.png"/> 
-				MiruBiru
+			<span id="players">
+				<span style="display: inline-flex; align-items: center">
+					<img class="playerCircle" src="images/Avatar0.png"/> 
+					<span class="cur-player">Max</span>
+				</span>
+				<span style="display: inline-flex; align-items: center">
+					<img class="playerCircle" src="images/Avatar1.png"/> 
+					Karina
+				</span>
+				<span style="display: inline-flex; align-items: center">
+					<img class="playerCircle" src="images/Avatar2.png"/> 
+					Ed
+				</span>
+				<span style="display: inline-flex; align-items: center">
+					<img class="playerCircle" src="images/Avatar3.png"/> 
+					MiruBiru
+				</span>
 			</span>
 		</div>
 		<div id="drawing-container">
@@ -143,8 +136,8 @@
 		</div>
 		<br>
 		<div id="button-container">
-			<button type="submit" onclick="window.location='gameStart.jsp';" class="buttons margin-right">Play Again?</button>
-			<button type="submit" onclick="window.location='playGame.jsp';" class="buttons">Home</button>
+			<!-- <button type="submit" onclick="window.location='gameStart.jsp';" class="buttons-red margin-right">Play Again?</button>-->
+			<button type="submit" onclick="window.location='index.jsp';" class="buttons-red">Home</button>
 		</div>
 	</div>
 	<script type="module" src="js/gameEnd.js"></script>

@@ -34,11 +34,16 @@ public class FinalImageDispatcher extends HttpServlet {
     	Room room = Rooms.getRoom(roomcode);
     	Artwork artwork = room.getArtwork();
     	String dataURL = artwork.getCompleted();
+    	String statement = artwork.getPrompt().getStatement();
     	
     	response.setContentType("application/json");
     	PrintWriter writer = response.getWriter();
     	JSONObject jsonObject = new JSONObject();
+    	
     	jsonObject.put("image-string", dataURL);
+    	jsonObject.put("statement", statement);
+    	jsonObject.put("players", room.getPlayers());
+    	
     	writer.append(jsonObject.toString());
     }
 }
