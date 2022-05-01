@@ -43,9 +43,11 @@
 		oninvalid="this.setCustomValidity('Please fill out username')"
   		oninput="this.setCustomValidity('')"/>
 	<br>
+
 	<input class = "regForm" type = "password" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password" required
 		oninvalid="this.setCustomValidity('Please fill out password')"
   		oninput="this.setCustomValidity('')"/>
+		  
 	<br>
 	<button type="submit" id = "signInButton">Sign In</button>
 	

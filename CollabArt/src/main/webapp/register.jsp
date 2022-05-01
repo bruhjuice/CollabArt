@@ -33,9 +33,9 @@
 	<div id = "loginBoxFields">
 	<input class = "regForm" type = "text" id = "loginEmail" name = "registerName" placeholder = "Username">
 	<br>
-	<input class = "regForm" type = "text" id = "loginPassword" name = "registerPassword" placeholder = "Password">
+	<input class = "regForm" type = "password" id = "loginPassword" name = "registerPassword" placeholder = "Password">
 	<br>
-	<input class = "regForm" type = "text" id = "loginPassword" name = "confirmPassword" placeholder = "Confirm Password">
+	<input class = "regForm" type = "password" id = "loginPassword" name = "confirmPassword" placeholder = "Confirm Password">
 	<br>
 	<button type="submit" id = "signInButton">Create Account</button>
 	
