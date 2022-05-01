@@ -1,0 +1,399 @@
+[
+    {
+        "statement": "Breakfast in the Air",
+        "prompts": [
+            "Draw Gordon Ramsay holding a pan",
+            "Draw a table with lots of bacon on it",
+            "Draw some pancakes, eggs and LOTS of bacon",
+            "Draw a petrified flying pig"
+        ],
+        "coordinates": [
+            {
+                "left": 30,
+                "top": 205,
+                "right": 250,
+                "bottom": 585
+            },
+            {
+                "left": 310,
+                "top": 270,
+                "right": 755,
+                "bottom": 545
+            },
+            {
+                "left": 280,
+                "top": 30,
+                "right": 785,
+                "bottom": 170
+            },
+            {
+                "left": 20,
+                "top": 25,
+                "right": 260,
+                "bottom": 180
+            }
+        ],
+        "background_image_path": "images/kitchen.jpg" 
+    },
+        {
+        "statement": "LeONarDo dA ViNKi",
+        "prompts": [
+            "Draw the Mona Lisa...Or at least try",
+            "Draw Shrek holding a paintbrush intently",
+            "Draw a confused Renaissance man looking to his left",
+            "Draw your confused self looking to the right"
+        ],
+        "coordinates": [
+            {
+                "left": 190,
+                "top": 130,
+                "right": 310,
+                "bottom": 275
+            },
+            {
+                "left": 350,
+                "top": 100,
+                "right": 570,
+                "bottom": 485
+            },
+            {
+                "left": 20,
+                "top": 80,
+                "right": 165,
+                "bottom": 505
+            },
+            {
+                "left": 590,
+                "top": 60,
+                "right": 785,
+                "bottom": 560
+            }
+        ],
+        "background_image_path": "images/art_studio.jpg" 
+    },
+    
+            {
+        "statement": "To melt or not to melt, that is the question",
+        "prompts": [
+            "Draw Frosty the snowman holding a sunscreen bottle",
+            "Draw a sad, half-melted snowman",
+            "Draw a cute family of coconuts sitting on a towel",
+            "Draw a colorful beach umbrella"
+        ],
+        "coordinates": [
+            {
+                "left": 230,
+                "top": 90,
+                "right": 475,
+                "bottom": 480
+            },
+            {
+                "left": 5,
+                "top": 340,
+                "right": 225,
+                "bottom": 575
+            },
+            {
+                "left": 500,
+                "top": 385,
+                "right": 760,
+                "bottom": 575
+            },
+            {
+                "left": 490,
+                "top": 30,
+                "right": 790,
+                "bottom": 370
+            }
+        ],
+        "background_image_path": "images/beach.jpg" 
+    },
+            {
+        "statement": "Lost in Egypt",
+        "prompts": [
+            "Draw a confused penguin",
+            "Draw a camel",
+            "Draw an angry sun looking downwards",
+            "Draw people building pyramids"
+        ],
+        "coordinates": [
+            {
+                "left": 400,
+                "top": 340,
+                "right": 550,
+                "bottom": 570
+            },
+            {
+                "left": 40,
+                "top": 315,
+                "right": 365,
+                "bottom": 540
+            },
+            {
+                "left": 340,
+                "top": 25,
+                "right": 565,
+                "bottom": 130
+            },
+            {
+                "left": 505,
+                "top": 60,
+                "right": 785,
+                "bottom": 230
+            }
+        ],
+        "background_image_path": "images/desert.jpg" 
+    },
+            {
+        "statement": "A mouse's CATastrophic birthday party",
+        "prompts": [
+            "Draw a mouse with a birthday hat",
+            "Draw a deliciously oozing chocolate cake",
+            "Draw a scary cat ready to pounce",
+            "Draw a friendly mouse holding a balloon"
+        ],
+        "coordinates": [
+            {
+                "left": 285,
+                "top": 335,
+                "right": 425,
+                "bottom": 535
+            },
+            {
+                "left": 155,
+                "top": 260,
+                "right": 285,
+                "bottom": 395
+            },
+            {
+                "left": 285,
+                "top": 85,
+                "right": 630,
+                "bottom": 305
+            },
+            {
+                "left": 425,
+                "top": 305,
+                "right": 572,
+                "bottom": 587
+            }
+        ],
+        "background_image_path": "images/birthday.png" 
+    },
+            {
+        "statement": "Vincent Van Goat",
+        "prompts": [
+            "Draw a goat holding a paintbrush, facing left",
+            "Draw Starry Night (to the best of your ability)",
+            "Draw a flabbergasted farmer looking right",
+            "Draw a flying pig"
+        ],
+        "coordinates": [
+            {
+                "left": 250,
+                "top": 155,
+                "right": 445,
+                "bottom": 545
+            },
+            {
+                "left": 470,
+                "top": 205,
+                "right": 780,
+                "bottom": 420
+            },
+            {
+                "left": 55,
+                "top": 110,
+                "right": 235,
+                "bottom": 570
+            },
+            {
+                "left": 500,
+                "top": 30,
+                "right": 745,
+                "bottom": 170
+            }
+        ],
+        "background_image_path": "images/farm.jpg" 
+    },
+            {
+        "statement": "Crazy Coco Rockin' the Look!",
+        "prompts": [
+            "Draw a coconut with a poppin swagger fit",
+            "Draw a rockstar playing a guitar",
+            "Draw a group of grooving palm trees",
+            "Draw a brawl between a peanut and a cashew"
+        ],
+        "coordinates": [
+            {
+                "left": 300,
+                "top": 200,
+                "right": 410,
+                "bottom": 300
+            },
+            {
+                "left": 60,
+                "top": 120,
+                "right": 240,
+                "bottom": 370
+            },
+            {
+                "left": 540,
+                "top": 105,
+                "right": 775,
+                "bottom": 570
+            },
+            {
+                "left": 60,
+                "top": 420,
+                "right": 480,
+                "bottom": 570
+            }
+        ],
+        "background_image_path": "images/beach_concert.jpg" 
+    },
+            {
+        "statement": "Once Upon a Time",
+        "prompts": [
+            "Draw a noble knight in shining armor",
+            "Draw the Dragon on left of a mountain of gold",
+            "Draw the Princess, the damsel in distress",
+            "Draw an obedient horse"
+        ],
+        "coordinates": [    
+            {
+                "left": 145,
+                "top": 150,
+                "right": 290,
+                "bottom": 365
+            },
+            {
+                "left": 385,
+                "top": 165,
+                "right": 600,
+                "bottom": 495
+            },
+            {
+                "left": 645,
+                "top": 175,
+                "right": 750,
+                "bottom": 475
+            },
+            {
+                "left": 50,
+                "top": 395,
+                "right": 320,
+                "bottom": 530
+            }
+        ],
+        "background_image_path": "images/fantasy.png" 
+    },
+            {
+        "statement": "Lucky Charms",
+        "prompts": [
+            "Draw a pot of gold at the end of a rainbow",
+            "Draw a wide-eyed unicorn",
+            "Draw a leprechaun waving a pitchfork",
+            "Draw a dragon breathing fire"
+        ],
+        "coordinates": [
+            {
+                "left": 20,
+                "top": 350,
+                "right": 240,
+                "bottom": 570
+            },
+            {
+                "left": 365,
+                "top": 410,
+                "right": 585,
+                "bottom": 570
+            },
+            {
+                "left": 260,
+                "top": 500,
+                "right": 335,
+                "bottom": 575
+            },
+            {
+                "left": 450,
+                "top": 50,
+                "right": 620,
+                "bottom": 240
+            }
+        ],
+        "background_image_path": "images/farm.jpg" 
+    },
+                {
+        "statement": "Carnival Kerfuffle",
+        "prompts": [
+            "Draw an elephant escaping from a cage",
+            "Draw a performer juggling on a unicycle",
+            "Draw Pennywise with his mouth wide open",
+            "Draw a monkey stealing a balloon from a bystander"
+        ],
+        "coordinates": [
+            {
+                "left": 475,
+                "top": 300,
+                "right": 795,
+                "bottom": 600
+            },
+            {
+                "left": 0,
+                "top": 240,
+                "right": 120,
+                "bottom": 465
+            },
+            {
+                "left": 135,
+                "top": 260,
+                "right": 260,
+                "bottom": 470
+            },
+            {
+                "left": 260,
+                "top": 400,
+                "right": 460,
+                "bottom": 600
+            }
+        ],
+        "background_image_path": "images/carnival.png" 
+    },
+            {
+        "statement": "Just a Normal Dinner",
+        "prompts": [
+            "Draw a scrumptious plate of roast beef",
+            "Draw a fancy bottle of champagne",
+            "Draw a terrified person running",
+            "Draw a pig on a chair holding a fork"
+        ],
+        "coordinates": [
+            {
+                "left": 190,
+                "top": 350,
+                "right": 310,
+                "bottom": 460
+            },
+            {
+                "left": 520,
+                "top": 350,
+                "right": 595,
+                "bottom": 470
+            },
+            {
+                "left": 340,
+                "top": 435,
+                "right": 450,
+                "bottom": 495
+            },
+            {
+                "left": 325,
+                "top": 220,
+                "right": 475,
+                "bottom": 430
+            }
+        ],
+        "background_image_path": "images/dining_table.png" 
+    }
+]
