@@ -1,2 +1,3 @@
-export const serverURL = '/CollabArt'
-export const wsURL = 'ws://localhost:8080/CollabArt'
+export const serverURL = ''
+const HOST = location.origin.replace(/^http/, 'ws')
+export const wsURL = HOST

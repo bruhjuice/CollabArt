@@ -1,4 +1,4 @@
-const serverURL = '/CollabArt'
+const serverURL = ''
 
 fetch('navBar.jsp')
 .then(res => res.text())

@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -jar CollabArt/target/dependency/webapp-runner.jar --port $PORT CollabArt/target/*.war
