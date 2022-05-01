@@ -42,7 +42,10 @@
 	}
 	
 	#canvas-background {
-		background: radial-gradient(#fff 50%, #eee);
+		background: #ddd; /*radial-gradient(#eee 50%, #ddd);*/
+		-moz-box-shadow:    inset 0 0 20px #aaa;
+	   -webkit-box-shadow: inset 0 0 20px #aaa;
+	   box-shadow:         inset 0 0 20px #aaa;
 	}
 	
 	#colors-container {
