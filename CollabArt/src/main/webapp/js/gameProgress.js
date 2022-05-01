@@ -214,7 +214,7 @@ document.getElementById('submit-data').addEventListener('click', () => {
 		})
 		console.log(params);
 		console.log(canvas.toDataURL())
-		fetch('/CollabArt/Fragment', { method: 'POST', body: params })
+		fetch('/Fragment', { method: 'POST', body: params })
 			.then(res => res.json())//.then(data => console.log(data))
 			//Show image below
 			.then(data => {
