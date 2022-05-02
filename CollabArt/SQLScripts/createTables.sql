@@ -1,9 +1,5 @@
-DROP DATABASE IF EXISTS CollabArt;
-CREATE DATABASE CollabArt;
-USE CollabArt;
-
-DROP TABLE IF EXISTS drawing, likes;
-
+USE heroku_6a11113fbc7e4d0;
+DROP TABLE IF EXISTS drawings, likes;
 
 
 CREATE TABLE `users` (
@@ -14,18 +10,14 @@ CREATE TABLE `users` (
 );
 
 
-
-
-
-CREATE TABLE drawing (
+CREATE TABLE drawings (
   id int NOT NULL AUTO_INCREMENT,
   image MEDIUMTEXT,
   likes int,
   dateCreated date,
   createdUsers varchar(256),
   prompt varchar(256),
-  PRIMARY KEY(`id`),
-  FOREIGN KEY (createdUser) REFERENCES users(username)
+  PRIMARY KEY(`id`)
 );
 
 
@@ -34,10 +26,11 @@ CREATE TABLE likes (
     username varchar(150),
     likeType boolean
 
-    -- FOREIGN KEY (picId) REFERENCES drawing(id), --
-    -- FOREIGN KEY (username) REFERENCES users(username) --
 );
--- FOR EASY TESTING PURPOSES (GALLERY FRONTEND)
+
+
+
+
 
 INSERT into Users (username, password) VALUES ("testUser", "testPassword");
 INSERT into drawing (image, likes, dateCreated, createdUser, prompt) VALUES("futureImageURL or path???", 0, curdate(), "testUser", "generic theme");
