@@ -17,6 +17,7 @@
 		justify-content: center;
 		column-gap: 50px;
 		flex: 1;
+		margin-top: 10px;
 	}
 	
 	#drawing-container {
@@ -126,8 +127,8 @@
 	 	<div style="font-size: 3em;">Loading...</div>
  	</div>
 	
-	<div id="content" style="height: 100%; display: none;">
-		<div class="container" style="height: 100%;">
+	<div id="content" style="display: none;">
+		<div class="container">
 			<div style="display: flex; flex-direction: column; align-items: center;">
 				<div id="colors-container">
 				</div>
