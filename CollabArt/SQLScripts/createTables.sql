@@ -37,10 +37,10 @@ CREATE TABLE `users` (
 
 CREATE TABLE drawing (
   id int NOT NULL AUTO_INCREMENT,
-  image varchar(256),
+  image MEDIUMTEXT,
   likes int,
   dateCreated date,
-  createdUser varchar(150),
+  createdUsers varchar(256),
   prompt varchar(256),
   PRIMARY KEY(`id`),
   FOREIGN KEY (createdUser) REFERENCES users(username)
