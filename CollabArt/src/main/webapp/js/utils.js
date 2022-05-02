@@ -31,7 +31,7 @@ export const initSocket = (wsURL, roomCode, username, functions) => {
 		
 		pingInterval = setInterval(() => {
 			socket.send(JSON.stringify(
-				{ type: 'PING' },
+				{ type: 'PING' }
 			))
 		}, 30000)
 	})
