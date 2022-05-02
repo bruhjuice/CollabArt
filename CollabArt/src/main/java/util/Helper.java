@@ -33,7 +33,7 @@ public class Helper {
      * @throws SQLException
      */
     public static String getUserName(String email) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
+    	String db = Utility.DBName;
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
 		String sql = "SELECT username FROM Users WHERE email=?";
@@ -79,7 +79,7 @@ public class Helper {
      * @throws SQLException
      */
     public static int getUserID(String email) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
+    	String db = Utility.DBName;
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
 		String sql = "SELECT id FROM Users WHERE email=?";
@@ -172,7 +172,7 @@ public class Helper {
      */
     public static boolean nameAlreadyRegistered(String username, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	String db = "jdbc:mysql://localhost:3306/collabArt";
+    	String db = Utility.DBName;
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
 		String sql = "SELECT username FROM Users WHERE username = (?)";
