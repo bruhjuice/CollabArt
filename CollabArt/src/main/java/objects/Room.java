@@ -20,7 +20,7 @@ public class Room {
 	public Room(String roomCode) {
 		this.roomCode = roomCode;
 		players = new ArrayList<User>();
-		artwork = new Artwork();
+		artwork = new Artwork(this);
 	}
 	
 	public String getRoomCode() { return roomCode; }

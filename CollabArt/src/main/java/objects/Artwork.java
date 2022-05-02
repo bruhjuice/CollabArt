@@ -33,18 +33,11 @@ public class Artwork
    // The others can just grab this string.
    private String completed_image;
    
-   //default constructor, randomly pulls from pool;
-   
-   
-   public Artwork() {
-	  prompt = PromptPool.getPrompt();
+   public Artwork(Room room) {
+      prompt = PromptPool.getPrompt();
       fragment_urls = new String[4];
       completed_image=null;
-   }
-   public Artwork(Prompt prompt, String background_image_url) {
-      this.prompt=prompt;
-      fragment_urls = new String[4];
-      completed_image=null;
+      this.room = room;
    }
    
    public Prompt getPrompt() {

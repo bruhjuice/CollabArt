@@ -46,6 +46,7 @@ public class RegisterDispatcher extends HttpServlet {
     	
     	if (!password.contentEquals(confirmPassword))
     	{
+    	   errorMessage = "different";
     		missingData = true;
     	}
     	if (name == null || name.contentEquals(""))
