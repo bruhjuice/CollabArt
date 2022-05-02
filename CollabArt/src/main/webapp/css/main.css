@@ -19,6 +19,14 @@ body {
 	user-select: none; /* Standard */
 }
 
+#loader {
+	margin-top: 10%; 
+	width: 100%; 
+	display: flex; 
+	align-items: center;
+	justify-content: center; 
+}
+
 /* Rounded corners */
 .rounded {
 	border-radius: 30px;

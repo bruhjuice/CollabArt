@@ -180,56 +180,56 @@
 
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 
-	<!-- vertical -->
+ 	<div id="loader">
+	 	<object data="loader.svg" width="200" height="200"> </object>
+	 	<div style="font-size: 3em;">Loading...</div>
+ 	</div>
+	 	
+ 	<div id="content" style="display: none;">
+	 	<div class="overall">
 	 
-	 <div class="overall"> <!-- Overall div, after the navbar -->
-		<!-- Room code -->
-		<p class="roomCodeTitle">Room Code (share with friends):</p>
-		<p id="roomCodeDisplay" class="roomCode"></p>
-		
-		<!-- Various buttons depending on state -->
-		<div id="start-btn" class="unselectable" style="display: none;">
-			<p class="bigButton startSize yellow">Start!</p>
-		</div>
-		<div id="wait-players" class="unselectable" style="display: none;">
-			<p class="bigButton waitPlayerSize yellow">Waiting for players...</p>
-		</div>
-		<div id="wait-owner" class="unselectable" style="display: none;">
-			<p class="bigButton waitOwnerSize yellow">Waiting for owner...</p>
-		</div>
-		
-		<!-- players -->
-		<div id="players" class="rowDiv">	
-		
-			<div class="colDiv">
-				<img class="playerCircle" src="images/Avatar1.png"/> 
-				<p class="playerName blue">jspjspjsp</p>
-				<p class="playerName yellow">Owner</p>
+			<!-- Room code -->
+			<p class="roomCodeTitle">Room Code (share with friends):</p>
+			<p id="roomCodeDisplay" class="roomCode"></p>
+			
+			<!-- Various buttons depending on state -->
+			<div id="start-btn" class="unselectable" style="display: none;">
+				<p class="bigButton startSize yellow">Start!</p>
+			</div>
+			<div id="wait-players" class="unselectable" style="display: none;">
+				<p class="bigButton waitPlayerSize yellow">Waiting for players...</p>
+			</div>
+			<div id="wait-owner" class="unselectable" style="display: none;">
+				<p class="bigButton waitOwnerSize yellow">Waiting for owner...</p>
 			</div>
 			
-			<div class="colDiv">
-				<img class="playerCircle" src="images/Avatar2.png"/> 
-				<p class="playerName blue">SAL</p>
-			</div>
+			<!-- players -->
+			<div id="players" class="rowDiv">	
 			
-			<div class="colDiv">
-				<img class="playerCircle" src="images/Avatar3.png"/> 
-				<p class="playerName blue">help</p>
+				<div class="colDiv">
+					<img class="playerCircle" src="images/Avatar1.png"/> 
+					<p class="playerName blue">jspjspjsp</p>
+					<p class="playerName yellow">Owner</p>
+				</div>
+				
+				<div class="colDiv">
+					<img class="playerCircle" src="images/Avatar2.png"/> 
+					<p class="playerName blue">SAL</p>
+				</div>
+				
+				<div class="colDiv">
+					<img class="playerCircle" src="images/Avatar3.png"/> 
+					<p class="playerName blue">help</p>
+				</div>
+				
+				<div class="colDiv">
+					<div class="playerCircle pink"> <p class="questionmark">?</p> </div>
+					<p class="waitPlayerText">Waiting for player</p>
+				</div>
+				
 			</div>
-			
-			<div class="colDiv">
-				<div class="playerCircle pink"> <p class="questionmark">?</p> </div>
-				<p class="waitPlayerText">Waiting for player</p>
-			</div>
-			
 		</div>
-	
-	
-	
 	</div>
-	<!-- end of vertical div -->
-	
-	</div> <!-- end of overall div -->
 	
 	<script type="module" src="js/gameStart.js"></script>
 	
