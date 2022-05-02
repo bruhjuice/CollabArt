@@ -53,14 +53,14 @@
             {
                 "left": 350,
                 "top": 100,
-                "right": 220,
-                "bottom": 385
+                "right": 570,
+                "bottom": 485
             },
             {
                 "left": 20,
                 "top": 80,
-                "right": 145,
-                "bottom": 425
+                "right": 165,
+                "bottom": 505
             },
             {
                 "left": 590,
@@ -120,26 +120,26 @@
             {
                 "left": 400,
                 "top": 340,
-                "right": 150,
-                "bottom": 230
+                "right": 550,
+                "bottom": 570
             },
             {
                 "left": 40,
                 "top": 315,
-                "right": 325,
-                "bottom": 225
+                "right": 365,
+                "bottom": 540
             },
             {
                 "left": 340,
                 "top": 25,
-                "right": 125,
-                "bottom": 105
+                "right": 565,
+                "bottom": 130
             },
             {
                 "left": 505,
                 "top": 60,
-                "right": 280,
-                "bottom": 170
+                "right": 785,
+                "bottom": 230
             }
         ],
         "background_image_path": "images/desert.jpg" 
@@ -169,7 +169,7 @@
                 "left": 285,
                 "top": 85,
                 "right": 630,
-                "bottom": 615
+                "bottom": 305
             },
             {
                 "left": 425,
@@ -198,8 +198,8 @@
             {
                 "left": 470,
                 "top": 205,
-                "right": 310,
-                "bottom": 215
+                "right": 780,
+                "bottom": 420
             },
             {
                 "left": 55,
@@ -396,5 +396,4 @@
         ],
         "background_image_path": "images/dining_table.png" 
     }
-    
 ]
