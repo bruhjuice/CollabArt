@@ -155,20 +155,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart2"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
 	</div>
-	<div class="galart" id="galart3">
-		<div class="galart-top blue top-rounded">
-			<p>Draw... <span>a cat playing basketball</span></p>
-		</div>
-		<div class="galart-mid">
-			<img class=galart-img src="images/cat_basketball.png">
-		</div>
-		<div class="galart-bottom pink bottom-rounded">
-			<!-- Also put id on each art's thumbs up and thumbs down? -->
-			<!-- If logged in, show like and dislike button. If not, don't add. -->
-			<!-- Make sure when you loop this, update id galart below -->
-			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart3"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
-		</div>
-	</div> --%>
+ --%>
 	
 	<%if (!logIn)
   	{
