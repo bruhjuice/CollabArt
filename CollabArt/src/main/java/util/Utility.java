@@ -17,17 +17,7 @@ public class Utility {
 
 	    return DriverManager.getConnection(dbUrl, username, password);
 	}
-	
-	
-	
-	
-	
 
-	
-
-	static public final String DBName = "jdbc:mysql://localhost:3306/CollabArt";
-    static public final String DBUserName = "root";
-    static public final String DBPassword = "root";
 
     static public Pattern namePattern = Pattern.compile("^[ A-Za-z]+$");
     static public Pattern emailPattern = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."

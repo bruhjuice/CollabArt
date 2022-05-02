@@ -33,9 +33,7 @@ public class Helper {
      * @throws SQLException
      */
     public static String getUserName(String email) throws SQLException {
-    	String db = Utility.DBName;
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
+
 		String sql = "SELECT username FROM Users WHERE email=?";
 		String username = "";
 		
@@ -83,9 +81,6 @@ public class Helper {
      * @param password
      */
     public static boolean checkPassword(String username, String password) throws SQLException {
-    	String db = Utility.DBName;
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
 		String sql = "SELECT password FROM Users WHERE username=?";
 		
 		String selectedPassword = "";
@@ -135,9 +130,7 @@ public class Helper {
      */
     public static boolean nameAlreadyRegistered(String username, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	String db = Utility.DBName;
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
+
 		String sql = "SELECT username FROM Users WHERE username = (?)";
 		String selectedName = "";
 		

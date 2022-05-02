@@ -68,9 +68,6 @@ public class RegisterDispatcher extends HttpServlet {
 
     	if (!missingData)
     	{
-    		String db = Utility.DBName;
-    		String user = Utility.DBUserName;
-    		String pwd = Utility.DBPassword;
     		String sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
     		// add the jar to tomcat lib if it is not working!
 

@@ -90,7 +90,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
       e.printStackTrace();
    }
    ResultSet rs = null;
-   try (Connection conn = DriverManager.getConnection(Utility.DBName, Utility.DBUserName, Utility.DBPassword);
+   try (Connection conn = Utility.getConnection();
            PreparedStatement ps = conn.prepareStatement(sql);) {
          rs = ps.executeQuery();
       } catch (SQLException ex) {
@@ -119,14 +119,12 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	              out.println("<img class=galart-img src='"+rs.getString("image")+"'>");
 	          out.println("</div>");
 	          out.println("<div class='galart-bottom pink bottom-rounded'>");
-	              out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;"+ likes + "Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
+	              out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;"+ likes +"Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
 	          out.println("</div>");
 	      out.println("</div>");  
 	   }
 	}
 	%>
-	
-	
 	
 	<%-- <div class="galart" id="galart1">
 		<div class="galart-top blue top-rounded">
