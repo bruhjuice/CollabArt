@@ -17,8 +17,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//I think we can get rid of FragmentDispatcher class; is now implemented in artwork
-import dispatchers.FragmentDispatcher;
 import util.*;
 
 public class Artwork

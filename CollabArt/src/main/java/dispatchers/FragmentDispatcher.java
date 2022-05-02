@@ -49,14 +49,9 @@ public class FragmentDispatcher extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //TODO
       
-       //Will we need Threads?
        //needs dataurl, player_no, artwork object
        //artworkobject.addFragment(dataurl, playerno)
-       //After all has been inserted (need to wait for that)
-       //Call getCompleted() (only the first call needs to do the work of assembling the image together & adding to database)
-       // Rest just get the returned dataString.
        
        String dataURL=request.getParameter("image-string");
        String username=request.getParameter("username");
