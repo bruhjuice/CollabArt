@@ -34,7 +34,7 @@ public class RegisterDispatcher extends HttpServlet {
             throws ServletException, IOException {
         //TODO
     	boolean missingData = false;
-
+    	
     	String name = request.getParameter("registerName");
     	String password = request.getParameter("registerPassword");
     	String confirmPassword = request.getParameter("confirmPassword");
@@ -42,6 +42,8 @@ public class RegisterDispatcher extends HttpServlet {
     	System.out.println(password);
     	System.out.println(confirmPassword);
 
+    	String errorMessage = "yes";
+    	
     	if (!password.contentEquals(confirmPassword))
     	{
     		missingData = true;
@@ -53,7 +55,7 @@ public class RegisterDispatcher extends HttpServlet {
     	if (!Helper.validName(name))
     	{
     		missingData = true;
-    		
+    		errorMessage = "invalidUser";
     	}
 
     	if (password == null || password.contentEquals(""))
@@ -63,8 +65,10 @@ public class RegisterDispatcher extends HttpServlet {
     	}
     	if (Helper.nameAlreadyRegistered(name, request, response))
     	{
-    		missingData = true;
-    	}    	
+    		missingData = true;    	
+    		errorMessage = "taken";
+    	}
+
 
     	if (!missingData)
     	{
@@ -108,7 +112,7 @@ public class RegisterDispatcher extends HttpServlet {
     	{
     		request.setAttribute("regUsername", name);
     		request.setAttribute("regPassword", password);
-    		request.setAttribute("error", "yes");
+    		request.setAttribute("error", errorMessage);
     		request.getRequestDispatcher("register.jsp").forward(request, response);
 
     	}

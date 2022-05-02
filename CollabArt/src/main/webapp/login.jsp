@@ -15,22 +15,24 @@
 <link rel="stylesheet" href="css/login.css">
 <link rel="stylesheet" href="css/navbar.css">
 <title>CollabArt</title>
+<%
+	String errorTxt = (String) request.getAttribute("error");
+	String usernameTxt = (String) request.getAttribute("username");
+%>
 
+<script>
+	function errorAlert() {
+		console.log("alerted");
+		if (<%=errorTxt != null && errorTxt.equals("yes") %>) {
+			alert("Username and/or Password is invalid");
+			
+		}
+	}
+</script>
 
 </head>
 
-<body>
-	<%
-	String error = (String) request.getAttribute("error");
-	if (error != null && error.equals("yes")) {
-		System.out.println("No");
-	}
-	%>
-
-	<div class = "alert">
-		<span class = "closebtn" onclick = "this.parentElement.style.display = 'none';">&times;</span>
-		Alert testing
-	</div>
+<body onload = "errorAlert()">
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<form action = "login" method = "GET" class = "loginFormLeft">
 	<div id = "loginBox">
@@ -39,12 +41,12 @@
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
-	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = "" placeholder = "Username" required
+	<input class = "regForm" type = "text" id = "loginEmail" name = "loginEmail" value = <%=usernameTxt%> placeholder = Username required
 		oninvalid="this.setCustomValidity('Please fill out username')"
   		oninput="this.setCustomValidity('')"/>
 	<br>
 
-	<input class = "regForm" type = "password" id = "loginPassword" name = "loginPassword" value = "" placeholder = "Password" required
+	<input class = "regForm" type = "password" id = "loginPassword" name = "loginPassword" value = "" placeholder = Password required
 		oninvalid="this.setCustomValidity('Please fill out password')"
   		oninput="this.setCustomValidity('')"/>
 		  
@@ -61,8 +63,12 @@
 
 	</div>
 	</form>
-<!-- TODO -->
 
-        
 </body>
+
+<script>
+	if (<%=usernameTxt == null || usernameTxt.equals("")%>) {
+		document.querySelector('#loginEmail').value = "";
+	}
+</script>
 </html>
