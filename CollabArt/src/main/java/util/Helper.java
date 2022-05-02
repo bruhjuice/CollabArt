@@ -24,7 +24,6 @@ public class Helper {
     }
 
 
-
     /**
      * Get username with the email
      *
@@ -87,13 +86,7 @@ public class Helper {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -105,7 +98,6 @@ public class Helper {
 				while (rs.next())
 				{
 					id = rs.getInt("id");
-
 				
 				}
 			} catch (SQLException ex) {
@@ -218,8 +210,5 @@ public class Helper {
 	    	System.out.println("creating new ");
 			return false;
 		}
-        //TODO
-    	
-    	
     }
 }

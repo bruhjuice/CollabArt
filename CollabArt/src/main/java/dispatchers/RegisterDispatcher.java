@@ -24,7 +24,6 @@ public class RegisterDispatcher extends HttpServlet {
     public RegisterDispatcher() {
     }
 
-
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      * response)

@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import = "util.Likes" %>
+<%@ page import = "util.Utility" %>
+
+<%@ page import = "java.sql.Connection" %>
+<%@ page import = "java.sql.DriverManager" %>
+<%@ page import = "java.sql.PreparedStatement" %>
+<%@ page import = "java.sql.ResultSet" %>
+<%@ page import = "java.sql.SQLException" %>
+<%@ page import = "java.io.IOException" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,55 +42,76 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	<!-- Thoughts: doing likes/dislikes will be hard: whenever they click on it, need to send update to database
    In addition, need to keep track of each user's likes, dislikes, to make sure they can't like multiple times? 
    Have to do AJAX to see likes go up/down? increment/display locally then update to true value on reload? Or get update when like?-->
-      
-   
-   		 <%
-         Cookie cookie = null;
-         Cookie[] cookies = null;
-         boolean logIn = false;
-         // Get an array of Cookies associated with the this domain
-         cookies = request.getCookies();
-      
-  			 if (cookies != null){
-  				for (int i = 0; i < cookies.length; i++){
-  					cookie = cookies[i];
-  					if((cookie.getName( )).equals("loggedIn")  )
-  						
-  					{
-  						
- 						String cookieName = cookie.getValue();
-						if (cookieName.contentEquals("true"))
-						{
-	  						logIn = true;
-						}
-  					}
-  					
-  				}
-  				
-  			}%>
-  	<%if (!logIn)
-  	{
+	<%
+	Cookie cookie = null;
+	Cookie[] cookies = null;
+	boolean logIn = false;
+	// Get an array of Cookies associated with the this domain
+	cookies = request.getCookies();
 
-  		out.println("<br> <br> <h1> Please login or create an account to view the gallery</h1> <div id = 'blur'> ");
-  	}
-  	else
-  	{
-  		out.println("<h1> you are  logged in </h1>");
-  	}
-  	
-  	%>
+	if (cookies != null)
+	{
+	   for (int i = 0; i < cookies.length; i++)
+	   {
+	      cookie = cookies[i];
+	      if ((cookie.getName()).equals("loggedIn"))
+
+	      {
+
+	   String cookieName = cookie.getValue();
+	   if (cookieName.contentEquals("true"))
+	   {
+	      logIn = true;
+	   }
+	      }
+
+	   }
+
+	}
+	%>
+	<%
+	if (!logIn)
+	{
+
+	   out.println("<br> <br> <h1> Please login or create an account to view the gallery</h1> <div id = 'blur'> ");
+	} else
+	{
+	   out.println("<h1> you are  logged in </h1>");
+	}
+	%>
+	
+	<% 
+	String sql = "SELECT * FROM drawings";
    
+   try {
+      Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+   } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+   }
    
-   
-   <br>
+   try (Connection conn = DriverManager.getConnection(Utility.DBName, Utility.DBUserName, Utility.DBPassword);
+           PreparedStatement ps = conn.prepareStatement(sql);) {
+         ResultSet rs = ps.executeQuery();
+      } catch (SQLException ex) {
+         System.out.println ("SQLException: " + ex.getMessage());
+      }
+	%>
+
+
+	<br>
    <h1>Collabart Gallery</h1>
 
 
 	<br>
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
-	<!-- Would we have to store all images? Even if we have local path, how would we store it? -->
 	
-	<div class="galart" id="galart1">
+	
+	
+	
+	
+	
+	<%-- <div class="galart" id="galart1">
 		<div class="galart-top blue top-rounded">
 			<p>Draw... <span>a cat playing basketball</span></p>
 		</div>
@@ -125,7 +155,8 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			<!-- Make sure when you loop this, update id galart below -->
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart3"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
-	</div>
+	</div> --%>
+	
 	<%if (!logIn)
   	{
   		out.println("</div");
