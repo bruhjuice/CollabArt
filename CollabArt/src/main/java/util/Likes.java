@@ -19,8 +19,8 @@ public class Likes {
 	static String update = "UPDATE likes SET likeType = ? WHERE picId = ? AND username = ?";
 	static String unsafe = "SET SQL_SAFE_UPDATES = 0";
 	static String safe = "SET SQL_SAFE_UPDATES = 1";
-	static String picUpdate = "UPDATE drawing SET likes = likes + ? WHERE id = ?";
-	static String getLikes = "SELECT * FROM drawing WHERE id = ?";
+	static String picUpdate = "UPDATE drawings SET likes = likes + ? WHERE id = ?";
+	static String getLikes = "SELECT * FROM drawings WHERE id = ?";
 	
 	Likes() {}
 	

@@ -129,7 +129,7 @@ public class Artwork
       //System.out.println("COMPLETED IMAGE: " + completed_image);
       
       //Add drawing entry to database
-      String sql = "INSERT INTO drawing (image, likes, dateCreated, createdUser, prompt) VALUES (?, 0, ?, ?, ?)";
+      String sql = "INSERT INTO drawings (image, likes, dateCreated, createdUser, prompt) VALUES (?, 0, ?, ?, ?)";
       
       try
       {
