@@ -119,51 +119,56 @@
 </head>
 <body class="light-blue" style="display: flex; flex-direction: column;">
 	<script id="replace_with_navbar" src="js/nav.js"></script>
-
-	<div class="container">
-		<div style="display: flex; flex-direction: column; align-items: center;">
-			<div id="colors-container">
-			</div>
-			<div style="margin-top: 36px; display: flex; justify-content: center;">
-				<div>
-				Brush Size:<br/>
-				<input id="brush-size-slider" type="range" min="5" max="50" value="5" step="5">
-				</div>	
-			</div>
-			<button id="clear-btn" class="buttons-red" style="margin-top: 24px">Clear</button>
-		</div>
-		<div id="drawing-container">
-			<div class="prompt-container">
-				<div class="left-rounded white">
-					Draw...
+	
+	
+	<div id="loader">
+	 	<object data="loader.svg" width="200" height="200"> </object>
+	 	<div style="font-size: 3em;">Loading...</div>
+ 	</div>
+	
+	<div id="content" style="height: 100%; display: none;">
+		<div class="container" style="height: 100%;">
+			<div style="display: flex; flex-direction: column; align-items: center;">
+				<div id="colors-container">
 				</div>
-				<div id="prompt-text" class="right-rounded blue" style="flex: 1;">
-					your mental health
+				<div style="margin-top: 36px; display: flex; justify-content: center;">
+					<div>
+					Brush Size:<br/>
+					<input id="brush-size-slider" type="range" min="5" max="50" value="5" step="5">
+					</div>	
+				</div>
+				<button id="clear-btn" class="buttons-red" style="margin-top: 24px">Clear</button>
+			</div>
+			<div id="drawing-container">
+				<div class="prompt-container">
+					<div class="left-rounded white">
+						Draw...
+					</div>
+					<div id="prompt-text" class="right-rounded blue" style="flex: 1;">
+						your mental health
+					</div>
+				</div>
+				
+				<div id="canvas-background" style="position: relative;">
+					<div class="tape top-left"></div>
+					<div class="tape top-right"></div>
+					<div class="tape bottom-left"></div>
+					<div class="tape bottom-right"></div>
+					<canvas id="drawing-canvas" width="800" height="600">
+					</canvas>
+				</div>
+				
+				<div id="submit-btn-container" style="margin-top: 24px;">
+					<button id="submit-data" class="buttons">Submit!</button>
 				</div>
 			</div>
-			
-			<div id="canvas-background" style="position: relative;">
-				<div class="tape top-left"></div>
-				<div class="tape top-right"></div>
-				<div class="tape bottom-left"></div>
-				<div class="tape bottom-right"></div>
-				<canvas id="drawing-canvas" width="800" height="600">
-				</canvas>
-			</div>
-			
-			<div id="submit-btn-container" style="margin-top: 24px;">
-				<button id="submit-data" class="buttons">Submit!</button>
+			<div id="right-container">
+				<div id="timer">
+					60
+				</div>
 			</div>
 		</div>
-		<div id="right-container">
-			<div id="timer">
-				60
-			</div>
-		</div>
-	</div>
-	<div id="completeddiv">
-	  <img id="completedimage"/>
-   </div>
+	</div>	
 	
 
 	<script type="module" src="js/gameProgress.js"></script>

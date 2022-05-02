@@ -182,7 +182,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			"username": "user" //change this to username of cookie
 		});
 		
-		fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: para})
+		fetch('/LikeDispatcher', {method: 'POST', body: para})
 			.then(response => response.text())
 			.then(data => {likeState[i + 1] = parseInt(data);
 				switch (parseInt(data)) {
@@ -206,7 +206,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 				"username": "user" //change this to username of cookie
 			})
 			//Update database based on parent div id
-			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+			fetch('/LikeDispatcher', {method: 'POST', body: params})
 				.then(response => response.text())
 				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 			//Update
@@ -220,7 +220,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 				"username": "user" //change this to username of cookie
 			})
 			//Update database based on parent div id.
-			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+			fetch('/LikeDispatcher', {method: 'POST', body: params})
 				.then(response => response.text())
 				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 	     	//Update
@@ -239,7 +239,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 				"username": "user" //change this to username of cookie
 			})
 			//Update database based on parent div id
-			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+			fetch('/LikeDispatcher', {method: 'POST', body: params})
 				.then(response => response.text())
 				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 			//Update
@@ -253,7 +253,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 				"username": "user" //change this to username of cookie
 			})
 			//Update database based on parent div id.
-			fetch('/CollabArt/LikeDispatcher', {method: 'POST', body: params})
+			fetch('/LikeDispatcher', {method: 'POST', body: params})
 				.then(response => response.text())
 				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 	     	//Update

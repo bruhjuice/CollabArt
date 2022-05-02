@@ -87,6 +87,10 @@ function updatePlayers(data) {
 			waitOwner.style.display = 'block'
 		}
 	}
+	
+	// Show main portion 
+	document.getElementById('content').style.display = 'block'
+	document.getElementById('loader').style.display = 'none'
 }
 
 function startGame() {

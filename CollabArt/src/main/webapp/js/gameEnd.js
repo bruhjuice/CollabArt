@@ -54,6 +54,10 @@ function init() {
 				</span>
 				`
 			}
+			
+			// Show main portion 
+			document.getElementById('content').style.display = 'block'
+			document.getElementById('loader').style.display = 'none'
 		})
 } 
 
