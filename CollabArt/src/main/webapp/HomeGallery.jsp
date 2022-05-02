@@ -66,7 +66,6 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	   		}
 	   	}
 	}
-	request.setParameter()
 	%>
 	<%
 	if (!logIn)
