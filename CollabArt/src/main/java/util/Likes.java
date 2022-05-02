@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 
 public class Likes {
-	static String db = "jdbc:mysql://localhost:3306/CollabArt";
+	static String db = Utility.DBName;
 	static String user = Utility.DBUserName;
 	static String pwd = Utility.DBPassword;
 	

@@ -123,7 +123,7 @@ public class Helper {
      * @param password
      */
     public static boolean checkPassword(String username, String password) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/collabArt";
+    	String db = Utility.DBName;
 		String user = Utility.DBUserName;
 		String pwd = Utility.DBPassword;
 		String sql = "SELECT password FROM Users WHERE username=?";

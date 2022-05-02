@@ -75,7 +75,7 @@ public class RegisterDispatcher extends HttpServlet {
 
     	if (!missingData)
     	{
-    		String db = "jdbc:mysql://localhost:3306/CollabArt";
+    		String db = Utility.DBName;
     		String user = Utility.DBUserName;
     		String pwd = Utility.DBPassword;
     		String sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
