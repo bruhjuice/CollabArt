@@ -79,11 +79,6 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	   out.println("<h1> you are  logged in </h1>");
 	}
 	%>
-	
-	<% 
-	
-	%>
-
 
 	<br>
    <h1>Collabart Gallery</h1>
@@ -166,8 +161,6 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
   	{
   		out.println("</div");
   	}
-
-  	
   	%>
 	
 
