@@ -64,14 +64,7 @@ public class RegisterDispatcher extends HttpServlet {
     	if (Helper.nameAlreadyRegistered(name, request, response))
     	{
     		missingData = true;
-    	}
-
-
-    	
-
-
-
-    	
+    	}    	
 
     	if (!missingData)
     	{
