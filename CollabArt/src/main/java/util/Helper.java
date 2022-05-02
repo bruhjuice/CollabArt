@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -182,8 +183,8 @@ public class Helper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		//DriverManager.getConnection(db, user, pwd)
+		try (Connection conn = Utility.getConnection();
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
 				ps.setString(1, username);
 				ResultSet rs = ps.executeQuery();
@@ -195,6 +196,9 @@ public class Helper {
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		System.out.println("selected" + selectedName);
 		System.out.println(username);

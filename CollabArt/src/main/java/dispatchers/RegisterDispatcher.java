@@ -12,6 +12,7 @@ import util.Utility;
 
 import java.sql.*;
 import java.io.*;
+import java.net.URISyntaxException;
 /**
  * Servlet implementation class RegisterDispatcher
  */
@@ -80,7 +81,7 @@ public class RegisterDispatcher extends HttpServlet {
 				e.printStackTrace();
 			}
 
-        	try (Connection conn = DriverManager.getConnection(db, user, pwd);
+        	try (Connection conn = Utility.getConnection();
         			PreparedStatement ps = conn.prepareStatement(sql);) {
         			ps.setString(1, name);
         			ps.setString(2, password);
@@ -96,7 +97,10 @@ public class RegisterDispatcher extends HttpServlet {
 
         		} catch (SQLException sqle) {
         			System.out.println ("SQLException: " + sqle.getMessage());
-        		}
+        		} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
     		//request.getRequestDispatcher("index.jsp").forward(request, response);
         	response.sendRedirect("HomeGallery.jsp");
