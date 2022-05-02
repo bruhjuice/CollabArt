@@ -85,7 +85,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
 
 	<%
-	String sql = "SELECT * FROM drawings";
+	String sql = "SELECT * FROM drawings ORDER BY DESC";
 
 	try
 	{
