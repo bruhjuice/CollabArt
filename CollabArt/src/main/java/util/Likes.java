@@ -1,5 +1,6 @@
 package util;
 
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -76,7 +77,7 @@ public class Likes {
 			return 0;
 		}
 		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
     			PreparedStatement ps = conn.prepareStatement(getLikes);){
 			ps.setInt(1, picId);
 			ResultSet rs = ps.executeQuery();
@@ -85,7 +86,11 @@ public class Likes {
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Getting Like Count: " + sqle.getMessage());
 			return 0;
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return 0;
 	}
 	
 	public static int DoesExist(int picId, String username) {
