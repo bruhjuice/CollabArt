@@ -21,8 +21,8 @@ public class Likes {
 	static String safe = "SET SQL_SAFE_UPDATES = 1";
 	static String picUpdate = "UPDATE drawings SET likes = likes + ? WHERE id = ?";
 	static String getLikes = "SELECT * FROM drawings WHERE id = ?";
-	
-	Likes() {}
+	static String recalculate = "SELECT COUNT(*) FROM likes WHERE picId = ? AND likeType = ? VALUES (?, ?)";
+	static String setLikes = "UPDATE drawings SET likes = ? WHERE id = ? VALUES (?, ?)";
 	
 	public static void Like(int picId, String username) {
         try {
@@ -63,6 +63,38 @@ public class Likes {
 		
 		if (Check(picId, username)) {
 			Remove(picId, username);
+		}
+	}
+	
+	static void Recalculate(int picId) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		try (Connection conn = Utility.getConnection()){
+			PreparedStatement likes = conn.prepareStatement(recalculate);
+			likes.setInt(1, picId);
+			likes.setBoolean(2, true);
+			
+			PreparedStatement dislikes = conn.prepareStatement(recalculate);
+			dislikes.setInt(1, picId);
+			dislikes.setBoolean(2, false);
+			
+			ResultSet likeRs = likes.executeQuery();
+			ResultSet dislikeRs = dislikes.executeQuery();
+			likeRs.next();
+			dislikeRs.next();
+			
+			int value = likeRs.getInt(1) - dislikeRs.getInt(1);
+			SetDrawingLikes(picId, value);
+			
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - Recalculating: \" + sqle.getMessage()");
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -108,8 +140,8 @@ public class Likes {
     		ps.setString(2, username);
     		ps.setBoolean(3, likeType);
     		ps.executeUpdate();
-    			
-    		PicUpdateLike(picId, likeType ? 1 : -1);
+    		Recalculate(picId);
+    		//PicUpdateLike(picId, likeType ? 1 : -1);
     			
     	} catch (SQLException sqle) {
     		System.out.println ("SQLException - Inserting Likes: " + sqle.getMessage());
@@ -224,5 +256,19 @@ public class Likes {
          return false;
       }
 		
+	}
+	
+	static void SetDrawingLikes(int picId, int value) {
+		try (Connection conn = Utility.getConnection();) {
+			PreparedStatement ps = conn.prepareStatement(setLikes);
+			ps.setInt(1, value);
+			ps.setInt(2, picId);
+			ps.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println ("SQLException - Setting Drawing Likes: " + sqle.getMessage());
+		} catch (URISyntaxException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+		}
 	}
 }
