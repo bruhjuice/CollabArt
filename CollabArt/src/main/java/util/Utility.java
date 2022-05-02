@@ -3,6 +3,7 @@ package util;
 import java.util.regex.Pattern;
 
 public class Utility {
+	static public final String dbURL = "";
     static public final String DBUserName = "root";
     static public final String DBPassword = "root";
     static public final String FileName = "restaurant_data.json";
