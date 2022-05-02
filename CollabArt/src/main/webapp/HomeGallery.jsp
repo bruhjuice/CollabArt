@@ -81,21 +81,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	%>
 	
 	<% 
-	String sql = "SELECT * FROM drawings";
-   
-   try {
-      Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-   } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-   }
-   ResultSet rs = null;
-   try (Connection conn = Utility.getConnection();
-           PreparedStatement ps = conn.prepareStatement(sql);) {
-         rs = ps.executeQuery();
-      } catch (SQLException ex) {
-         System.out.println ("SQLException: " + ex.getMessage());
-      }
+	
 	%>
 
 
@@ -105,27 +91,46 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 
 	<br>
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
-	
-	<% 
-	if(rs!=null){
-	   while(rs.next()){
-	      int likes = rs.getInt("likes");
-	      
-	      out.println("<div class='galart' id='galart"+rs.getInt("id")+"'>");
-	          out.println("<div class='galart-top blue top-rounded'>");
-	              out.println("<p>Draw... <span>"+rs.getString("prompt")+"</span></p>");
-	          out.println("</div>");
-	          out.println("<div class='galart-mid'>");
-	              out.println("<img class=galart-img src='"+rs.getString("image")+"'>");
-	          out.println("</div>");
-	          out.println("<div class='galart-bottom pink bottom-rounded'>");
-	              out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;"+ likes +"Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
-	          out.println("</div>");
-	      out.println("</div>");  
+
+	<%
+	String sql = "SELECT * FROM drawings";
+
+	try
+	{
+	   Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	} catch (Exception e)
+	{
+	   e.printStackTrace();
+	}
+	try (Connection conn = Utility.getConnection(); PreparedStatement ps = conn.prepareStatement(sql);)
+	{
+	   ResultSet rs = ps.executeQuery();
+	   if (rs != null)
+	   {
+	      while (rs.next())
+	      {
+	         int likes = rs.getInt("likes");
+
+	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
+	             out.println("<div class='galart-top blue top-rounded'>");
+	                 out.println("<p>Draw... <span>" + rs.getString("prompt") + "</span></p>");
+	             out.println("</div>");
+	             out.println("<div class='galart-mid'>");
+	                 out.println("<img class=galart-img src='" + rs.getString("image") + "'>");
+	             out.println("</div>");
+	             out.println("<div class='galart-bottom pink bottom-rounded'>");
+	                 out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;" + likes
+	                 + "Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
+	             out.println("</div>");
+	         out.println("</div>");
+	      }
 	   }
+	} catch (SQLException ex)
+	{
+	   System.out.println("SQLException: " + ex.getMessage());
 	}
 	%>
-	
+
 	<%-- <div class="galart" id="galart1">
 		<div class="galart-top blue top-rounded">
 			<p>Draw... <span>a cat playing basketball</span></p>
