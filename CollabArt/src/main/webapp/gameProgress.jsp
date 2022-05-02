@@ -174,6 +174,10 @@
 
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
+		window.onbeforeunload = () => {
+		    return "Are you sure you want to leave?? :((";
+		};
+	
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;
 		    
