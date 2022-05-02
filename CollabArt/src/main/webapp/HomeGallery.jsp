@@ -85,7 +85,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
 
 	<%
-	String sql = "SELECT * FROM drawings";
+	String sql = "SELECT * FROM drawings ORDER BY dateCreated DESC, likes DESC";
 
 	try
 	{
@@ -107,8 +107,8 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 
 	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
 	             out.println("<div class='galart-top blue top-rounded'>");
-	                 out.println("<p>Prompt: " + rs.getString("prompt") + "</p>");
-	                 out.println("<p>Created "+rs.getDate("dateCreated")+" by: "+rs.getString("createdUsers")+"</p>");
+	                 out.println("<p class='prompttext'>"+rs.getString("prompt")+"</p>");
+	                 out.println("<p class='smallertext'>Created "+rs.getDate("dateCreated")+" by: "+rs.getString("createdUsers")+"</p>");
 	             out.println("</div>");
 	             out.println("<div class='galart-mid'>");
 	                 out.println("<img class=galart-img src='" + image + "'>");
