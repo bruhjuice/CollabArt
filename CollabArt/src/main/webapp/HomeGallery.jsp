@@ -105,17 +105,19 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	      while (rs.next())
 	      {
 	         int likes = rs.getInt("likes");
+	         String image = "data:image/png;base64,";
+	         image+=rs.getString("image");
 
 	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
 	             out.println("<div class='galart-top blue top-rounded'>");
 	                 out.println("<p>Draw... <span>" + rs.getString("prompt") + "</span></p>");
 	             out.println("</div>");
 	             out.println("<div class='galart-mid'>");
-	                 out.println("<img class=galart-img src='" + rs.getString("image") + "'>");
+	                 out.println("<img class=galart-img src='" + image + "'>");
 	             out.println("</div>");
 	             out.println("<div class='galart-bottom pink bottom-rounded'>");
 	                 out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;" + likes
-	                 + "Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
+	                 + " Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
 	             out.println("</div>");
 	         out.println("</div>");
 	      }
