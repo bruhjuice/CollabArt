@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Base64;
 import javax.imageio.ImageIO;
@@ -32,18 +33,11 @@ public class Artwork
    // The others can just grab this string.
    private String completed_image;
    
-   //default constructor, randomly pulls from pool;
-   
-   
-   public Artwork() {
-	  prompt = PromptPool.getPrompt();
+   public Artwork(Room room) {
+      prompt = PromptPool.getPrompt();
       fragment_urls = new String[4];
       completed_image=null;
-   }
-   public Artwork(Prompt prompt, String background_image_url) {
-      this.prompt=prompt;
-      fragment_urls = new String[4];
-      completed_image=null;
+      this.room = room;
    }
    
    public Prompt getPrompt() {
@@ -135,7 +129,7 @@ public class Artwork
       //System.out.println("COMPLETED IMAGE: " + completed_image);
       
       //Add drawing entry to database
-      String sql = "INSERT INTO drawing (image, likes, dateCreated, createdUser, prompt) VALUES (?, 0, ?, ?, ?)";
+      String sql = "INSERT INTO drawings (image, likes, dateCreated, createdUsers, prompt) VALUES (?, 0, ?, ?, ?)";
       
       try
       {
@@ -145,7 +139,7 @@ public class Artwork
          e.printStackTrace();
       }
 
-      try (Connection conn = DriverManager.getConnection(Utility.DBName, Utility.DBUserName, Utility.DBPassword);
+      try (Connection conn = Utility.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);)
       {
          //Note: update database so that image's varchar length is big enough
@@ -169,7 +163,10 @@ public class Artwork
       } catch (SQLException sqle)
       {
          System.out.println("SQLException: " + sqle.getMessage());
-      }
+      } catch (URISyntaxException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       
       return completed_image;
    }

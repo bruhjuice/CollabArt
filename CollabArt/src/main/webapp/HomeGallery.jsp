@@ -79,25 +79,6 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	   out.println("<h1> you are  logged in </h1>");
 	}
 	%>
-	
-	<% 
-	String sql = "SELECT * FROM drawings";
-   
-   try {
-      Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-   } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-   }
-   
-   try (Connection conn = DriverManager.getConnection(Utility.DBName, Utility.DBUserName, Utility.DBPassword);
-           PreparedStatement ps = conn.prepareStatement(sql);) {
-         ResultSet rs = ps.executeQuery();
-      } catch (SQLException ex) {
-         System.out.println ("SQLException: " + ex.getMessage());
-      }
-	%>
-
 
 	<br>
    <h1>Collabart Gallery</h1>
@@ -105,12 +86,48 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 
 	<br>
 	<!-- Text, image, and like count will all be grabbed from database. Can also add unique id to each galart element -->
-	
-	
-	
-	
-	
-	
+
+	<%
+	String sql = "SELECT * FROM drawings";
+
+	try
+	{
+	   Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	} catch (Exception e)
+	{
+	   e.printStackTrace();
+	}
+	try (Connection conn = Utility.getConnection(); PreparedStatement ps = conn.prepareStatement(sql);)
+	{
+	   ResultSet rs = ps.executeQuery();
+	   if (rs != null)
+	   {
+	      while (rs.next())
+	      {
+	         int likes = rs.getInt("likes");
+	         String image = "data:image/png;base64,";
+	         image+=rs.getString("image");
+
+	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
+	             out.println("<div class='galart-top blue top-rounded'>");
+	                 out.println("<p>Draw... <span>" + rs.getString("prompt") + "</span></p>");
+	             out.println("</div>");
+	             out.println("<div class='galart-mid'>");
+	                 out.println("<img class=galart-img src='" + image + "'>");
+	             out.println("</div>");
+	             out.println("<div class='galart-bottom pink bottom-rounded'>");
+	                 out.println("<i class='fa-solid fa-thumbs-up'></i> <span>&emsp;" + likes
+	                 + " Likes&emsp;</span> <i class='fa-solid fa-thumbs-down'></i>");
+	             out.println("</div>");
+	         out.println("</div>");
+	      }
+	   }
+	} catch (SQLException ex)
+	{
+	   System.out.println("SQLException: " + ex.getMessage());
+	}
+	%>
+
 	<%-- <div class="galart" id="galart1">
 		<div class="galart-top blue top-rounded">
 			<p>Draw... <span>a cat playing basketball</span></p>
@@ -130,7 +147,6 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 		<div class="galart-top blue top-rounded">
 			<p>Draw... <span>a cat playing basketball</span></p>
 		</div>
-		<!-- Images should be a bit wider, maybe something like 3:2? -->
 		<div class="galart-mid">
 			<img class=galart-img src="images/cat_basketball.png">
 		</div>
@@ -141,28 +157,12 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart2"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
 		</div>
 	</div>
-	<div class="galart" id="galart3">
-		<div class="galart-top blue top-rounded">
-			<p>Draw... <span>a cat playing basketball</span></p>
-		</div>
-		<!-- Images should be a bit wider, maybe something like 3:2? -->
-		<div class="galart-mid">
-			<img class=galart-img src="images/cat_basketball.png">
-		</div>
-		<div class="galart-bottom pink bottom-rounded">
-			<!-- Also put id on each art's thumbs up and thumbs down? -->
-			<!-- If logged in, show like and dislike button. If not, don't add. -->
-			<!-- Make sure when you loop this, update id galart below -->
-			<i class="fa-solid fa-thumbs-up"></i> <span>&emsp;<%=Likes.GetLike(GetId("galart3"))%> Likes&emsp;</span> <i class="fa-solid fa-thumbs-down"></i>
-		</div>
-	</div> --%>
+ --%>
 	
 	<%if (!logIn)
   	{
   		out.println("</div");
   	}
-
-  	
   	%>
 	
 

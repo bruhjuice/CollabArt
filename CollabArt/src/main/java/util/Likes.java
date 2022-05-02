@@ -1,5 +1,6 @@
 package util;
 
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,9 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 
 public class Likes {
-	static String db = Utility.DBName;
-	static String user = Utility.DBUserName;
-	static String pwd = Utility.DBPassword;
 	
 	static String insert = "INSERT INTO likes (picId, username, likeType) VALUES (?, ?, ?)";
 	static String check = "SELECT * FROM likes WHERE picId = ? AND username = ?";
@@ -21,8 +19,8 @@ public class Likes {
 	static String update = "UPDATE likes SET likeType = ? WHERE picId = ? AND username = ?";
 	static String unsafe = "SET SQL_SAFE_UPDATES = 0";
 	static String safe = "SET SQL_SAFE_UPDATES = 1";
-	static String picUpdate = "UPDATE drawing SET likes = likes + ? WHERE id = ?";
-	static String getLikes = "SELECT * FROM drawing WHERE id = ?";
+	static String picUpdate = "UPDATE drawings SET likes = likes + ? WHERE id = ?";
+	static String getLikes = "SELECT * FROM drawings WHERE id = ?";
 	
 	Likes() {}
 	
@@ -76,7 +74,7 @@ public class Likes {
 			return 0;
 		}
 		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
     			PreparedStatement ps = conn.prepareStatement(getLikes);){
 			ps.setInt(1, picId);
 			ResultSet rs = ps.executeQuery();
@@ -85,7 +83,11 @@ public class Likes {
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Getting Like Count: " + sqle.getMessage());
 			return 0;
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return 0;
 	}
 	
 	public static int DoesExist(int picId, String username) {
@@ -100,7 +102,7 @@ public class Likes {
 	}
 	
 	static void Insert(int picId, String username, boolean likeType) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
     			PreparedStatement ps = conn.prepareStatement(insert);) {
     		ps.setInt(1, picId);
     		ps.setString(2, username);
@@ -111,12 +113,16 @@ public class Likes {
     			
     	} catch (SQLException sqle) {
     		System.out.println ("SQLException - Inserting Likes: " + sqle.getMessage());
-    	}
+    	} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 	}
 	
 	//returns true if there
 	static boolean Check(int picId, String username) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
     			PreparedStatement ps = conn.prepareStatement(check);) {
 			ps.setInt(1, picId);
 			ps.setString(2, username);
@@ -126,11 +132,16 @@ public class Likes {
     	} catch (SQLException sqle) {
     		System.out.println ("SQLException - Checking Like Presence: " + sqle.getMessage());
     		return false;
-    	}
+    	} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         return false;
+      }
 	}
 	
 	static void Update(int picId, String username, boolean likeType) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+		try (Connection conn = Utility.getConnection();) {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
@@ -149,11 +160,15 @@ public class Likes {
 			
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Updating Like: " + sqle.getMessage());
-		}
+		} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 	}
 	
 	static void Remove(int picId, String username) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+		try (Connection conn = Utility.getConnection();) {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
@@ -169,22 +184,30 @@ public class Likes {
 			
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Removing Like: " + sqle.getMessage());
-		}
+		} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 	}
 
 	static void PicUpdateLike(int picId, int increment) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+		try (Connection conn = Utility.getConnection();) {
 			PreparedStatement ps = conn.prepareStatement(picUpdate);
 			ps.setInt(1, increment);
 			ps.setInt(2, picId);
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Updating Picture Like Count: " + sqle.getMessage());
-		}
+		} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 	}
 	
 	static boolean GetLikeType(int picId, String username) {
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);) {
+		try (Connection conn = Utility.getConnection();) {
 			PreparedStatement ps = conn.prepareStatement(check);
 			ps.setInt(1, picId);
 			ps.setString(2, username);
@@ -194,7 +217,12 @@ public class Likes {
 		} catch (SQLException sqle) {
 			System.out.println ("SQLException - Getting LikeType of Like: " + sqle.getMessage());
 			return false;
-		}
+		} catch (URISyntaxException e)
+      {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         return false;
+      }
 		
 	}
 }
