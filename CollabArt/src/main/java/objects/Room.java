@@ -6,6 +6,8 @@ import java.util.List;
 public class Room {
 	/* The Room class contains all the data associated with a given room */
 	
+	public static final int MAX_PLAYERS = 4;
+	
 	// The room code of the room
 	private String roomCode;
 	// Contains a list of all the players, inserted in the order they joined the game
@@ -33,14 +35,14 @@ public class Room {
 	/** 
 	 * User stuff 
 	 **/
-	public boolean addUser(User user) {
+	public int addUser(User user) {
 		// Adds the given user to the players list
-		// Returns true if added, returns false if already existed
-		if (players.contains(user)) return false;
+		// Returns 0 if added, returns negative number if there's an error
+		if (players.size() >= MAX_PLAYERS) return -2;
+		if (players.contains(user)) return -1;
 		
 		players.add(user);
-		return true;
-		
+		return 0;
 	}
 	
 	public void removeUser(User user) {
