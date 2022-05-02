@@ -107,7 +107,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 
 	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
 	             out.println("<div class='galart-top blue top-rounded'>");
-	                 out.println("<p>Prompt:" + rs.getString("prompt") + "</p>");
+	                 out.println("<p>Prompt: " + rs.getString("prompt") + "</p>");
 	                 out.println("<p>Created "+rs.getDate("dateCreated")+" by: "+rs.getString("createdUsers")+"</p>");
 	             out.println("</div>");
 	             out.println("<div class='galart-mid'>");
