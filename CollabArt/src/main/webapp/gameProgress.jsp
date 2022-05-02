@@ -146,7 +146,7 @@
 						Draw...
 					</div>
 					<div id="prompt-text" class="right-rounded blue" style="flex: 1;">
-						your mental health
+						Prompt Loading...
 					</div>
 				</div>
 				
