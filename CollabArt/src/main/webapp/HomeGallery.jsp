@@ -48,26 +48,25 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	boolean logIn = false;
 	// Get an array of Cookies associated with the this domain
 	cookies = request.getCookies();
-
+	String username = "default";
 	if (cookies != null)
 	{
-	   for (int i = 0; i < cookies.length; i++)
-	   {
-	      cookie = cookies[i];
-	      if ((cookie.getName()).equals("loggedIn"))
-
-	      {
-
-	   String cookieName = cookie.getValue();
-	   if (cookieName.contentEquals("true"))
-	   {
-	      logIn = true;
-	   }
-	      }
-
-	   }
-
+		for (int i = 0; i < cookies.length; i++)
+		{
+	 		cookie = cookies[i];
+			if ((cookie.getName()).equals("loggedIn"))
+	 		{
+	   			String cookieName = cookie.getValue();
+	   			if (cookieName.contentEquals("true"))
+	   			{
+	      			logIn = true;
+	   			}
+	   		} else if (cookie.getName().equals("playerName")) {
+	   			username = cookie.getValue();
+	   		}
+	   	}
 	}
+	request.setParameter()
 	%>
 	<%
 	if (!logIn)
@@ -236,7 +235,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			params = new URLSearchParams({
 				"command": "remove",
 				"picId": id,
-				"username": "user" //change this to username of cookie
+				"username": <%=username%>
 			})
 			//Update database based on parent div id
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -250,7 +249,7 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 			params = new URLSearchParams({
 				"command": "dislike",
 				"picId": id,
-				"username": "user" //change this to username of cookie
+				"username": <%=username%>
 			})
 			//Update database based on parent div id.
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
