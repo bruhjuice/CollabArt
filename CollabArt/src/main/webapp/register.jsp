@@ -16,13 +16,32 @@
 <link rel="stylesheet" href="css/navbar.css">
 <title>CollabArt</title>
 
+<%
+	String regUsername = (String) request.getAttribute("regUsername");
+	System.out.println(regUsername);
+	String regPassword = (String) request.getAttribute("regPassword");
+	String errorTxt = (String) request.getAttribute("error");
+%>
 
 </head>
 
+<script>
+	function errorAlert() {
+		console.log("alerted");
+		if (<%=errorTxt != null && errorTxt.equals("yes") %>) {
+			alert("Please complete the erroneous fields");
+		} else if (<%=errorTxt != null && errorTxt.equals("different") %>) {
+			alert("Passwords are different from each other");
+		} else if (<%=errorTxt != null && errorTxt.equals("taken") %>) {
+			alert("Username is taken");
+		} else if (<%=errorTxt != null && errorTxt.equals("invalidUser") %>) {
+			alert("The username contains improper characters");
+		}
+	}
+</script>
 
 
-
-<body>
+<body onload = "errorAlert()">
 	<script id="replace_with_navbar" src="js/nav.js"></script>
 	<form action = "register" method = "GET" class = "loginFormLeft">
 	<div id = "loginBox">
@@ -31,11 +50,17 @@
 	</div> 
 	<div id = "loginBoxBottom">
 	<div id = "loginBoxFields">
-	<input class = "regForm" type = "text" id = "loginEmail" name = "registerName" placeholder = "Username">
+	<input class = "regForm" type = "text" id = "loginEmail" name = "registerName" placeholder = "Username" required
+		oninvalid="this.setCustomValidity('Please complete your Username')"
+  		oninput="this.setCustomValidity('')"/>
 	<br>
-	<input class = "regForm" type = "password" id = "loginPassword" name = "registerPassword" placeholder = "Password">
+	<input class = "regForm" type = "password" id = "loginPassword" name = "registerPassword" placeholder = "Password" required
+		oninvalid="this.setCustomValidity('Please complete the required password sections')"
+  		oninput="this.setCustomValidity('')"/>
 	<br>
-	<input class = "regForm" type = "password" id = "loginPassword" name = "confirmPassword" placeholder = "Confirm Password">
+	<input class = "regForm" type = "password" id = "loginPassword" name = "confirmPassword" placeholder = "Confirm Password" required
+		oninvalid="this.setCustomValidity('Please complete the required password sections')"
+  		oninput="this.setCustomValidity('')"/>
 	<br>
 	<button type="submit" id = "signInButton">Create Account</button>
 	
@@ -48,14 +73,13 @@
 
 	</div>
 	</form>
-<!-- TODO -->
 
-     
+<script>
+	if (<%=regUsername != null && !regUsername.equals("")%>) {
+		console.log("Weird");
+		document.querySelector('#loginEmail').value = '<%=regUsername%>';
+	}
+</script>
 
-                
-
-        
-        
-        
 </body>
 </html>
