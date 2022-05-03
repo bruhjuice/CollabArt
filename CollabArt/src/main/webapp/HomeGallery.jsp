@@ -33,6 +33,12 @@ const DISLIKED = -1;
 const UNLIKED = 0;
 likeState = [UNLIKED];
 likeMap = new Map();
+
+function Convert(e) {
+	let idStr = e.parentNode.parentNode.id.substring(6);
+	return parseInt(idStr);
+}
+
 </script>
 
 <title> Collabart | Home</title>
@@ -171,9 +177,7 @@ likeMap = new Map();
 	console.log(thumbsdown);
 	
 	for (let i = 0; i < thumbsup.length; i++) {
-		let idStr = thumbsup[i].parentNode.parentNode.id.substring(6);
-		let id = parseInt(idStr);
-		likeMap.set(id, UNLIKED);
+		likeMap.set(Convert(thumbsup[i])), UNLIKED);
 		likeState.push(UNLIKED); //this is done to guarantee that everything is fetched in order
 	}
 	
@@ -183,7 +187,7 @@ likeMap = new Map();
 		let para = new URLSearchParams({
 			"command": "exist",
 			"picId": i + 1, //let's assume that an id of galart1 should correspond to 1 (in the database) and thumbsup[0]
-			"username": "user" //change this to username of cookie
+			"username": <%=username%>
 		});
 		
 		fetch('/LikeDispatcher', {method: 'POST', body: para})
@@ -207,7 +211,7 @@ likeMap = new Map();
 			params = new URLSearchParams({
 				"command": "remove",
 				"picId": id,
-				"username": "user" //change this to username of cookie
+				"username": <%=username%>
 			})
 			//Update database based on parent div id
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -221,7 +225,7 @@ likeMap = new Map();
 			params = new URLSearchParams({
 				"command": "like",
 				"picId": id,
-				"username": "user" //change this to username of cookie
+				"username": <%=username%>
 			})
 			//Update database based on parent div id.
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
