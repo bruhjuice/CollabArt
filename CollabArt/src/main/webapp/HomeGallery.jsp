@@ -176,7 +176,7 @@ function Convert(e) {
 	console.log(thumbsdown);
 	
 	for (let i = 0; i < thumbsup.length; i++) {
-		likeMap.set(Convert(thumbsup[i])), UNLIKED);
+		likeMap.set(Convert(thumbsup[i]), UNLIKED);
 	}
 	
 	console.log(likeMap);
