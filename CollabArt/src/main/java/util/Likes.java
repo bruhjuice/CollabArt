@@ -87,11 +87,13 @@ public class Likes {
 			likeRs.next();
 			dislikeRs.next();
 			
+			System.out.println("Getting Values");
+			
 			int value = likeRs.getInt(1) - dislikeRs.getInt(1);
 			SetDrawingLikes(picId, value);
 			
 		} catch (SQLException sqle) {
-			System.out.println("SQLException - Recalculating: \" + sqle.getMessage()");
+			System.out.println("SQLException - Recalculating: " + sqle.getMessage());
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
