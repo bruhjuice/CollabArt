@@ -31,7 +31,8 @@
 const LIKED = 1;
 const DISLIKED = -1;
 const UNLIKED = 0;
-likeState = [UNLIKED]; //this is to make it 1-indexed
+likeState = [UNLIKED];
+likeMap = new Map();
 </script>
 
 <title> Collabart | Home</title>
@@ -170,8 +171,13 @@ likeState = [UNLIKED]; //this is to make it 1-indexed
 	console.log(thumbsdown);
 	
 	for (let i = 0; i < thumbsup.length; i++) {
+		let idStr = thumbsup[i].parentNode.parentNode.id.substring(6);
+		let id = parseInt(idStr);
+		likeMap.set(id, UNLIKED);
 		likeState.push(UNLIKED); //this is done to guarantee that everything is fetched in order
 	}
+	
+	console.log(likeMap);
 	
 	for (let i = 0; i < thumbsup.length; i++) { //this sets all the likeStates and decides their initial color
 		let para = new URLSearchParams({
