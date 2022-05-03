@@ -31,7 +31,6 @@
 const LIKED = 1;
 const DISLIKED = -1;
 const UNLIKED = 0;
-likeState = [UNLIKED];
 likeMap = new Map();
 
 function Convert(e) {
@@ -178,22 +177,24 @@ function Convert(e) {
 	
 	for (let i = 0; i < thumbsup.length; i++) {
 		likeMap.set(Convert(thumbsup[i])), UNLIKED);
-		likeState.push(UNLIKED); //this is done to guarantee that everything is fetched in order
 	}
 	
 	console.log(likeMap);
 	
-	for (let i = 0; i < thumbsup.length; i++) { //this sets all the likeStates and decides their initial color
+	for (let i = 0; i < thumbsup.length; i++) { 
+		let id = Convert(thumbsup[i]);
+		likeMap.set(id, UNLIKED);
+		
 		let para = new URLSearchParams({
 			"command": "exist",
-			"picId": i + 1, //let's assume that an id of galart1 should correspond to 1 (in the database) and thumbsup[0]
-			"username": <%=username%>
+			"picId": Convert(thumbsup[i])),
+			"username": "<%=username%>"
 		});
 		
 		fetch('/LikeDispatcher', {method: 'POST', body: para})
 			.then(response => response.text())
-			.then(data => {likeState[i + 1] = parseInt(data);
-				switch (parseInt(data)) {
+			.then(data => {likeMap.set(id, parseInt(data));
+				switch (likeMap.get(id)) {
 				case LIKED:
 					blueLike(thumbsup[i]);
 					break;
@@ -205,13 +206,13 @@ function Convert(e) {
 	}
 	
 	function handletup(event) {
-		id = event.target.parentElement.parentElement.id.substring(6);
-		switch(likeState[parseInt(id)]) {
+		id = Convert(event.target);
+		switch(likeMap.get(id)) {
 		case LIKED:
 			params = new URLSearchParams({
 				"command": "remove",
 				"picId": id,
-				"username": <%=username%>
+				"username": "<%=username%>"
 			})
 			//Update database based on parent div id
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -219,13 +220,14 @@ function Convert(e) {
 				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 			//Update
 			removeLike(event.target);
-			likeState[parseInt(id)] = UNLIKED;
+			likeMap.set(id, UNLIKED);
+			
 			break;
 		default:
 			params = new URLSearchParams({
 				"command": "like",
 				"picId": id,
-				"username": <%=username%>
+				"username": "<%=username%>"
 			})
 			//Update database based on parent div id.
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -233,18 +235,18 @@ function Convert(e) {
 				.then(data => event.target.nextElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 	     	//Update
 	     	blueLike(event.target);
-	     	likeState[parseInt(id)] = LIKED;
+	     	likeMap.set(id, LIKED);
 		}
     };
    
 	function handletdown(event) {
-		id = event.target.parentElement.parentElement.id.substring(6);
-		switch(likeState[parseInt(id)]) {
+		id = Convert(event.target);
+		switch(likeMap.get(id)) {
 		case DISLIKED:
 			params = new URLSearchParams({
 				"command": "remove",
 				"picId": id,
-				"username": <%=username%>
+				"username": "<%=username%>"
 			})
 			//Update database based on parent div id
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -252,13 +254,13 @@ function Convert(e) {
 				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 			//Update
 			removeDislike(event.target);
-			likeState[parseInt(id)] = UNLIKED;
+			likeMap.set(id, UNLIKED);
 			break;
 		default:
 			params = new URLSearchParams({
 				"command": "dislike",
 				"picId": id,
-				"username": <%=username%>
+				"username": "<%=username%>"
 			})
 			//Update database based on parent div id.
 			fetch('/LikeDispatcher', {method: 'POST', body: params})
@@ -266,7 +268,7 @@ function Convert(e) {
 				.then(data => event.target.previousElementSibling.innerHTML="\&emsp;"+data+" Likes\&emsp;");
 	     	//Update
 	     	blueDislike(event.target);
-	     	likeState[parseInt(id)] = DISLIKED;
+			likeMap.set(id, DISLIKED);
 		}
     };
     
