@@ -22,7 +22,7 @@ public class Likes {
 	static String picUpdate = "UPDATE drawings SET likes = likes + ? WHERE id = ?";
 	static String getLikes = "SELECT * FROM drawings WHERE id = ?";
 	static String recalculate = "SELECT COUNT(*) FROM likes WHERE picId = ? AND likeType = ?";
-	static String setLikes = "UPDATE drawings SET likes = ? WHERE id = ? VALUES (?, ?)";
+	static String setLikes = "UPDATE drawings SET likes = ? WHERE id = ?";
 	
 	public static void Like(int picId, String username) {
         try {
@@ -206,12 +206,12 @@ public class Likes {
 			PreparedStatement pre = conn.prepareStatement(unsafe);
 			pre.executeUpdate();
 			
-			PicUpdateLike(picId, GetLikeType(picId, username) ? -1 : 1);
-			
 			PreparedStatement ps = conn.prepareStatement(remove);
 			ps.setInt(1, picId);
 			ps.setString(2, username);
 			ps.executeUpdate();
+			
+			Recalculate(picId);
 			
 			PreparedStatement post = conn.prepareStatement(safe);
 			post.executeUpdate();
