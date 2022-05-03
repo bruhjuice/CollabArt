@@ -187,7 +187,7 @@ function Convert(e) {
 		
 		let para = new URLSearchParams({
 			"command": "exist",
-			"picId": Convert(thumbsup[i])),
+			"picId": Convert(thumbsup[i]),
 			"username": "<%=username%>"
 		});
 		
