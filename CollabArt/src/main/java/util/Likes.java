@@ -21,7 +21,7 @@ public class Likes {
 	static String safe = "SET SQL_SAFE_UPDATES = 1";
 	static String picUpdate = "UPDATE drawings SET likes = likes + ? WHERE id = ?";
 	static String getLikes = "SELECT * FROM drawings WHERE id = ?";
-	static String recalculate = "SELECT COUNT(*) FROM likes WHERE picId = ? AND likeType = ? VALUES (?, ?)";
+	static String recalculate = "SELECT COUNT(*) FROM likes WHERE picId = ? AND likeType = ?";
 	static String setLikes = "UPDATE drawings SET likes = ? WHERE id = ? VALUES (?, ?)";
 	
 	public static void Like(int picId, String username) {
