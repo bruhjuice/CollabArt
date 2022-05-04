@@ -55,7 +55,7 @@ public class Artwork
 	   return true;
    }
    
-   public String getCompleted() {
+   public synchronized String getCompleted() {
 	   if (completed_image != null) {
 		   System.out.println("already completed the image");
 		   return completed_image;
@@ -168,6 +168,7 @@ public class Artwork
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
       
       return completed_image;
    }

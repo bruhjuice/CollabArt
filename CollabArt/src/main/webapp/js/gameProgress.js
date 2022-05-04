@@ -63,10 +63,14 @@ function handleTimer(data) {
 }
 
 function gameEnd() {
-	document.getElementById('submit-data').click();
-	setInterval(() => {
-		if (readyToEnd) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
-	}, 100)
+	if (!readyToEnd) {
+		submitData()
+		setInterval(() => {
+			if (readyToEnd) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+		}, 100)
+	} else {
+		window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+	}
 }
 
 /* Colors */
@@ -223,7 +227,14 @@ function paint(x, y, color) {
 }
 
 /* Event handlers */
-document.getElementById('submit-data').addEventListener('click', () => {
+document.getElementById('submit-data').addEventListener('click', submitData)
+	
+document.getElementById('clear-btn').addEventListener('click', () => {
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
+
+function submitData() {
+	if (!readyToEnd) {
 		const params = new URLSearchParams({
 			'image-string': canvas.toDataURL(),
 			username,
@@ -247,8 +258,5 @@ document.getElementById('submit-data').addEventListener('click', () => {
 					readyToEnd = true
 				}
 			})
-	})
-	
-document.getElementById('clear-btn').addEventListener('click', () => {
-	ctx.clearRect(0, 0, canvas.width, canvas.height)
-})
+	}
+}

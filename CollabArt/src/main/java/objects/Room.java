@@ -49,7 +49,6 @@ public class Room {
 		
 		if (timeLeft <= 0) {
 			// end game!
-			artwork.getCompleted();
 			jsonResult = new JSONObject();
 			jsonResult.put("type", "completed");
 			RoomEndpoint.sendToRoom(roomCode, jsonResult.toString());
