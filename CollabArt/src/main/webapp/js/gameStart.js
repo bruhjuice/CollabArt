@@ -19,9 +19,9 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 /* Check if parameters are valid and init socket */
 if (!params['room-code']) {
-	invalidRoomCode(socket)
+	invalidRoomCode()
 } else if (!params['username']) {
-	noUsername(socket)
+	noUsername()
 } else {
 	init()
 }
@@ -87,6 +87,10 @@ function updatePlayers(data) {
 			waitOwner.style.display = 'block'
 		}
 	}
+	
+	// Show main portion 
+	document.getElementById('content').style.display = 'block'
+	document.getElementById('loader').style.display = 'none'
 }
 
 function startGame() {

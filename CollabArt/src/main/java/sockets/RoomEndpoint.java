@@ -75,8 +75,11 @@ public class RoomEndpoint {
 					
 					if (!room.isStarted()) {
 						// Add new user, if already in rooms array, return error
-						if (!room.addUser(new User(username))) {
-							jsonResult.put("error", "username-taken");
+						int addResult = room.addUser(new User(username));
+						if (addResult < 0) {
+							System.out.println("addresult: " + addResult);
+							if (addResult == -2) jsonResult.put("error", "player-limit-reached");
+							else if (addResult == -1) jsonResult.put("error", "username-taken");
 							session.getBasicRemote().sendText(jsonResult.toString());
 							return;
 						};

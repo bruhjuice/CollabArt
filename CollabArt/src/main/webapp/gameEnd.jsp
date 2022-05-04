@@ -98,8 +98,13 @@
 </head>
 <body>
 	<script id="replace_with_navbar" src="js/nav.js"></script>
+	
+	<div id="loader">
+	 	<object data="loader.svg" width="200" height="200"> </object>
+	 	<div style="font-size: 3em;">Loading...</div>
+ 	</div>
 
-	<div class="outer-container light-blue">
+	<div id="content" style="display: none;" class="outer-container light-blue">
 		<div id="title">
 			"<span id="statement">Masterpiece</span>"
 		</div>

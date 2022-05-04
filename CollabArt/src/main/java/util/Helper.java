@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +25,6 @@ public class Helper {
     }
 
 
-
     /**
      * Get username with the email
      *
@@ -33,9 +33,7 @@ public class Helper {
      * @throws SQLException
      */
     public static String getUserName(String email) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
+
 		String sql = "SELECT username FROM Users WHERE email=?";
 		String username = "";
 		
@@ -52,7 +50,7 @@ public class Helper {
 			e.printStackTrace();
 		}
 		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
 				ps.setString(1, email);
 				ResultSet rs = ps.executeQuery();
@@ -64,6 +62,9 @@ public class Helper {
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		
         //TODO
@@ -71,50 +72,7 @@ public class Helper {
         return username;
     }
 
-    /**
-     * Get userID with email
-     *
-     * @param email
-     * @return userID
-     * @throws SQLException
-     */
-    public static int getUserID(String email) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/SalEats";
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
-		String sql = "SELECT id FROM Users WHERE email=?";
-		int id = -1;
-		
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
-				  PreparedStatement ps = conn.prepareStatement(sql);) {
-				ps.setString(1, email);
-				ResultSet rs = ps.executeQuery();
-				while (rs.next())
-				{
-					id = rs.getInt("id");
 
-				
-				}
-			} catch (SQLException ex) {
-				System.out.println ("SQLException: " + ex.getMessage());
-			}
-		
-        //TODO
-        return id;
-    }
 
     /**
      * check if the email and password matches
@@ -123,9 +81,6 @@ public class Helper {
      * @param password
      */
     public static boolean checkPassword(String username, String password) throws SQLException {
-    	String db = "jdbc:mysql://localhost:3306/collabArt";
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
 		String sql = "SELECT password FROM Users WHERE username=?";
 		
 		String selectedPassword = "";
@@ -143,7 +98,7 @@ public class Helper {
 			e.printStackTrace();
 		}
 		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		try (Connection conn = Utility.getConnection();
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
 				ps.setString(1, username);
 				ResultSet rs = ps.executeQuery();
@@ -153,6 +108,9 @@ public class Helper {
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		
     	
@@ -172,9 +130,7 @@ public class Helper {
      */
     public static boolean nameAlreadyRegistered(String username, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	String db = "jdbc:mysql://localhost:3306/collabArt";
-		String user = Utility.DBUserName;
-		String pwd = Utility.DBPassword;
+
 		String sql = "SELECT username FROM Users WHERE username = (?)";
 		String selectedName = "";
 		
@@ -190,8 +146,8 @@ public class Helper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		try (Connection conn = DriverManager.getConnection(db, user, pwd);
+		//DriverManager.getConnection(db, user, pwd)
+		try (Connection conn = Utility.getConnection();
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
 				ps.setString(1, username);
 				ResultSet rs = ps.executeQuery();
@@ -203,6 +159,8 @@ public class Helper {
 				}
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
 			}
 		System.out.println("selected" + selectedName);
 		System.out.println(username);
@@ -218,8 +176,5 @@ public class Helper {
 	    	System.out.println("creating new ");
 			return false;
 		}
-        //TODO
-    	
-    	
     }
 }

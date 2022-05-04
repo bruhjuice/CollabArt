@@ -11,8 +11,8 @@
 
 .sticky{
 	position: sticky;
-   top: 0px;
-   z-index: 10;
+    top: 0px;
+    z-index: 10;
 }
 .navBar a:link {
 	text-decoration: none;

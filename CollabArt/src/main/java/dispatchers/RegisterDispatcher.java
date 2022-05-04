@@ -12,6 +12,7 @@ import util.Utility;
 
 import java.sql.*;
 import java.io.*;
+import java.net.URISyntaxException;
 /**
  * Servlet implementation class RegisterDispatcher
  */
@@ -24,7 +25,6 @@ public class RegisterDispatcher extends HttpServlet {
     public RegisterDispatcher() {
     }
 
-
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      * response)
@@ -34,7 +34,7 @@ public class RegisterDispatcher extends HttpServlet {
             throws ServletException, IOException {
         //TODO
     	boolean missingData = false;
-
+    	
     	String name = request.getParameter("registerName");
     	String password = request.getParameter("registerPassword");
     	String confirmPassword = request.getParameter("confirmPassword");
@@ -42,8 +42,11 @@ public class RegisterDispatcher extends HttpServlet {
     	System.out.println(password);
     	System.out.println(confirmPassword);
 
+    	String errorMessage = "yes";
+    	
     	if (!password.contentEquals(confirmPassword))
     	{
+    	   errorMessage = "different";
     		missingData = true;
     	}
     	if (name == null || name.contentEquals(""))
@@ -53,7 +56,7 @@ public class RegisterDispatcher extends HttpServlet {
     	if (!Helper.validName(name))
     	{
     		missingData = true;
-    		
+    		errorMessage = "invalidUser";
     	}
 
     	if (password == null || password.contentEquals(""))
@@ -63,21 +66,13 @@ public class RegisterDispatcher extends HttpServlet {
     	}
     	if (Helper.nameAlreadyRegistered(name, request, response))
     	{
-    		missingData = true;
+    		missingData = true;    	
+    		errorMessage = "taken";
     	}
 
 
-    	
-
-
-
-    	
-
     	if (!missingData)
     	{
-    		String db = "jdbc:mysql://localhost:3306/CollabArt";
-    		String user = Utility.DBUserName;
-    		String pwd = Utility.DBPassword;
     		String sql = "INSERT INTO Users (username, password) VALUES (?, ?)";
     		// add the jar to tomcat lib if it is not working!
 
@@ -88,7 +83,7 @@ public class RegisterDispatcher extends HttpServlet {
 				e.printStackTrace();
 			}
 
-        	try (Connection conn = DriverManager.getConnection(db, user, pwd);
+        	try (Connection conn = Utility.getConnection();
         			PreparedStatement ps = conn.prepareStatement(sql);) {
         			ps.setString(1, name);
         			ps.setString(2, password);
@@ -104,7 +99,10 @@ public class RegisterDispatcher extends HttpServlet {
 
         		} catch (SQLException sqle) {
         			System.out.println ("SQLException: " + sqle.getMessage());
-        		}
+        		} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
     		//request.getRequestDispatcher("index.jsp").forward(request, response);
         	response.sendRedirect("HomeGallery.jsp");
@@ -115,7 +113,7 @@ public class RegisterDispatcher extends HttpServlet {
     	{
     		request.setAttribute("regUsername", name);
     		request.setAttribute("regPassword", password);
-    		request.setAttribute("error", "yes");
+    		request.setAttribute("error", errorMessage);
     		request.getRequestDispatcher("register.jsp").forward(request, response);
 
     	}

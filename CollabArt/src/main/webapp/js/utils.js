@@ -1,16 +1,29 @@
 /* Error functions */
 export const invalidRoomCode = (socket) => {
 	console.log('room code is invalid!')
+	alert('Room code is invalid!')
+	history.back()
 	if (socket) socket.close()
 }
 
 export const noUsername = (socket) => {
 	console.log('no username!!')
+	alert('Please enter a username!')
+	history.back()
 	if (socket) socket.close()
 }
 
 export const usernameTaken = (socket) => {
 	console.log('username already taken!')
+	alert('That username has already been taken!')
+	history.back()
+	if (socket) socket.close()
+}
+
+export const playerLimitReached = (socket) => {
+	console.log('player limit reached!')
+	alert('The player limit has been reached!!')
+	history.back()
 	if (socket) socket.close()
 }
 
@@ -53,6 +66,9 @@ export const initSocket = (wsURL, roomCode, username, functions) => {
 					break
 				case "username-taken":
 					usernameTaken(window.socket)
+					break
+				case "player-limit-reached":
+					playerLimitReached(window.socket)
 					break
 			}
 			return

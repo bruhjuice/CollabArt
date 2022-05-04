@@ -49,6 +49,10 @@ function setPrompt(data) {
 		canvas.width = width * 600/height
 		canvas.height = height * 600/height		
 	}
+	
+	// Show main portion 
+	document.getElementById('content').style.display = 'block'
+	document.getElementById('loader').style.display = 'none'
 }
 
 function gameEnd() {

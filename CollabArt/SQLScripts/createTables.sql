@@ -1,9 +1,5 @@
-DROP DATABASE IF EXISTS CollabArt;
-CREATE DATABASE CollabArt;
-USE CollabArt;
-
-DROP TABLE IF EXISTS users, drawing;
-
+USE heroku_6a11113fbc7e4d0;
+DROP TABLE IF EXISTS drawings, likes;
 
 
 CREATE TABLE `users` (
@@ -13,37 +9,15 @@ CREATE TABLE `users` (
   UNIQUE KEY `username_UNIQUE` (`username`)
 );
 
--- CREATE TABLE `prompts` (
---   `id` int NOT NULL AUTO_INCREMENT,
---   `statement` varchar(256) NOT NULL,
---   `player1` varchar(150) NOT NULL,
---   `player2` varchar(150) NOT NULL,
---   `player3` varchar(150) NOT NULL,
---   `player4` varchar(150) NOT NULL,
---    `player5` varchar(150) NOT NULL,
---   PRIMARY KEY (`id`)
--- );
 
-
--- CREATE TABLE coordinates (
---   id int NOT NULL AUTO_INCREMENT,
---   topCord int,
---   leftCord int,
---   bottomCord int,
---   rightCord int,
---   PRIMARY KEY(`id`),
---   FOREIGN KEY (id) REFERENCES prompts(id)
--- );
-
-CREATE TABLE drawing (
+CREATE TABLE drawings (
   id int NOT NULL AUTO_INCREMENT,
-  image varchar(256),
+  image MEDIUMTEXT,
   likes int,
   dateCreated date,
-  createdUser varchar(150),
+  createdUsers varchar(256),
   prompt varchar(256),
-  PRIMARY KEY(`id`),
-  FOREIGN KEY (createdUser) REFERENCES users(username)
+  PRIMARY KEY(`id`)
 );
 
 
@@ -52,10 +26,11 @@ CREATE TABLE likes (
     username varchar(150),
     likeType boolean
 
-    -- FOREIGN KEY (picId) REFERENCES drawing(id), --
-    -- FOREIGN KEY (username) REFERENCES users(username) --
 );
--- FOR EASY TESTING PURPOSES (GALLERY FRONTEND)
+
+
+
+
 
 INSERT into Users (username, password) VALUES ("testUser", "testPassword");
 INSERT into drawing (image, likes, dateCreated, createdUser, prompt) VALUES("futureImageURL or path???", 0, curdate(), "testUser", "generic theme");
