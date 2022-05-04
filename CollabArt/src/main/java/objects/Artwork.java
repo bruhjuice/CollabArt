@@ -98,17 +98,19 @@ public class Artwork
          int right = coordinates.get(playerNo).getRight();
          int bottom = coordinates.get(playerNo).getBottom();
          
-         String base64Image = fragment_urls[playerNo].split(",")[1];
-         byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-         //Use bufferedImage to do image transformation: add drawings to background.
-         try
-         {
-            image = ImageIO.read(new ByteArrayInputStream(imageBytes));
-         } catch (IOException e)
-         {
-            e.printStackTrace();
-         }     
-         g2d.drawImage(image, left, top, right-left, bottom-top, null);       
+         if (fragment_urls[playerNo] != null) {
+	         String base64Image = fragment_urls[playerNo].split(",")[1];
+	         byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+	         //Use bufferedImage to do image transformation: add drawings to background.
+	         try
+	         {
+	            image = ImageIO.read(new ByteArrayInputStream(imageBytes));
+	         } catch (IOException e)
+	         {
+	            e.printStackTrace();
+	         }     
+	         g2d.drawImage(image, left, top, right-left, bottom-top, null);      
+         }
       }
       
       g2d.dispose();

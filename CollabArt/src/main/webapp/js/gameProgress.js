@@ -33,6 +33,7 @@ function init() {
 	initSocket(wsURL, roomCode, username, {
 		'prompt': setPrompt,
 		completed: gameEnd,
+		timer: handleTimer,
 	})
 }
 
@@ -53,6 +54,10 @@ function setPrompt(data) {
 	// Show main portion 
 	document.getElementById('content').style.display = 'block'
 	document.getElementById('loader').style.display = 'none'
+}
+
+function handleTimer(data) {
+	document.querySelector('#timer').textContent = data['time-left']
 }
 
 function gameEnd() {

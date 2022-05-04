@@ -3,6 +3,12 @@ package objects;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.Session;
+
+import org.json.simple.JSONObject;
+
+import sockets.RoomEndpoint;
+
 public class Room {
 	/* The Room class contains all the data associated with a given room */
 	
@@ -16,6 +22,9 @@ public class Room {
 	private Artwork artwork;
 	// If game has started yet
 	private boolean started;
+	// Current time left of room
+	private int timeLeft; 
+	// Lock? + condition?
 	
 	public Room(String roomCode) {
 		this.roomCode = roomCode;
@@ -27,9 +36,31 @@ public class Room {
 	public List<User> getPlayers() { return players; }
 	public Artwork getArtwork() { return artwork; }
 	public boolean isStarted() { return started; }
+	public int getTimeLeft() { return timeLeft; }
+	
+	public void decreaseTimeLeft() { 
+		timeLeft--; 
+		
+		// Send the current time to the users
+		JSONObject jsonResult = new JSONObject();
+	    jsonResult.put("type", "timer");
+	    jsonResult.put("time-left", timeLeft);
+	    RoomEndpoint.sendToRoom(roomCode, jsonResult.toString());
+		
+		if (timeLeft <= 0) {
+			// end game!
+			artwork.getCompleted();
+			jsonResult = new JSONObject();
+			jsonResult.put("type", "completed");
+			RoomEndpoint.sendToRoom(roomCode, jsonResult.toString());
+		}
+	}
 	
 	public void start() {
 		started = true;
+		timeLeft = 60;
+		Thread timerThread = new Thread(new Timer(this));
+		timerThread.start();
 	}
 	
 	/** 
@@ -78,5 +109,31 @@ public class Room {
 			}
 		}
 		return -1;
+	}
+}
+
+class Timer implements Runnable {
+	private Room room;
+	public Timer(Room room) {
+		this.room = room;
+	}
+	
+	public void run() {
+		try {
+			while (room.getTimeLeft() > 0) {
+				Thread.sleep(1000);
+				room.decreaseTimeLeft();
+			}
+			/*
+			for (int i = 0; i <= time; ++i) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("type", "timer");
+				jsonObject.put("time-left", time - i);
+				RoomEndpoint.sendToRoom(session, roomCode, jsonObject.toString());
+				Thread.sleep(1000);
+			}*/
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

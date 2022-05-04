@@ -166,7 +166,7 @@
 			</div>
 			<div id="right-container">
 				<div id="timer">
-					60
+					--
 				</div>
 			</div>
 		</div>
@@ -189,16 +189,16 @@
 			document.getElementById('submit-data').click();
 		}
 	
-		function startTimer(seconds, timeRemaining) {
-		    var timer = seconds;
+		/*function startTimer(seconds, timeRemaining) {
+			if (!window.timer) window.timer = seconds;
 		    
 		    // every 1 second = 1000 milliseconds
-		    setInterval(function () {
+		    var decInterval = setInterval(function () {
 		    	// change text
-		        timeRemaining.textContent = timer;
-		        timer--;
+		        timeRemaining.textContent = window.timer;
 			    // when timer reaches end, redirect
-			    if (timer == 0) {
+			    if (window.timer <= 0) {
+			    	clearInterval(decInterval)
 			    	// "click" to submit image data
 			    	document.getElementById('submit-data').click();
 			    	
@@ -216,9 +216,10 @@
 					// then redirect
 			    	//window.location.replace('gameEnd.jsp');
 			    }
+		        window.timer--;
 		    }, 1000);
 		    
-		}
+		}*/
 		
 		// start timer when page loads
 		window.onload = function () {
@@ -239,7 +240,7 @@
 			// change display of "timer" tag
 		    var timeRemaining = document.querySelector('#timer');
 			
-		    startTimer(seconds, timeRemaining);
+		    //startTimer(seconds, timeRemaining);
 		};
 		
 	</script>

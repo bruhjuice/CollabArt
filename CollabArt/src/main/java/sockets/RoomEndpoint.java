@@ -9,8 +9,11 @@ import objects.Rooms;
 import objects.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.websocket.*;
 import javax.websocket.server.*;
@@ -20,8 +23,12 @@ import org.json.simple.parser.JSONParser;
 
 @ServerEndpoint("/room/{room-code}")
 public class RoomEndpoint {
+	private static Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
+	
 	@OnOpen
 	public void onOpen(Session session, EndpointConfig conf, @PathParam("room-code") String roomCode) throws IOException {
+		sessions.add(session);
+		
 		// Set roomCode property
 		Map<String, Object> properties = session.getUserProperties();
 		properties.put("room-code", roomCode);
@@ -90,20 +97,21 @@ public class RoomEndpoint {
 						// Send updated players array
 						jsonResult.put("type", "update-players");
 						jsonResult.put("players", room.getPlayers());
-						sendToRoom(session, roomCode, jsonResult.toString());
+						sendToRoom(roomCode, jsonResult.toString());
 						
 					} else {
+						// Send prompt to user
 					   while(true) {
 					      try {
-	                     // Set username prop
-	                     properties.put("username", username);                 
-	                     // If room is started, send the player their prompt
-	                     sendPromptToUser(session, room, username);
-	                     //If sendPromptToUser works, continue to break;
-	                     break;
-	                  }catch(Exception e) {
-	                     continue;
-	                  }   
+		                     // Set username prop
+		                     properties.put("username", username);                 
+		                     // If room is started, send the player their prompt
+		                     sendPromptToUser(session, room, username);
+		                     //If sendPromptToUser works, continue to break;
+		                     break;
+		                  }catch(Exception e) {
+		                     continue;
+		                  }   
 					   }
 					}
 					break;
@@ -113,7 +121,7 @@ public class RoomEndpoint {
 					
 					// Send a message to players to navigate to game progress page
 					jsonResult.put("type", "started");
-					sendToRoom(session, roomCode, jsonResult.toString());
+					sendToRoom(roomCode, jsonResult.toString());
 					break;
 				case "submitted":
 					// Check if artwork has all fragments
@@ -123,11 +131,10 @@ public class RoomEndpoint {
 						room.getArtwork().getCompleted();
 						
 						jsonResult.put("type", "completed");
-						sendToRoom(session, roomCode, jsonResult.toString());
+						sendToRoom(roomCode, jsonResult.toString());
 					}
 					break;
 				}
-				
 			} catch (org.json.simple.parser.ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -140,6 +147,7 @@ public class RoomEndpoint {
     @OnClose
     public void onClose(Session session, CloseReason reason, @PathParam("room-code") String roomCode) throws IOException {
         // WebSocket connection closes
+    	sessions.remove(session);
     	
     	// Remove user from room
     	String username = (String)session.getUserProperties().get("username");
@@ -155,7 +163,7 @@ public class RoomEndpoint {
 	    		JSONObject jsonResult = new JSONObject();
 	    		jsonResult.put("type", "update-players");
 	    		jsonResult.put("players", room.getPlayers());
-	    		sendToRoom(session, roomCode, jsonResult.toString());
+	    		sendToRoom(roomCode, jsonResult.toString());
     		}
     	}
     }
@@ -167,8 +175,8 @@ public class RoomEndpoint {
     }
     
     /* Sends the given message to all people in the given room */
-    private void sendToRoom(Session session, String roomCode, String message) {
-    	for (Session sess : session.getOpenSessions()) {
+    public static void sendToRoom(String roomCode, String message) {
+    	for (Session sess : sessions) {
     		String sessRoomCode = (String)sess.getUserProperties().get("room-code");
     		if (
 				sess.isOpen() && 
@@ -185,8 +193,8 @@ public class RoomEndpoint {
     }
     
     /* Sends the given message to a certain user within a room */
-    private void sendToRoomUser(Session session, String roomCode, String username, String message) {
-    	for (Session sess : session.getOpenSessions()) {
+    public static void sendToRoomUser(String roomCode, String username, String message) {
+    	for (Session sess : sessions) {
     		String sessRoomCode = (String)sess.getUserProperties().get("room-code");
     		String sessUsername = (String)sess.getUserProperties().get("username");
     		if (
@@ -206,7 +214,7 @@ public class RoomEndpoint {
     }
     
     /* Send prompts to all users in a room */
-    private void sendPrompts(Session session, Room room) {
+    public static void sendPrompts(Session session, Room room) {
     	// Get prompt
 		Prompt prompt = room.getArtwork().getPrompt();
 		List<String> prompts = prompt.getPrompts();
@@ -220,12 +228,12 @@ public class RoomEndpoint {
 			promptJson.put("type", "prompt");
 			promptJson.put("prompt", prompts.get(i));
 			promptJson.put("bounds", coordinates.get(i));
-			sendToRoomUser(session, room.getRoomCode(), players.get(i).getUsername(), promptJson.toString());
+			sendToRoomUser(room.getRoomCode(), players.get(i).getUsername(), promptJson.toString());
 		}
     }
     
     /* Send the correct prompt to the user who should be doing that prompt */
-    private void sendPromptToUser(Session session, Room room, String username) {
+    public static void sendPromptToUser(Session session, Room room, String username) {
     	// Get prompt
     	Prompt prompt = room.getArtwork().getPrompt();
 		List<String> prompts = prompt.getPrompts();
@@ -237,6 +245,11 @@ public class RoomEndpoint {
 		promptJson.put("type", "prompt");
 		promptJson.put("prompt", prompts.get(playerNum));
 		promptJson.put("bounds", coordinates.get(playerNum));
-		sendToRoomUser(session, room.getRoomCode(), username, promptJson.toString());
+		sendToRoomUser(room.getRoomCode(), username, promptJson.toString());
     }
+}
+
+class TimerWatcher implements Runnable {
+	/* Watches the room timer and sends message to room if room timer has changed */
+	public void run() {}
 }
