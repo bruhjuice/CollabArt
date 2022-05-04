@@ -273,11 +273,15 @@ function Convert(e) {
     };
     
    thumbsup.map( tup => {
-	   tup.addEventListener('click', handletup);
+	   if (<%=logIn%>) {
+		   tup.addEventListener('click', handletup);
+	   }
    });
    
    thumbsdown.map( tdown => {
-	   tdown.addEventListener('click', handletdown);
+	   if (<%=logIn%>) {
+		   tdown.addEventListener('click', handletdown);
+	   }
 	});
    
    function blueLike(element) {
