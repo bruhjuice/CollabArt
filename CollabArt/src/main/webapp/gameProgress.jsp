@@ -175,10 +175,13 @@
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 
-		// this will be turned to null 
-		// if you leave page once time is over (or implicitly you submitted)
+		// conditional onbeforeunload
 		window.onbeforeunload = () => {
-		    return true;
+			if (document.getElementById("submit-data").clicked() == true) {
+			    return null			
+			} else {
+				return true
+			}
 		};
 		
 	
@@ -194,10 +197,6 @@
 			    if (timer == 0) {
 			    	// "click" to submit image data
 			    	document.getElementById('submit-data').click();
-			    	
-			    	// change the unload settings
-			    	console.log("artwork submitted, so giving no warning message")
-					window.onbeforeunload = null;
 			    	
 			    	
 			    	// TODO:
