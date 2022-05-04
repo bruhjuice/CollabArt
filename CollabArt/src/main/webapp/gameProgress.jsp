@@ -175,6 +175,8 @@
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 	
+		console.log("console here: ahh")
+		<%System.out.println("system here: ahh");%>
 	
 		if (document.getElementById('submit-data').clicked == true) {
 			console.log("console here: submitted")
