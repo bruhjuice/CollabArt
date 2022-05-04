@@ -178,8 +178,10 @@
 		// conditional onbeforeunload
 		window.onbeforeunload = () => {
 			if (document.getElementById("submit-data").clicked() == true) {
+				console.log("suBMITTeD")
 			    return null			
 			} else {
+				console.log("NOT NOT suBMITTeD")
 				return true
 			}
 		};
