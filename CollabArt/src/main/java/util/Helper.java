@@ -109,24 +109,16 @@ public class Helper {
 			} catch (SQLException ex) {
 				System.out.println ("SQLException: " + ex.getMessage());
 			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
     	
-        //TODO
         return (selectedPassword.equals(password));
     }
 
     /**
      * Check if email is already registered
-     *
-     * @param email
-     * @param request
-     * @param response
-     * @return email registered or not
-     * @throws ServletException
-     * @throws IOException
+
      */
     public static boolean nameAlreadyRegistered(String username, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -146,7 +138,6 @@ public class Helper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//DriverManager.getConnection(db, user, pwd)
 		try (Connection conn = Utility.getConnection();
 				  PreparedStatement ps = conn.prepareStatement(sql);) {
 				ps.setString(1, username);
