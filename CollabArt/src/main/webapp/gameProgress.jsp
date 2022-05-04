@@ -185,8 +185,8 @@
 		
 		// testing
 		window.onunload = function () {
-			console.log("Automatically submitting whatever happens")
-			document.getElementById('submit-data').click();
+			//console.log("Automatically submitting whatever happens")
+			//document.getElementById('submit-data').click();
 		}
 	
 		/*function startTimer(seconds, timeRemaining) {
@@ -223,7 +223,7 @@
 		
 		// start timer when page loads
 		window.onload = function () {
-			// dummy click for warning to trigger
+			/*// dummy click for warning to trigger
 			document.getElementById('dummy-interact').click();
 			
 			// set warning to true first
@@ -241,6 +241,7 @@
 		    var timeRemaining = document.querySelector('#timer');
 			
 		    //startTimer(seconds, timeRemaining);
+		    */
 		};
 		
 	</script>

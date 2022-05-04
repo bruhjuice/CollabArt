@@ -62,7 +62,10 @@ function handleTimer(data) {
 }
 
 function gameEnd() {
-	window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+	document.getElementById('submit-data').click();
+	setInterval(() => {
+		if (pushed) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+	}, 100)
 }
 
 /* Colors */
