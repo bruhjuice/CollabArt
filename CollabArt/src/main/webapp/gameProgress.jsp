@@ -161,6 +161,7 @@
 				
 				<div id="submit-btn-container" style="margin-top: 24px;">
 					<button id="submit-data" class="buttons" onClick="setWarningNull();">Submit!</button>
+					<button id="dummy-interact" class="buttons" onClick="setWarningNull();" style="display: none;">dummy button</button>
 				</div>
 			</div>
 			<div id="right-container">
@@ -215,6 +216,9 @@
 		
 		// start timer when page loads
 		window.onload = function () {
+			// dummy click for warning to trigger
+			document.getElementById('dummy-interact').click();
+			
 			// set warning to true first
 			// only null when click submit button or timer runs out
 			window.onbeforeunload = () => {
