@@ -57,7 +57,7 @@
 							);
 				} else {
 					out.println(
-							"<span class = \"navText\">" + username + "</span>" +
+							"<span id = \"usernameTxt\">" + username + "</span>" +
 							"<a href=\"logout\" class = \"navText\">Log Out</a>"
 							);
 				}
