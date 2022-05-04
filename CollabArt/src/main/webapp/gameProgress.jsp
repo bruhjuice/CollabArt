@@ -175,12 +175,6 @@
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 
-		// set warning to true first
-		// only null when click submit button or timer runs out
-		window.onbeforeunload = () => {
-			console.log("Setting warning to TRUE for now!")
-			return true
-		};
 		
 		
 		function setWarningNull() {
@@ -221,6 +215,14 @@
 		
 		// start timer when page loads
 		window.onload = function () {
+			// set warning to true first
+			// only null when click submit button or timer runs out
+			window.onbeforeunload = () => {
+				console.log("Setting warning to TRUE for now!")
+				return true
+			};
+			
+			
 			// 1 min to draw
 		    var seconds = 60;
 			
