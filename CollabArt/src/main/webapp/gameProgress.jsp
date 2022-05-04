@@ -176,23 +176,22 @@
 	<script>
 	
 	
-	
-		document.getElementById('button').onclick = function() {
-			if (document.getElementById('submit-data').clicked == true) {
-				console.log("console here")
-				System.out.println("system here")
-				
-				window.onbeforeunload = null;
-				
-			} else {
-				
-				window.onbeforeunload = () => {
-				    return true;
-				};
-				
-			}
-		};
-	
+		if (document.getElementById('submit-data').clicked == true) {
+			console.log("console here: submitted")
+			<%System.out.println("system here: submitted");%>
+			
+			window.onbeforeunload = null;
+			
+		} else {
+			
+			console.log("console here: not submitted")
+			<%System.out.println("system here: not submitted");%>
+			
+			window.onbeforeunload = () => {
+			    return true;
+			};
+			
+		}
 	
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;
