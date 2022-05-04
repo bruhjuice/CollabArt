@@ -57,9 +57,17 @@ public class LoginDispatcher extends HttpServlet {
 				}
 			else
 			{
-
+				String name="";
+				for (int i = 0; i < username.length(); i++) {
+		            if (username.charAt(i)==' ') {
+		            	name+='=';
+		            }
+		            else {
+		            	name+=username.charAt(i);
+		            }
+		        }
 				Cookie cookie = new Cookie("loggedIn", "true");
-				Cookie cookie2 = new Cookie("playerName", username);
+				Cookie cookie2 = new Cookie("playerName", name);
             	cookie.setMaxAge(60 * 60);
             	cookie2.setMaxAge(60 * 60);
 
