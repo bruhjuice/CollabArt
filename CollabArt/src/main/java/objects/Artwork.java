@@ -117,12 +117,13 @@ public class Artwork
       ByteArrayOutputStream output = new ByteArrayOutputStream();
       try
       {
-         ImageIO.write(rescaleImage, "png", output);
+         ImageIO.write(rescaleImage, "jpeg", output); // or "png";
       } catch (IOException e)
       {
          e.printStackTrace();
       }
-      completed_image = Base64.getEncoder().encodeToString(output.toByteArray());
+      //completed_image = Base64.getEncoder().encodeToString(output.toByteArray());
+      completed_image = "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(output.toByteArray());
       
       //System.out.println("COMPLETED IMAGE: " + completed_image);
       
