@@ -175,17 +175,23 @@
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 	
-		if (document.getElementById('submit-data').clicked == true) {
-			
-			window.onbeforeunload = null;
-			
-		} else {
-			
-			window.onbeforeunload = () => {
-			    return "Are you sure you want to leave?? :((";
-			};
-			
-		}
+	
+	
+		document.getElementById('button').onclick = function() {
+			if (document.getElementById('submit-data').clicked == true) {
+				console.log("console here")
+				System.out.println("system here")
+				
+				window.onbeforeunload = null;
+				
+			} else {
+				
+				window.onbeforeunload = () => {
+				    return true;
+				};
+				
+			}
+		};
 	
 	
 		function startTimer(seconds, timeRemaining) {
