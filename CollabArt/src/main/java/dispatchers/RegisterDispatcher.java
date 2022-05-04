@@ -35,10 +35,10 @@ public class RegisterDispatcher extends HttpServlet {
         //TODO
     	boolean missingData = false;
     	
-    	String name = request.getParameter("registerName");
+    	String username = request.getParameter("registerName");
     	String password = request.getParameter("registerPassword");
     	String confirmPassword = request.getParameter("confirmPassword");
-    	System.out.println(name);
+    	System.out.println(username);
     	System.out.println(password);
     	System.out.println(confirmPassword);
 
@@ -49,11 +49,11 @@ public class RegisterDispatcher extends HttpServlet {
     	   errorMessage = "different";
     		missingData = true;
     	}
-    	if (name == null || name.contentEquals(""))
+    	if (username == null || username.contentEquals(""))
     	{
     		missingData = true;
     	}
-    	if (!Helper.validName(name))
+    	if (!Helper.validName(username))
     	{
     		missingData = true;
     		errorMessage = "invalidUser";
@@ -64,12 +64,11 @@ public class RegisterDispatcher extends HttpServlet {
     		missingData = true;
     		//emailError += "<p> email is missing </p>";
     	}
-    	if (Helper.nameAlreadyRegistered(name, request, response))
+    	if (Helper.nameAlreadyRegistered(username, request, response))
     	{
     		missingData = true;    	
     		errorMessage = "taken";
     	}
-
 
     	if (!missingData)
     	{
@@ -85,10 +84,19 @@ public class RegisterDispatcher extends HttpServlet {
 
         	try (Connection conn = Utility.getConnection();
         			PreparedStatement ps = conn.prepareStatement(sql);) {
-        			ps.setString(1, name);
+        			ps.setString(1, username);
         			ps.setString(2, password);
         			int row = ps.executeUpdate(); //the number of rows affected
-
+        	    	String name="";
+        			for (int i = 0; i < username.length(); i++) {
+        	            if (username.charAt(i)==' ') {
+        	            	name+='=';
+        	            }
+        	            else {
+        	            	name+=username.charAt(i);
+        	            }
+        	        }
+        		
                 	Cookie cookie = new Cookie("loggedIn", "true");
                 	Cookie cookie2 = new Cookie("playerName", name);
                 	cookie.setMaxAge(60 * 60);
@@ -111,7 +119,7 @@ public class RegisterDispatcher extends HttpServlet {
     	}
     	else
     	{
-    		request.setAttribute("regUsername", name);
+    		request.setAttribute("regUsername", username);
     		request.setAttribute("regPassword", password);
     		request.setAttribute("error", errorMessage);
     		request.getRequestDispatcher("register.jsp").forward(request, response);

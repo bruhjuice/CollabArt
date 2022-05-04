@@ -16,7 +16,6 @@
   					if((cookie.getName( )).equals("loggedIn")  )
   						
   					{
-  						
  						String cookieName = cookie.getValue();
 						if (cookieName.contentEquals("true"))
 						{

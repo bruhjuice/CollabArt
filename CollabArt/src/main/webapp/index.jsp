@@ -77,9 +77,19 @@
   						
   					{
   						
- 						 displayedName = cookie.getValue();
+ 						 String fakeName = cookie.getValue();
+ 						 
+						 for (int j = 0; j < fakeName.length(); j++) {
+						 	if (fakeName.charAt(j)=='=') {
+						    	displayedName+=' ';
+						    	}
+						 	else {
+						        displayedName+=fakeName.charAt(j);
+						    }
+						  }
 
   					}
+  					System.out.println("GAAHAHAHAHDFHASDLFIASDLJFASDLKFJADSLJKF" + displayedName);
   					
   				}
   				
@@ -93,7 +103,7 @@
 		<div class="outer-container light-blue">
 			<img id="main-img" src="images/CollabArtLogo_Ver2.png">
 			<div class="input-container">
-				<input autocomplete="off" class = "inputs" type = "text" id = "username" placeholder = "Name" value = <%= displayedName %> >
+				<input autocomplete="off" class = "inputs" type = "text" id = "username" placeholder = "Name" value = "<%= displayedName %>" >
 				<br>
 				<input autocomplete="off" class = "inputs" type = "text" id = "roomCode" placeholder = "Game Code">
 				<br>

@@ -68,7 +68,17 @@ function Convert(e) {
 	      			logIn = true;
 	   			}
 	   		} else if (cookie.getName().equals("playerName")) {
-	   			username = cookie.getValue();
+	   			String fakeName = cookie.getValue();
+	   			String name = "";
+	   			for (int j = 0; j < fakeName.length(); j++) {
+		            if (fakeName.charAt(j)=='=') {
+		            	name+=' ';
+		            }
+		            else {
+		            	name+=fakeName.charAt(j);
+		            }
+		        }
+	   			username = name;
 	   		}
 	   	}
 	}
@@ -273,11 +283,15 @@ function Convert(e) {
     };
     
    thumbsup.map( tup => {
-	   tup.addEventListener('click', handletup);
+	   if (<%=logIn%>) {
+		   tup.addEventListener('click', handletup);
+	   }
    });
    
    thumbsdown.map( tdown => {
-	   tdown.addEventListener('click', handletdown);
+	   if (<%=logIn%>) {
+		   tdown.addEventListener('click', handletdown);
+	   }
 	});
    
    function blueLike(element) {
