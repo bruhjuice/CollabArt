@@ -63,17 +63,7 @@ function Convert(e) {
 			if ((cookie.getName()).equals("loggedIn"))
 	 		{
 	   			String cookieName = cookie.getValue();
-	   			String name = "";
-	   			//change back to real name
-	   			for (int j = 0; j < cookieName.length(); j++) {
-			            if (cookieName.charAt(j)=='=') {
-			            	name+=' ';
-			            }
-			            else {
-			            	name+=cookieName.charAt(j);
-			            }
-			        }
-	   			if (name.contentEquals("true"))
+	   			if (cookieName.contentEquals("true"))
 	   			{
 	      			logIn = true;
 	   			}
