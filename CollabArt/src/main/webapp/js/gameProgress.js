@@ -11,6 +11,7 @@ var lastX = 0
 var lastY = 0
 var roomCode
 var username
+var pushed = false
 
 /* Get URL search params */
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -191,22 +192,25 @@ canvas.addEventListener('mousemove', (e) => {
 })
 
 function paint(x, y, color) {
-	/* Paints the specified coordinate on the canvas with the specified color */
-	ctx.fillStyle = color
-	ctx.strokeStyle = color
-	ctx.beginPath()
-	ctx.arc(x, y, brushSize, 0, 2*Math.PI)
-	ctx.fill()
-	ctx.closePath()
-	
-	if (Math.abs(x - lastX) > 2 || Math.abs(y - lastY) > 2) {
+	if (!pushed) {
+		/* Paints the specified coordinate on the canvas with the specified color */
+		ctx.fillStyle = color
+		ctx.strokeStyle = color
 		ctx.beginPath()
-		ctx.lineWidth = 2*brushSize
-		ctx.moveTo(lastX, lastY)
-		ctx.lineTo(x, y)
-		ctx.stroke()
+		ctx.arc(x, y, brushSize, 0, 2*Math.PI)
+		ctx.fill()
 		ctx.closePath()
+		
+		if (Math.abs(x - lastX) > 2 || Math.abs(y - lastY) > 2) {
+			ctx.beginPath()
+			ctx.lineWidth = 2*brushSize
+			ctx.moveTo(lastX, lastY)
+			ctx.lineTo(x, y)
+			ctx.stroke()
+			ctx.closePath()
+		}
 	}
+
 }
 
 /* Event handlers */
@@ -223,6 +227,7 @@ document.getElementById('submit-data').addEventListener('click', () => {
 			//Show image below
 			.then(data => {
 				console.log(data)
+				pushed = true
 				if (data.success) {
 					console.log('YAY')
 					window.socket.send(JSON.stringify({
