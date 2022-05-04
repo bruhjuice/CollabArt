@@ -77,7 +77,15 @@
   						
   					{
   						
- 						 displayedName = cookie.getValue();
+ 						 String fakeName = cookie.getValue();
+						 for (int j = 0; j < fakeName.length(); j++) {
+						 	if (fakeName.charAt(j)=='=') {
+						    	displayedName+=' ';
+						    	}
+						 	else {
+						        displayedName+=fakeName.charAt(j);
+						    }
+						  }
 
   					}
   					

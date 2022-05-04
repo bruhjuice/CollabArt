@@ -63,8 +63,8 @@ function Convert(e) {
 			if ((cookie.getName()).equals("loggedIn"))
 	 		{
 	   			String cookieName = cookie.getValue();
-	   			//change back to real name
 	   			String name = "";
+	   			//change back to real name
 	   			for (int j = 0; j < cookieName.length(); j++) {
 			            if (cookieName.charAt(j)=='=') {
 			            	name+=' ';
@@ -78,7 +78,17 @@ function Convert(e) {
 	      			logIn = true;
 	   			}
 	   		} else if (cookie.getName().equals("playerName")) {
-	   			username = cookie.getValue();
+	   			String fakeName = cookie.getValue();
+	   			String name = "";
+	   			for (int j = 0; j < fakeName.length(); j++) {
+		            if (fakeName.charAt(j)=='=') {
+		            	name+=' ';
+		            }
+		            else {
+		            	name+=fakeName.charAt(j);
+		            }
+		        }
+	   			username = name;
 	   		}
 	   	}
 	}
