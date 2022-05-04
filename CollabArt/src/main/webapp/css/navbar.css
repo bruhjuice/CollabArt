@@ -87,3 +87,9 @@
 	text-decoration:none;
 	color: black;
 }
+
+#usernameTxt {
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #E05E5E;
+}

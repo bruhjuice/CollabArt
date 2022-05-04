@@ -87,8 +87,6 @@ public class Likes {
 			likeRs.next();
 			dislikeRs.next();
 			
-			System.out.println("Getting Values");
-			
 			int value = likeRs.getInt(1) - dislikeRs.getInt(1);
 			SetDrawingLikes(picId, value);
 			
