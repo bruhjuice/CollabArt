@@ -12,6 +12,7 @@ var lastY = 0
 var roomCode
 var username
 var pushed = false
+var readyToEnd = false;
 
 /* Get URL search params */
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -64,7 +65,7 @@ function handleTimer(data) {
 function gameEnd() {
 	document.getElementById('submit-data').click();
 	setInterval(() => {
-		if (pushed) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+		if (readyToEnd) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
 	}, 100)
 }
 
@@ -243,6 +244,7 @@ document.getElementById('submit-data').addEventListener('click', () => {
 					}))
 					
 					document.getElementById('submit-btn-container').innerHTML = 'Waiting for others...'
+					readyToEnd = true
 				}
 			})
 	})
