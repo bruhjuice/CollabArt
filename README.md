@@ -1,4 +1,4 @@
-# CollabArt
+# CollabArt ![logo](https://github.com/bruhjuice/CollabArt/tree/main/CollabArt/src/main/webapp/images/CollabArtLogo_Ver2.png)
 
 ## Where artistic and teamwork skills are put to the test...
 
