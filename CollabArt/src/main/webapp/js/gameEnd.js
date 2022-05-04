@@ -33,7 +33,8 @@ function init() {
 	 	.then(res => res.json())
 	 	.then(data => {
 			//console.log('DATA: ', data)
-			const dataURL = 'data:image/png;base64,' + data['image-string']
+			//const dataURL = 'data:image/png;base64,' + data['image-string']
+			const dataURL = data['image-string']
 			document.getElementById('final-img').src = dataURL
 			
 			const players = data.players

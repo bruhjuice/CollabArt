@@ -116,8 +116,8 @@ function Convert(e) {
 	      while (rs.next())
 	      {
 	         int likes = rs.getInt("likes");
-	         String image = "data:image/png;base64,";
-	         image+=rs.getString("image");
+	         //String image = "data:image/png;base64,";
+	         String image=rs.getString("image");
 
 	         out.println("<div class='galart' id='galart" + rs.getInt("id") + "'>");
 	             out.println("<div class='galart-top blue top-rounded'>");
