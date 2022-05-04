@@ -177,10 +177,16 @@
 	<script>
 
 		
-		
+		// only works once user physically interacts with website
 		function setWarningNull() {
 			console.log("Setting warning to null!")
 			window.onbeforeunload = null
+		}
+		
+		// testing
+		window.onunload = function () {
+			console.log("Automatically submitting whatever happens")
+			document.getElementById('submit-data').click();
 		}
 	
 		function startTimer(seconds, timeRemaining) {
