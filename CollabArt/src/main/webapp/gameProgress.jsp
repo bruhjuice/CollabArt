@@ -174,9 +174,19 @@
 
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
-		window.onbeforeunload = () => {
-		    return "Are you sure you want to leave?? :((";
-		};
+	
+		if (document.getElementById('submit-data').clicked == true) {
+			
+			window.onbeforeunload = null;
+			
+		} else {
+			
+			window.onbeforeunload = () => {
+			    return "Are you sure you want to leave?? :((";
+			};
+			
+		}
+	
 	
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;
