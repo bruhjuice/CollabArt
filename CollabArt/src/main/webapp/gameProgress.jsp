@@ -160,7 +160,7 @@
 				</div>
 				
 				<div id="submit-btn-container" style="margin-top: 24px;">
-					<button id="submit-data" class="buttons">Submit!</button>
+					<button id="submit-data" class="buttons" onClick="setWarningNull();">Submit!</button>
 				</div>
 			</div>
 			<div id="right-container">
@@ -175,17 +175,18 @@
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
 
-		// conditional onbeforeunload
+		// set warning to true first
+		// only null when click submit button or timer runs out
 		window.onbeforeunload = () => {
-			if (document.getElementById("submit-data").clicked() == true) {
-				console.log("suBMITTeD")
-			    return null			
-			} else {
-				console.log("NOT NOT suBMITTeD")
-				return true
-			}
+			console.log("Setting warning to TRUE for now!")
+			return true
 		};
 		
+		
+		function setWarningNull() {
+			console.log("Setting warning to null!")
+			window.onbeforeunload = null
+		}
 	
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;
@@ -199,6 +200,9 @@
 			    if (timer == 0) {
 			    	// "click" to submit image data
 			    	document.getElementById('submit-data').click();
+			    	
+			    	// set it null
+			    	setWarningNull();
 			    	
 			    	
 			    	// TODO:
@@ -225,6 +229,7 @@
 			
 		    startTimer(seconds, timeRemaining);
 		};
+		
 	</script>
 </body>
 </html>
