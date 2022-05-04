@@ -174,26 +174,13 @@
 
 	<script type="module" src="js/gameProgress.js"></script>
 	<script>
-	
-		console.log("console here: ahh")
-		<%System.out.println("system here: ahh");%>
-	
-		if (document.getElementById('submit-data').clicked == true) {
-			console.log("console here: submitted")
-			<%System.out.println("system here: submitted");%>
-			
-			window.onbeforeunload = null;
-			
-		} else {
-			
-			console.log("console here: not submitted")
-			<%System.out.println("system here: not submitted");%>
-			
-			window.onbeforeunload = () => {
-			    return true;
-			};
-			
-		}
+
+		// this will be turned to null 
+		// if you leave page once time is over (or implicitly you submitted)
+		window.onbeforeunload = () => {
+		    return true;
+		};
+		
 	
 		function startTimer(seconds, timeRemaining) {
 		    var timer = seconds;
@@ -207,6 +194,11 @@
 			    if (timer == 0) {
 			    	// "click" to submit image data
 			    	document.getElementById('submit-data').click();
+			    	
+			    	// change the unload settings
+			    	console.log("artwork submitted, so giving no warning message")
+					window.onbeforeunload = null;
+			    	
 			    	
 			    	// TODO:
 			    		// add things to check that all players have submitted the data before redirecting
