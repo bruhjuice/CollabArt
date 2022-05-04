@@ -220,6 +220,7 @@ document.getElementById('submit-data').addEventListener('click', () => {
 			username,
 			'room-code': roomCode,
 		})
+		pushed = true
 		console.log(params);
 		console.log(canvas.toDataURL())
 		fetch('/Fragment', { method: 'POST', body: params })
@@ -227,7 +228,6 @@ document.getElementById('submit-data').addEventListener('click', () => {
 			//Show image below
 			.then(data => {
 				console.log(data)
-				pushed = true
 				if (data.success) {
 					console.log('YAY')
 					window.socket.send(JSON.stringify({

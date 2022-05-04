@@ -127,8 +127,8 @@
 	
 	function joinRoom(e) {
 		e.preventDefault()
-		const username = document.getElementById('username').value
-		const roomCode = document.getElementById('roomCode').value
+		const username = encodeURIComponent(document.getElementById('username').value)
+		const roomCode = encodeURIComponent(document.getElementById('roomCode').value)
 		const path = `gameStart.jsp?room-code=` + roomCode + `&username=` + username
 		window.location.href = path
 		return false
