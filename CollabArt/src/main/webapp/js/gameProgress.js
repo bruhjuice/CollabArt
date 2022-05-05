@@ -88,6 +88,12 @@ const colors = [
 		dark: false,
 	},
 	{
+		// pink
+		hex: '#ffc0cb',
+		dark: false,
+		
+	},
+	{
 		// red
 		hex: '#C74646',
 		dark: false,
