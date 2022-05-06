@@ -30,20 +30,30 @@ public class FinalImageDispatcher extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	String roomcode = request.getParameter("room-code");
-    	Room room = Rooms.getRoom(roomcode);
-    	Artwork artwork = room.getArtwork();
-    	String dataURL = artwork.getCompleted();
-    	String statement = artwork.getPrompt().getStatement();
     	
-    	response.setContentType("application/json");
-    	PrintWriter writer = response.getWriter();
-    	JSONObject jsonObject = new JSONObject();
-    	
-    	jsonObject.put("image-string", dataURL);
-    	jsonObject.put("statement", statement);
-    	jsonObject.put("players", room.getPlayers());
-    	
-    	writer.append(jsonObject.toString());
+    	try {
+	    	String roomcode = request.getParameter("room-code");
+	    	Room room = Rooms.getRoom(roomcode);
+	    	Artwork artwork = room.getArtwork();
+	    	
+	    	// Wait until artwork is completed
+	    	while (!artwork.isCompleted()) { Thread.sleep(100); }
+	    	
+	    	// Send data url + statement back to the client
+	    	String dataURL = artwork.getCompleted();
+	    	String statement = artwork.getPrompt().getStatement();
+	    	
+	    	response.setContentType("application/json");
+	    	PrintWriter writer = response.getWriter();
+	    	JSONObject jsonObject = new JSONObject();
+	    	
+	    	jsonObject.put("image-string", dataURL);
+	    	jsonObject.put("statement", statement);
+	    	jsonObject.put("players", room.getPlayers());
+	    	
+	    	writer.append(jsonObject.toString());
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
     }
 }

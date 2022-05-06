@@ -46,6 +46,10 @@ public class Artwork
       fragment_urls[player_no]=frag_url;
    }
    
+   public boolean hasSubmitted(int player_no) {
+	   return fragment_urls[player_no] != null;
+   }
+   
    public boolean isCompleted() {
 	   for (int i = 0; i < fragment_urls.length; ++i) {
 		   if (fragment_urls[i] == null) {
@@ -98,7 +102,7 @@ public class Artwork
          int right = coordinates.get(playerNo).getRight();
          int bottom = coordinates.get(playerNo).getBottom();
          
-         if (fragment_urls[playerNo] != null) {
+         if (fragment_urls[playerNo] != null && fragment_urls[playerNo].length() > 0) {
 	         String base64Image = fragment_urls[playerNo].split(",")[1];
 	         byte[] imageBytes = Base64.getDecoder().decode(base64Image);
 	         //Use bufferedImage to do image transformation: add drawings to background.
@@ -131,6 +135,7 @@ public class Artwork
       
       //Add drawing entry to database
       String sql = "INSERT INTO drawings (image, likes, dateCreated, createdUsers, prompt) VALUES (?, 0, ?, ?, ?)";
+      
       
       try
       {

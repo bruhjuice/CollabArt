@@ -161,7 +161,7 @@
 				
 				<div id="submit-btn-container" style="margin-top: 24px;">
 					<button id="submit-data" class="buttons" onClick="setWarningNull();">Submit!</button>
-					<button id="dummy-interact" class="buttons" onClick="setWarningNull();" style="display: none;">dummy button</button>
+					<button id="dummy-interact" class="buttons" style="display: none;">dummy button</button>
 				</div>
 			</div>
 			<div id="right-container">
@@ -177,17 +177,6 @@
 	<script>
 
 		
-		// only works once user physically interacts with website
-		function setWarningNull() {
-			console.log("Setting warning to null!")
-			window.onbeforeunload = null
-		}
-		
-		// testing
-		window.onunload = function () {
-			//console.log("Automatically submitting whatever happens")
-			//document.getElementById('submit-data').click();
-		}
 	
 		/*function startTimer(seconds, timeRemaining) {
 			if (!window.timer) window.timer = seconds;
@@ -223,9 +212,10 @@
 		
 		// start timer when page loads
 		window.onload = function () {
-			/*// dummy click for warning to trigger
-			document.getElementById('dummy-interact').click();
+			// dummy click for warning to trigger
+			//document.getElementById('dummy-interact').click();
 			
+			/*
 			// set warning to true first
 			// only null when click submit button or timer runs out
 			window.onbeforeunload = () => {

@@ -2,6 +2,7 @@ package sockets;
 import java.io.IOException;
 import java.text.ParseException;
 
+import objects.Artwork;
 import objects.Coordinate;
 import objects.Prompt;
 import objects.Room;

@@ -12,7 +12,7 @@ var lastY = 0
 var roomCode
 var username
 var pushed = false
-var readyToEnd = false;
+var submitted = false;
 
 /* Get URL search params */
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -63,10 +63,10 @@ function handleTimer(data) {
 }
 
 function gameEnd() {
-	if (!readyToEnd) {
+	if (!submitted) {
 		submitData()
 		setInterval(() => {
-			if (readyToEnd) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
+			if (submitted) window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
 		}, 100)
 	} else {
 		window.location.replace(`gameEnd.jsp?room-code=${roomCode}&username=${username}`)
@@ -240,7 +240,7 @@ document.getElementById('clear-btn').addEventListener('click', () => {
 })
 
 function submitData() {
-	if (!readyToEnd) {
+	if (!submitted) {
 		const params = new URLSearchParams({
 			'image-string': canvas.toDataURL(),
 			username,
@@ -261,8 +261,20 @@ function submitData() {
 					}))
 					
 					document.getElementById('submit-btn-container').innerHTML = 'Waiting for others...'
-					readyToEnd = true
+					submitted = true
 				}
 			})
 	}
 }
+
+export function isSubmitted() {
+	return submitted
+}
+
+/*
+var onBeforeUnLoadEvent = false;
+window.onunload = window.onbeforeunload= function(){
+	if(!onBeforeUnLoadEvent){
+  		return false
+  	}
+};*/
