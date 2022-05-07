@@ -1,3 +1,7 @@
+
+DROP SCHEMA if EXISTS `heroku_6a11113fbc7e4d0`;
+CREATE SCHEMA IF NOT EXISTS `heroku_6a11113fbc7e4d0` DEFAULT CHARACTER SET utf8mb4;
+
 USE heroku_6a11113fbc7e4d0;
 DROP TABLE IF EXISTS users, drawings, likes;
 
