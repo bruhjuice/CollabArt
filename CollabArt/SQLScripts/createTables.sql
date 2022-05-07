@@ -1,5 +1,5 @@
 USE heroku_6a11113fbc7e4d0;
-DROP TABLE IF EXISTS drawings, likes;
+DROP TABLE IF EXISTS users, drawings, likes;
 
 
 CREATE TABLE `users` (
@@ -28,11 +28,3 @@ CREATE TABLE likes (
 
 );
 
-
-
-
-
-INSERT into Users (username, password) VALUES ("testUser", "testPassword");
-INSERT into drawing (image, likes, dateCreated, createdUser, prompt) VALUES("futureImageURL or path???", 0, curdate(), "testUser", "generic theme");
-INSERT into drawing (image, likes, dateCreated, createdUser, prompt) VALUES("second image for testing", 0, curdate(), "testUser", "i have no idea");
-INSERT into drawing (image, likes, dateCreated, createdUser, prompt) VALUES("picture number 3", 0, curdate(), "testUser", "uhh the one where you draw crazy stuff");
