@@ -27,4 +27,4 @@ While drawing, users have the flexibility of alternating between brush sizes and
 
 ## Technical Specifications
 
-Add stuff here?
+The project is hosted on Heroku, where we applied Java Canvas API, HTML, CSS, JS for frontend, and used ClearDB, Maven, Graphics2D for backend. Please add more.
