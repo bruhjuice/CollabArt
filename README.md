@@ -25,6 +25,31 @@ While drawing, users have the flexibility of alternating between brush sizes and
   <img src="/images/gameEnd.png" width="350" /> 
 </p>
 
-## Technical Specifications
+## Built With
+- Heroku
+- JSP (Jakarta Server Pages)
+- Java
+- JavaScript
+- HTML/CSS
+- Canvas API
+- ClearDB (mySQL)
+- Graphics2D
 
-The project is hosted on Heroku, where we applied Java Canvas API, HTML, CSS, JS for frontend, and used ClearDB, Maven, Graphics2D for backend. Please add more.
+## Local Deployment
+
+If you wish to personally deploy:
+1. Run the sql script contained in “SQLScripts/createTables.sql”
+2. In Utility.java, change dbURL to localhost, and change username & password
+accordingly.
+3. Right click project "Run as > maven build..." and set Goals: to "package"
+4. In the root CollabArt folder, run "java -jar target/dependency/webapp-runner.jar
+target/*.war" in console
+5. Visit http://localhost:8080
+Notes:
+If you wish to play locally (don't do this, get your friends and play instead, its more fun that way I promise!), you should open up 4 different tabs on a single computer and join the room with the given room code
+
+## Planning
+
+For a behind-the-scenes look at GUI / userflow planning, check out this [figma!] (https://www.figma.com/file/90mEHfhCsRZfcflHzfARxB/CollabArt?node-id=0%3A1)
+
+
