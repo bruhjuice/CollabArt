@@ -12,7 +12,7 @@ Sounds intriguing? [Play the game!](https://collab--art.herokuapp.com/)
 
 ## Our Gallery
 
-The CollabArt Gallery is a feature only available to [registered users](https://collab--art.herokuapp.com/register.jsp). Past artworks, the artists, and the date of cretion are displayed. Users can additionally upvote and downvote the art pieces in the gallery.
+The CollabArt Gallery is a feature only available to [registered users](https://collab--art.herokuapp.com/register.jsp). Past artworks, the artists, and the date of creation are displayed. Users can additionally upvote and downvote the art pieces in the gallery.
 
 <img src="/images/gallery.png" width="280">
 
@@ -30,6 +30,7 @@ While drawing, users have the flexibility of alternating between brush sizes and
 - JSP (Jakarta Server Pages)
 - Java
 - JavaScript
+- Maven
 - HTML/CSS
 - Canvas API
 - ClearDB (mySQL)
@@ -48,7 +49,7 @@ target/*.war" in console
 
 
 Notes:
-If you wish to play locally (don't do this, get your friends and play instead, its more fun that way I promise!), you should open up 4 different tabs on a single computer and join the room with the given room code
+If you wish to play locally (don't do this, get your friends and play instead, it's more fun that way. I promise!), you should open up 4 different tabs on a single computer and join the room with the given room code.
 
 ## Planning
 
