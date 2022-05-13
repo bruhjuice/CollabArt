@@ -45,6 +45,8 @@ accordingly.
 4. In the root CollabArt folder, run "java -jar target/dependency/webapp-runner.jar
 target/*.war" in console
 5. Visit http://localhost:8080
+
+
 Notes:
 If you wish to play locally (don't do this, get your friends and play instead, its more fun that way I promise!), you should open up 4 different tabs on a single computer and join the room with the given room code
 
