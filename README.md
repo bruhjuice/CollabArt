@@ -50,6 +50,6 @@ If you wish to play locally (don't do this, get your friends and play instead, i
 
 ## Planning
 
-For a behind-the-scenes look at GUI / userflow planning, check out this [figma!] (https://www.figma.com/file/90mEHfhCsRZfcflHzfARxB/CollabArt?node-id=0%3A1)
+For a behind-the-scenes look at GUI / userflow planning, check out this [Figma!](https://www.figma.com/file/90mEHfhCsRZfcflHzfARxB/CollabArt?node-id=0%3A1) 
 
 
